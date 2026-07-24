@@ -1,6 +1,6 @@
 [
   {
-    "actressId": "example_id_1",
+    "actressId": "higashimine_hinako",
     "title": "作品タイトルA",
     "catchphrase": "作品のキャッチコピーが入ります",
     "type": "single",
@@ -12,7 +12,7 @@
     "affiliateUrl": "https://example.com" 
   },
   {
-    "actressId": "example_id_1",
+    "actressId": "higashimine_hinako",
     "title": "作品タイトルB",
     "catchphrase": "最新作の紹介テキストが入ります",
     "type": "single",
