@@ -2,13 +2,19 @@
   {
     "name": "東峯日奈子",
     "kana": "ひがしみねひなこ",
-    "cup": "H",
-    "debutDate": "2026年6月26日",
+    "cup": "G",
+    "debutDate": "2026年3月1日",
+    "birthday": "12月15日",      // 🛠️【追加】誕生日
+    "birthplace": "東京都",      // 🛠️【追加】出身地
+    "bloodType": "A型",         // 🛠️【追加】血液型
+    "threeSize": "T160 / B88",  // 🛠️【追加】身長・バスト（カップ数の手前まで）
+    "hobby": "映画鑑賞、ヨガ",    // 🛠️【追加】趣味
     "isNew": true,
     "isPopular": false,
-    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/higashimine-hinako_profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/higashimine-hinako/"
-  },
+    "imgUrl": "あなたのWPの画像URL",
+    "pageUrl": "/actress/higashimine-hinako"
+  }
+],
   {
     "name": "葵ちひろ",
     "kana": "あおいちひろ",
