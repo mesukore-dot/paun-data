@@ -3,7 +3,7 @@
     "actressId": "higashimine_hinako",
     "name": "東峯日奈子",
     "kana": "ひがしみねひなこ",
-    "cup": "H cup",
+    "cup": "H",
     "debutDate": "2026年6月26日",
     "birthday": "6月4日",
     "birthplace": "熊本県",
@@ -16,19 +16,19 @@
     "pageUrl": "https://wpmesucolle.wpx.jp/higashimine-hinako/"
   },
   {
-    "actressId": "aoi_chihiro",
-    "name": "葵ちひろ",
-    "kana": "あおいちひろ",
-    "cup": "M",
-    "debutDate": "2026年2月1日",
-    "birthday": "情報なし",
-    "birthplace": "情報なし",
-    "bloodType": "情報なし",
-    "threeSize": "情報なし",
-    "hobby": "情報なし",
+    "actressId": "watanabe_hono",
+    "name": "渡部ほの",
+    "kana": "わたなべほの",
+    "cup": "J",
+    "debutDate": "2025年10月10日",
+    "birthday": "10月4日",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T170 / B102 /W67 /H92",
+    "hobby": "語学（英語・韓国語・イタリア語）書道・生け花・ピアノ・声楽",
     "isNew": false,
-    "isPopular": true,
-    "imgUrl": "",
-    "pageUrl": "/actress/aoi-chihiro"
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/sone00969ps.jpg.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/watanabe-hono/"
   }
 ]
