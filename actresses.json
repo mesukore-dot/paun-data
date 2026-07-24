@@ -1,37 +1,34 @@
 [
   {
+    "actressId": "higashimine_hinako",
     "name": "東峯日奈子",
     "kana": "ひがしみねひなこ",
     "cup": "H",
     "debutDate": "2026年6月26日",
-    "birthday": "6月4日",   
-    "birthplace": "熊本県",  
-    "bloodType": "A型",  
-    "threeSize": "T153 / B88 /W58 /H84", 
-    "hobby": "犬の散歩・乗馬", 
+    "birthday": "6月4日",
+    "birthplace": "熊本県",
+    "bloodType": "AB型",
+    "threeSize": "T153 / B88 / W58 /H84 ",
+    "hobby": "犬のお散歩　乗馬",
     "isNew": true,
     "isPopular": false,
-    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/higashimine-hinako_profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/higashimine-hinako/"
+    "imgUrl": "https://wpx.jp",
+    "pageUrl": "/actress/higashimine-hinako"
   },
   {
+    "actressId": "aoi_chihiro",
     "name": "葵ちひろ",
     "kana": "あおいちひろ",
     "cup": "M",
     "debutDate": "2026年2月1日",
+    "birthday": "情報なし",
+    "birthplace": "情報なし",
+    "bloodType": "情報なし",
+    "threeSize": "情報なし",
+    "hobby": "情報なし",
     "isNew": false,
     "isPopular": true,
     "imgUrl": "",
     "pageUrl": "/actress/aoi-chihiro"
-  },
-  {
-    "name": "天海つばさ",
-    "kana": "あまみつばさ",
-    "cup": "C",
-    "debutDate": "2025年12月1日",
-    "isNew": false,
-    "isPopular": true,
-    "imgUrl": "",
-    "pageUrl": "/actress/amami-tsubasa"
   }
 ]
