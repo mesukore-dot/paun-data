@@ -1,0 +1,32 @@
+[
+  {
+    "name": "東峯日奈子",
+    "kana": "ひがしみねひなこ",
+    "cup": "G",
+    "debutDate": "2026年3月1日",
+    "isNew": true,
+    "isPopular": false,
+    "imgUrl": "",
+    "pageUrl": "/actress/higashimine-hinako"
+  },
+  {
+    "name": "葵ちひろ",
+    "kana": "あおいちひろ",
+    "cup": "M",
+    "debutDate": "2026年2月1日",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "",
+    "pageUrl": "/actress/aoi-chihiro"
+  },
+  {
+    "name": "天海つばさ",
+    "kana": "あまみつばさ",
+    "cup": "C",
+    "debutDate": "2025年12月1日",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "",
+    "pageUrl": "/actress/amami-tsubasa"
+  }
+]
