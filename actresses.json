@@ -1,4 +1,20 @@
 [
+    {
+    "actressId": "satsuki_nao",
+    "name": "彩月七緒",
+    "kana": "さつきなお",
+    "cup": "I",
+    "debutDate": "2024年1月25日",
+    "birthday": "6月16日",
+    "birthplace": "東京都",
+    "bloodType": "O型",
+    "threeSize": "T164 / B92 / W59 / H89",
+    "hobby": "旅行",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/satsuki_nao-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/satsuki_nao/"
+  },
   {
     "actressId": "toumine_hinako",
     "name": "東峯日奈子",
@@ -10,7 +26,7 @@
     "bloodType": "AB型",
     "threeSize": "T153 / B88 / W58 / H84",
     "hobby": "犬のお散歩　乗馬",
-    "isNew": true,
+    "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/higashimine-hinako_profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/higashimine-hinako/"
