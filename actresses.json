@@ -1,4 +1,20 @@
 [
+                {
+    "actressId": "hakata_iroha",
+    "name": "博多彩葉",
+    "kana": "はかたいろは",
+    "cup": "I",
+    "debutDate": "2026年4月10日",
+    "birthday": "2006年1月8日",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T170 / B95 / W56 / H88",
+    "hobby": "読書・アニメ",
+    "isNew": false,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/hakata_iroha-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/hakata-iroha/"
+  },
         {
     "actressId": "hoshizora_neru",
     "name": "星空ねる",
