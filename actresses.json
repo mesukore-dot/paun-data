@@ -1,4 +1,20 @@
 [
+        {
+    "actressId": "hoshizora_neru",
+    "name": "星空ねる",
+    "kana": "ほしぞらねる",
+    "cup": "G",
+    "debutDate": "-",
+    "birthday": "-",
+    "birthplace": "北海道",
+    "bloodType": "-",
+    "threeSize": "T170 / B- / W55 / H-",
+    "hobby": "野球・ソフトボール・テニス",
+    "isNew": true,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/snos00370-hoshizora_neru-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/hoshizora_neru/"
+  },
     {
     "actressId": "satsuki_nao",
     "name": "彩月七緒",
