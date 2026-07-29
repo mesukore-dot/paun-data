@@ -1,4 +1,20 @@
 [
+          {
+    "actressId": "kikuno_ran",
+    "name": "菊乃らん",
+    "kana": "きくのらん",
+    "cup": "H",
+    "debutDate": "2023年3月17日",
+    "birthday": "2000年12月25日",
+    "birthplace": "東京都",
+    "bloodType": "A型",
+    "threeSize": "T171 / B101 / W62 / H101",
+    "hobby": "料理・散歩・サウナ・バレエ",
+    "isNew": false,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/kikuno_ran-profile-2.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kikuno_ran/"
+  },
                   {
     "actressId": "yakuno_marina",
     "name": "役野満里奈",
