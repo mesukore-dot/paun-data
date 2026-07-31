@@ -1,4 +1,20 @@
 [
+          {
+    "actressId": "nanami_mano",
+    "name": "七海まの",
+    "kana": "ななみまの",
+    "cup": "H",
+    "debutDate": "2026年7月31日",
+    "birthday": "2006年3月13日",
+    "birthplace": "東京都",
+    "bloodType": "-",
+    "threeSize": "T168 / B96 / W60 / H87",
+    "hobby": "お酒",
+    "isNew": true,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/nanami_mano-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/nanami_mano/"
+  },
                {
     "actressId": "hayasaka_kanon",
     "name": "早坂奏音",
