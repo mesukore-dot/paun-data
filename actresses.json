@@ -1,4 +1,20 @@
 [
+             {
+    "actressId": "adachi_yuuri",
+    "name": "安達夕莉",
+    "kana": "あだちゆうり",
+    "cup": "G",
+    "debutDate": "2022年7月22日",
+    "birthday": "2002年1月24日",
+    "birthplace": "大阪府",
+    "bloodType": "O型",
+    "threeSize": "T152 / B87 / W56 / H83",
+    "hobby": "釣り・そば屋巡り・サウナ巡り",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/adachi-yuuri.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/adachi_yuuri/"
+  },
          {
     "actressId": "shirakami_emika",
     "name": "白上咲花",
