@@ -1,4 +1,22 @@
 [
+       {
+    "actressId": "misono_waka",
+    "name": "美園和花",
+    "kana": "みそのわか",
+    "cup": "G",
+    "debutDate": "2018年2月8日",
+    "birthday": "1999年3月3日",
+    "birthplace": "香川県",
+    "bloodType": "A型",
+    "threeSize": "T155 / B100 / W60 / H91",
+    "height": 155,
+    "bust": 100,  
+    "hobby": "-",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/misono_waka-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/misono_waka/"
+  },
               {
     "actressId": "ishikawa_mio",
     "name": "石川澪",
