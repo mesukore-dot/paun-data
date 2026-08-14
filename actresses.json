@@ -1,4 +1,22 @@
 [
+              {
+    "actressId": "ishikawa_mio",
+    "name": "石川澪",
+    "kana": "いしかわみお",
+    "cup": "B",
+    "debutDate": "2021年10月1日",
+    "birthday": "2002年3月20日",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T158 / B78 / W56 / H85",
+    "height": 158,
+    "bust": 78,  
+    "hobby": "アニメ鑑賞",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/ishikawa_mio.jpg-2.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/ishikawa_mio/"
+  },
          {
     "actressId": "yano_aimi",
     "name": "矢野あいみ",
