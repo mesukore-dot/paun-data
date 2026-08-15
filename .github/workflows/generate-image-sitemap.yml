@@ -25,7 +25,7 @@ jobs:
           from xml.dom import minidom
 
           # 1. あなたのJSONファイルを読み込む（★ファイル名が違っていたらここを直してください）
-          with open('data.json', 'r', encoding='utf-8') as f:
+          with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
           # 2. Google専用の画像サイトマップの土台を作成
@@ -35,7 +35,7 @@ jobs:
           })
 
           # 3. あなたのWebサイトのドメイン（トップURL）
-          site_url = 'https://wpx.jp'
+          site_url = 'https://wpmesucolle.wpx.jp'
 
           # 女優ごとにデータをまとめる
           actresses = {}
