@@ -49,7 +49,7 @@ jobs:
               # ★【ここで4人だけの例外を自動変換！】
               # 左側に「JSONのID」、右側に「実際のWordPressのURLの末尾」を書いておきます
               mapping = {
-                  'higashimine_hinako': 'higashimine-hinako', # 例：ハイフンが違うやつ
+                  'toumine_hinako': 'higashimine-hinako', # 例：ハイフンが違うやつ
                   'watanabe_hono': 'watanabe-hono',          # 例：2がついてるやつ
                   'satsuki_nao': 'satsuki_nao-2',
                   'hakata_iroha': 'hakata-iroha'
