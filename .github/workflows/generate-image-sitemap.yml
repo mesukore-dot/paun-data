@@ -21,25 +21,16 @@ jobs:
         run: |
           python -c "
           import json
-          import xml.etree.ElementTree as ET
-          from xml.dom import minidom
 
           # 1. 実際のファイルを読み込む
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
-          # 2. 土台を作成
-          urlset = ET.Element('urlset', attrib={
-              'xmlns': 'http://sitemaps.org',
-              'xmlns:image': 'http://google.com'
-          })
-
           site_url = 'https://wpmesucolle.wpx.jp'
 
-          # 3. 女優ごとにデータをまとめる
+          # 2. 女優ごとにデータをまとめる
           actresses = {}
           for item in data:
-              # あなたのJSONに完璧に合わせたキー名に修正
               actressId = item.get('actressId')
               if not actressId:
                   continue
@@ -61,29 +52,34 @@ jobs:
                   continue
                   
               title = item.get('title', '')
+              # XMLでエラーを起こす特殊文字（& や < や >）を安全に変換する
+              title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
               if slug not in actresses:
                   actresses[slug] = []
               actresses[slug].append({'src': gif_url, 'title': title})
 
-          # 4. XMLに書き込む
+          # 3. テキスト処理で完璧なXMLを組み立てる（エラーの起きない絶対安全ルート）
+          xml_lines = []
+          xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
+          xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
+
           for slug, images in actresses.items():
-              url_el = ET.SubElement(urlset, 'url')
-              loc_el = ET.SubElement(url_el, 'loc')
-              loc_el.text = f'{site_url}{slug}/'
-
+              xml_lines.append('  <url>')
+              xml_lines.append(f'    <loc>{site_url}{slug}/</loc>')
               for img in images:
-                  img_el = ET.SubElement(url_el, 'image:image')
-                  img_src = ET.SubElement(img_el, 'image:loc')
-                  img_src.text = img['src']
+                  xml_lines.append('    <image:image>')
+                  xml_lines.append(f'      <image:loc>{img[\"src\"]}</image:loc>')
                   if img['title']:
-                      img_title = ET.SubElement(img_el, 'image:title')
-                      img_title.text = img['title']
+                      xml_lines.append(f'      <image:title>{img[\"title\"]}</image:title>')
+                  xml_lines.append('    </image:image>')
+              xml_lines.append('  </url>')
 
-          # 綺麗に整形してファイルに保存
-          xml_str = minidom.parseString(ET.tostring(urlset, 'utf-8')).toprettyxml(indent='  ')
+          xml_lines.append('</urlset>')
+
+          # 4. ファイルに一気に書き出す
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
-              f.write(xml_str)
+              f.write('\n'.join(xml_lines))
           "
 
       - name: Commit and Push Changes
