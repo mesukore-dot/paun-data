@@ -28,8 +28,8 @@ jobs:
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
-          # 2. Google専用の画像サイトマップの土台を作成（正式な規格URLに修正）
-          urlset = ET.Element('urlset', {
+          # 2. Google専用の画像サイトマップの土台を作成（別のAIの指摘通りattribで正しく指定）
+          urlset = ET.Element('urlset', attrib={
               'xmlns': 'http://sitemaps.org',
               'xmlns:image': 'http://google.com'
           })
@@ -44,10 +44,10 @@ jobs:
               if not actress_id:
                   continue
               
-              # 前後の余計な空白を削除（Python用にstripに修正）
+              # 前後の余計な空白を削除（Python用のstrip）
               actress_id = str(actress_id).strip()
               
-              # ★【ここで4人だけの例外を自動変換！】
+              # ★【4人だけの例外を自動変換】
               mapping = {
                   'toumine_hinako': 'higashimine-hinako',
                   'watanabe_hono': 'watanabe-hono',
@@ -92,6 +92,6 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@://github.com'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add sitemap-images.xml
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 画像サイトマップを全自動更新' && git push)
