@@ -35,7 +35,7 @@ jobs:
           })
 
           # 3. あなたのWebサイトのドメイン（トップURL）
-          site_url = 'https://wpx.jp'
+          site_url = 'https://wpmesucolle.wpx.jp'
 
           # 女優ごとにデータをまとめる
           actresses = {}
