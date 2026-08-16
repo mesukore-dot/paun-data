@@ -3,7 +3,7 @@ name: Generate Image Sitemap
 on:
   push:
     paths:
-      - '**.json' # あなたのJSONファイルが更新された瞬間に自動で動く合図
+      - 'videos.json' # あなたのJSONファイルが更新された瞬間に自動で動く合図
 
 jobs:
   build:
