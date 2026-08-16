@@ -26,7 +26,8 @@ jobs:
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
-          site_url = 'https://wpmesucolle.wpx.jp'
+          # ★ 39行目：末尾のスラッシュを確実に固定
+          site_url = 'https://wpmesucolle.wpx.jp/'
 
           # 2. 女優ごとにデータをまとめる
           actresses = {}
@@ -52,21 +53,21 @@ jobs:
                   continue
                   
               title = item.get('title', '')
-              # XMLでエラーを起こす特殊文字（& や < や >）を安全に変換する
               title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
               if slug not in actresses:
                   actresses[slug] = []
               actresses[slug].append({'src': gif_url, 'title': title})
 
-          # 3. テキスト処理で完璧なXMLを組み立てる（エラーの起きない絶対安全ルート）
+          # 3. テキスト処理で完璧なXMLを組み立てる
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
           xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
 
           for slug, images in actresses.items():
               xml_lines.append('  <url>')
-              xml_lines.append(f'    <loc>{site_url}{slug}/</loc>')
+              # ★ 73行目：URLとスラッグの間に確実にスラッシュが入るように安全に合体
+              xml_lines.append(f'    <loc>{site_url.rstrip(\"/\")}/{slug.strip(\"/\")}/</loc>')
               for img in images:
                   xml_lines.append('    <image:image>')
                   xml_lines.append(f'      <image:loc>{img[\"src\"]}</image:loc>')
@@ -77,7 +78,6 @@ jobs:
 
           xml_lines.append('</urlset>')
 
-          # 4. ファイルに一気に書き出す
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
               f.write('\n'.join(xml_lines))
           "
@@ -87,4 +87,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 画像サイトマップを全自動更新' && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 画像サイトマップを全自動更新' && git push origin HEAD:main)
