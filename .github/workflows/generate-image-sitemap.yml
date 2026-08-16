@@ -39,11 +39,12 @@ jobs:
           # 3. 女優ごとにデータをまとめる
           actresses = {}
           for item in data:
-              actress_id = item.get('actressId')
-              if not actress_id:
+              # あなたのJSONに完璧に合わせたキー名に修正
+              actressId = item.get('actressId')
+              if not actressId:
                   continue
               
-              actress_id = str(actress_id)
+              actressId = str(actressId)
               
               # 4人の例外を自動変換
               mapping = {
@@ -53,7 +54,7 @@ jobs:
                   'hakata_iroha': 'hakata-iroha'
               }
               
-              slug = mapping.get(actress_id, actress_id)
+              slug = mapping.get(actressId, actressId)
               
               gif_url = item.get('gif2Url') or item.get('gif1Url')
               if not gif_url:
