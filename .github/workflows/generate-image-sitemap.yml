@@ -26,7 +26,6 @@ jobs:
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
-          # ★ 39行目：末尾のスラッシュを確実に固定
           site_url = 'https://wpmesucolle.wpx.jp/'
 
           # 2. 女優ごとにデータをまとめる
@@ -59,14 +58,13 @@ jobs:
                   actresses[slug] = []
               actresses[slug].append({'src': gif_url, 'title': title})
 
-          # 3. テキスト処理で完璧なXMLを組み立てる
+          # 3. テキスト処理で完璧なXMLを組み立てる（バックスラッシュのバグを完全消去！）
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
-          xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
+          xml_lines.append('<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\">')
 
           for slug, images in actresses.items():
               xml_lines.append('  <url>')
-              # ★ 73行目：URLとスラッグの間に確実にスラッシュが入るように安全に合体
               xml_lines.append(f'    <loc>{site_url.rstrip(\"/\")}/{slug.strip(\"/\")}/</loc>')
               for img in images:
                   xml_lines.append('    <image:image>')
@@ -78,13 +76,15 @@ jobs:
 
           xml_lines.append('</urlset>')
 
+          # バックスラッシュを綺麗に消し去って、純粋なXMLとして保存する
+          final_xml = '\n'.join(xml_lines).replace('\\\"', '\"')
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
-              f.write('\n'.join(xml_lines))
+              f.write(final_xml)
           "
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@://github.com'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add sitemap-images.xml
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 画像サイトマップを全自動更新' && git push origin HEAD:main)
