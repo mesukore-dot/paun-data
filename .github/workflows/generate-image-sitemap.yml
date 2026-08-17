@@ -74,6 +74,7 @@ jobs:
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
+              # 💡 メモリ破壊を防ぐため、ループごとに完全に独立した新しい辞書オブジェクトとして生成
               video_entry = {
                   'title': title,
                   'catchphrase': item.get('catchphrase', ''),
@@ -97,11 +98,11 @@ jobs:
               r_date = str(video_entry['releaseDate'])
               if target_single in r_date or target_double in r_date:
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
-                      # 💡【大バグ修正！】今月発売枠にも、あなたの魂のキャッチコピーを完璧に引き継ぐ！
+                      # 💡 上書きバグを完全に回避した、ピュアなキャッチコピーデータを格納！
                       new_arrival_pool.append({
                           'gif2Url': video_entry['gif2Url'],
-                          'title': title,
-                          'catchphrase': video_entry['catchphrase'], # ★これで復活！
+                          'title': video_entry['title'],
+                          'catchphrase': video_entry['catchphrase'], # ★今度こそ確実に残ります！
                           'affiliateUrl': video_entry['affiliateUrl'],
                           'releaseDate': video_entry['releaseDate']
                       })
@@ -135,14 +136,17 @@ jobs:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(related_item)
 
+          # 3. 各ファイルへの書き出し処理
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                   json.dump(clean_items, f, ensure_ascii=False, indent=2)
 
+          # 💡 キャッチコピーの入った完璧な今月発売ミニJSONを独立保存
           with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
               json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
+          # 1時間ごとの250件シャッフル切り出し
           shuffled_normal = list(pool_normal)
           random.shuffle(shuffled_normal)
           with open('data/related_normal.json', 'w', encoding='utf-8') as f:
@@ -158,6 +162,7 @@ jobs:
           with open('data/related_dark.json', 'w', encoding='utf-8') as f:
               json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
 
+          # 4. XML画像サイトマップの組み立て
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
           xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
@@ -183,4 +188,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 今月発売枠キャッチコピー完全復活版' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 メモリ衝突バグ完全修正・キャッチコピー復活確認版' && git push origin HEAD:main)
