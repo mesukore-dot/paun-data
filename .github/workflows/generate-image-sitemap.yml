@@ -32,7 +32,7 @@ jobs:
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
-          site_url = 'https://wpx.jp'
+          site_url = 'https://wpmesucolle.wpx.jp/'
           os.makedirs('data', exist_ok=True)
 
           now = datetime.now()
@@ -97,9 +97,11 @@ jobs:
               r_date = str(video_entry['releaseDate'])
               if target_single in r_date or target_double in r_date:
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
+                      # 💡【大バグ修正！】今月発売枠にも、あなたの魂のキャッチコピーを完璧に引き継ぐ！
                       new_arrival_pool.append({
                           'gif2Url': video_entry['gif2Url'],
                           'title': title,
+                          'catchphrase': video_entry['catchphrase'], # ★これで復活！
                           'affiliateUrl': video_entry['affiliateUrl'],
                           'releaseDate': video_entry['releaseDate']
                       })
@@ -114,13 +116,15 @@ jobs:
                   'gif2Url': g2_url if g2_url else g1_url,
                   'title': title,
                   'catchphrase': video_entry['catchphrase'],
+                  'type': video_entry['type'],
+                  'tags': video_entry['tags'],
+                  'releaseDate': video_entry['releaseDate'],
                   'affiliateUrl': video_entry['affiliateUrl']
               }
 
               is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
               is_black = 'black' in v_tags
 
-              # 💡【重要修正】重複を完璧に防ぎながら、各プールに安全に格納
               if is_vr:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_vr):
                       pool_vr.append(related_item)
@@ -131,7 +135,6 @@ jobs:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(related_item)
 
-          # 3. ファイルに保存
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
@@ -140,7 +143,6 @@ jobs:
           with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
               json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
-          # 💡【大バグ完全修正】シャッフルの衝突を物理的に回避するため、安全にコピーを作ってからかき混ぜる設計！
           shuffled_normal = list(pool_normal)
           random.shuffle(shuffled_normal)
           with open('data/related_normal.json', 'w', encoding='utf-8') as f:
@@ -156,7 +158,6 @@ jobs:
           with open('data/related_dark.json', 'w', encoding='utf-8') as f:
               json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
 
-          # 4. XML画像サイトマップの組み立て
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
           xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
@@ -182,4 +183,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 関連記事シャッフルデータ完全生成版' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 今月発売枠キャッチコピー完全復活版' && git push origin HEAD:main)
