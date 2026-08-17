@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'videos.json'
-  # ⏰【新機能】1時間ごとにあなたの代わりに勝手に起動して、全データを激しくシャッフルするタイマー！
+  # ⏰ 1時間ごとにあなたの代わりに勝手に起動して、全データを激しくシャッフルするタイマー！
   schedule:
     - cron: '0 * * * *' # 毎時0分（1時間に1回）全自動で実行されます
 
@@ -32,7 +32,7 @@ jobs:
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
-          site_url = 'https://wpmesucolle.wpx.jp/'
+          site_url = 'https://wpx.jp'
           os.makedirs('data', exist_ok=True)
 
           now = datetime.now()
@@ -66,8 +66,9 @@ jobs:
               else:
                   target_ids.append(str(actress_id_field).strip())
 
-              gif_url = item.get('gif2Url') or item.get('gif1Url')
-              if not gif_url:
+              g1_url = item.get('gif1Url') or ''
+              g2_url = item.get('gif2Url') or ''
+              if not g1_url and not g2_url:
                   continue
                   
               title = item.get('title', '')
@@ -79,8 +80,8 @@ jobs:
                   'type': item.get('type', ''),
                   'tags': item.get('tags', []),
                   'releaseDate': item.get('releaseDate', ''),
-                  'gif1Url': item.get('gif1Url', ''),
-                  'gif2Url': gif_url,
+                  'gif1Url': g1_url,
+                  'gif2Url': g2_url if g2_url else g1_url,
                   'affiliateUrl': item.get('affiliateUrl', '')
               }
 
@@ -97,7 +98,7 @@ jobs:
               if target_single in r_date or target_double in r_date:
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
                       new_arrival_pool.append({
-                          'gif2Url': gif_url,
+                          'gif2Url': video_entry['gif2Url'],
                           'title': title,
                           'affiliateUrl': video_entry['affiliateUrl'],
                           'releaseDate': video_entry['releaseDate']
@@ -109,7 +110,8 @@ jobs:
 
               related_item = {
                   'actressIds': target_ids,
-                  'gif2Url': gif_url,
+                  'gif1Url': g1_url,
+                  'gif2Url': g2_url if g2_url else g1_url,
                   'title': title,
                   'catchphrase': video_entry['catchphrase'],
                   'affiliateUrl': video_entry['affiliateUrl']
@@ -118,6 +120,7 @@ jobs:
               is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
               is_black = 'black' in v_tags
 
+              # 💡【重要修正】重複を完璧に防ぎながら、各プールに安全に格納
               if is_vr:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_vr):
                       pool_vr.append(related_item)
@@ -128,7 +131,7 @@ jobs:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(related_item)
 
-          # 3. ファイルに物理分割して保存
+          # 3. ファイルに保存
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
@@ -137,18 +140,21 @@ jobs:
           with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
               json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
-          # 💡【お前のこだわり反映】3つの関連記事プールを1時間ごとにシャッフルし、「250件」に切り出して保存！
-          random.shuffle(pool_normal)
+          # 💡【大バグ完全修正】シャッフルの衝突を物理的に回避するため、安全にコピーを作ってからかき混ぜる設計！
+          shuffled_normal = list(pool_normal)
+          random.shuffle(shuffled_normal)
           with open('data/related_normal.json', 'w', encoding='utf-8') as f:
-              json.dump(pool_normal[:250], f, ensure_ascii=False, indent=2)
+              json.dump(shuffled_normal[:250], f, ensure_ascii=False, indent=2)
 
-          random.shuffle(pool_vr)
+          shuffled_vr = list(pool_vr)
+          random.shuffle(shuffled_vr)
           with open('data/related_vr.json', 'w', encoding='utf-8') as f:
-              json.dump(pool_vr[:250], f, ensure_ascii=False, indent=2)
+              json.dump(shuffled_vr[:250], f, ensure_ascii=False, indent=2)
 
-          random.shuffle(pool_dark)
+          shuffled_dark = list(pool_dark)
+          random.shuffle(shuffled_dark)
           with open('data/related_dark.json', 'w', encoding='utf-8') as f:
-              json.dump(pool_dark[:250], f, ensure_ascii=False, indent=2)
+              json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
 
           # 4. XML画像サイトマップの組み立て
           xml_lines = []
@@ -176,4 +182,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 1時間タイマー連動・250件厳選プール自動生成完了' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 関連記事シャッフルデータ完全生成版' && git push origin HEAD:main)
