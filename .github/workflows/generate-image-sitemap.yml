@@ -30,23 +30,30 @@ jobs:
           site_url = 'https://wpmesucolle.wpx.jp/'
 
           os.makedirs('data', exist_ok=True)
-
-          # 関連記事専用の軽量プール用リスト
           related_pool = []
-
-          # 2. データをスキャンして女優ごとに仕分け（配列形式のactressIdに対応）
           actresses = {}
+
+          # 4人の例外を自動変換するための辞書
+          mapping = {
+              'toumine_hinako': 'higashimine-hinako',
+              'watanabe_hono': 'watanabe-hono',
+              'satsuki_nao': 'satsuki_nao-2',
+              'hakata_iroha': 'hakata-iroha'
+          }
+
+          # 2. データをスキャンして女優ごとに仕分け
           for item in data:
               actress_id_field = item.get('actressId')
               if not actress_id_field:
                   continue
               
-              # actressIdが ['a', 'b'] のような配列（リスト）ならそのまま使い、
-              # もし今までの 'a' のような1文字（文字列）なら自動でリスト形式に包み直す
+              # 【バグ修正】配列形式 [\"a\", \"b\"] でも文字列 \"a\" でも、絶対に確実にリスト形式として抽出する安全設計
+              target_ids = []
               if isinstance(actress_id_field, list):
-                  target_ids = actress_id_field
+                  for x in actress_id_field:
+                      target_ids.append(str(x).strip())
               else:
-                  target_ids = [actress_id_field]
+                  target_ids.append(str(actress_id_field).strip())
 
               gif_url = item.get('gif2Url') or item.get('gif1Url')
               if not gif_url:
@@ -66,20 +73,10 @@ jobs:
                   'affiliateUrl': item.get('affiliateUrl', '')
               }
 
-              # 4人の例外を自動変換するための辞書
-              mapping = {
-                  'toumine_hinako': 'higashimine-hinako',
-                  'watanabe_hono': 'watanabe-hono',
-                  'satsuki_nao': 'satsuki_nao-2',
-                  'hakata_iroha': 'hakata-iroha'
-              }
-
-              # 💡この作品に関わっているすべての女優の部屋（個別JSON）にデータをコピーして配る
+              # 💡この作品に関わっているすべての女優の個別ファイルにデータを配る
               processed_slugs = set()
               for a_id in target_ids:
-                  a_id = str(a_id).strip()
                   slug = mapping.get(a_id, a_id)
-                  
                   if slug in processed_slugs:
                       continue
                   processed_slugs.add(slug)
@@ -88,7 +85,7 @@ jobs:
                       actresses[slug] = []
                   
                   # あなたの今のJavaScriptが1ミリもバグらないように、
-                  # 配列だったactressIdを「その女優専用の1文字の形」に1件ずつ綺麗に翻訳し直して格納する
+                  # 配列だったactressIdを「そのページ専用の1文字」に綺麗に翻訳し直して格納！
                   instance_entry = video_entry.copy()
                   instance_entry['actressId'] = a_id
                   
@@ -97,10 +94,9 @@ jobs:
                       'xml_title': xml_title
                   })
 
-              # 💡【関連記事の重複対策】配列化されたので作品データ自体は1件だけプールに登録。
-              # これで全く同じアフィリンク・同じGIFが並ぶダブりバグが物理的に消滅します！
+              # 💡関連記事用のプールに登録（重複防止のため1件だけ）
               related_pool.append({
-                  'actressIds': [str(x).strip() for x in target_ids], # 読んでいるページ以外の女優をシャッフルするための判定用
+                  'actressIds': target_ids,
                   'gif2Url': gif_url,
                   'title': title,
                   'affiliateUrl': video_entry['affiliateUrl']
@@ -144,4 +140,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 配列対応・分割JSON＆関連記事＆サイトマップ自動更新' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 配列完全対応・自動分割JSON更新' && git push origin HEAD:main)
