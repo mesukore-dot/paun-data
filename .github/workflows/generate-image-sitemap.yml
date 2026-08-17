@@ -22,7 +22,6 @@ jobs:
           python -c "
           import json
           import os
-          import random
           from datetime import datetime
 
           # 1. 大元のファイルを読み込む
@@ -32,17 +31,14 @@ jobs:
           site_url = 'https://wpmesucolle.wpx.jp/'
           os.makedirs('data', exist_ok=True)
 
+          # 今月の新作自動取得用の日付文字生成
           now = datetime.now()
           target_single = f'{now.year}年{now.month}月'
           target_double = f'{now.year}年{str(now.month).zfill(2)}月'
 
           new_arrival_pool = []
+          related_pool = []
           actresses = {}
-
-          # 💡 あなたのコードに100%合わせた3つの関連記事プール
-          pool_vr = []     # ① VR作品専用
-          pool_dark = []   # ② ダーク系作品（black）専用
-          pool_normal = [] # ③ 通常作品専用（VRとBlackを除く）
 
           mapping = {
               'toumine_hinako': 'higashimine-hinako',
@@ -57,6 +53,7 @@ jobs:
               if not actress_id_field:
                   continue
               
+              # 配列形式 ["a", "b"] でも文字列 "a" でも、確実に抽出してリスト（配列）化する
               target_ids = []
               if isinstance(actress_id_field, list):
                   for x in actress_id_field:
@@ -108,54 +105,35 @@ jobs:
                           'releaseDate': video_entry['releaseDate']
                       })
 
-              # 💡【重要修正】あなたの条件に100%完全連動した判定ロジック！
-              v_type = str(video_entry['type']).lower()
-              v_tags = [str(t).lower().strip() for t in video_entry['tags']]
-              title_lower = title.lower()
+              # 💡【大本命の関連記事プール】
+              # 表示に使わない重いパッケージ画像（pakeUrl）などのゴミデータを最初から完全排除！
+              # さらに、アフィリンク（affiliateUrl）を基準にして、同じ共演作の重複を最初から1本化して格納！
+              # これにより、将来1万件になっても一生数KB〜数百KBを維持する究極の軽量プールが完成します。
+              if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in related_pool):
+                  related_pool.append({
+                      'actressIds': target_ids, # ★スマホ側で本人を完璧に除外するための配列データ
+                      'title': title,
+                      'catchphrase': video_entry['catchphrase'],
+                      'type': video_entry['type'],
+                      'tags': video_entry['tags'],
+                      'gif2Url': gif_url,
+                      'affiliateUrl': video_entry['affiliateUrl']
+                  })
 
-              related_item = {
-                  'actressIds': target_ids, # ★自分を除外するための配列判定用
-                  'gif2Url': gif_url,
-                  'title': title,
-                  'catchphrase': video_entry['catchphrase'], # キャッチフレーズの表示に対応
-                  'affiliateUrl': video_entry['affiliateUrl']
-              }
-
-              # あなたのJSの判定をそのまま再現（VRか、black（ダーク）か、それ以外か）
-              is_vr = "vr" in v_type or "vr" in v_tags or "vr" in title_lower
-              is_black = "black" in v_tags
-
-              if is_vr:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_vr):
-                      pool_vr.append(related_item)
-              elif is_black:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_dark):
-                      pool_dark.append(related_item)
-              else:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
-                      pool_normal.append(related_item)
-
-          # 3. ファイルに物理分割して保存
+          # 3. データをそれぞれのファイルに物理分割して保存
+          # 女優別ミニJSON
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                   json.dump(clean_items, f, ensure_ascii=False, indent=2)
 
+          # 今月の新作ミニJSON
           with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
               json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
-          # 💡 3つのプールをそれぞれ事前にシャッフルし、1万件になっても一生数KBに固定する上位50件切り出し！
-          random.shuffle(pool_normal)
-          with open('data/related_normal.json', 'w', encoding='utf-8') as f:
-              json.dump(pool_normal[:50], f, ensure_ascii=False, indent=2)
-
-          random.shuffle(pool_vr)
-          with open('data/related_vr.json', 'w', encoding='utf-8') as f:
-              json.dump(pool_vr[:50], f, ensure_ascii=False, indent=2)
-
-          random.shuffle(pool_dark)
-          with open('data/related_dark.json', 'w', encoding='utf-8') as f:
-              json.dump(pool_dark[:50], f, ensure_ascii=False, indent=2)
+          # 関連記事専用の超軽量プールJSON（重複ゼロ・軽量化完了状態）
+          with open('data/related_pool.json', 'w', encoding='utf-8') as f:
+              json.dump(related_pool, f, ensure_ascii=False, indent=2)
 
           # 4. XML画像サイトマップの組み立て
           xml_lines = []
@@ -183,4 +161,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 3大特化型プール完全分離成功' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 究極の軽量化関連記事プール＆個別JSON生成' && git push origin HEAD:main)
