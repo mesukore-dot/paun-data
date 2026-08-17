@@ -1,4 +1,4 @@
-name: Generate Image Sitemap
+name: Split JSON and Generate Sitemap
 
 on:
   push:
@@ -17,10 +17,11 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Generate Sitemap XML
+      - name: Process JSON and Sitemap
         run: |
           python -c "
           import json
+          import os
 
           # 1. 実際のファイルを読み込む
           with open('videos.json', 'r', encoding='utf-8') as f:
@@ -28,55 +29,111 @@ jobs:
 
           site_url = 'https://wpmesucolle.wpx.jp/'
 
-          # 2. 女優ごとにデータをまとめる
+          os.makedirs('data', exist_ok=True)
+
+          # 関連記事専用の軽量プール用リスト
+          related_pool = []
+
+          # 2. データをスキャンして女優ごとに仕分け（配列形式のactressIdに対応）
           actresses = {}
           for item in data:
-              actressId = item.get('actressId')
-              if not actressId:
+              actress_id_field = item.get('actressId')
+              if not actress_id_field:
                   continue
               
-              actressId = str(actressId)
+              # actressIdが ['a', 'b'] のような配列（リスト）ならそのまま使い、
+              # もし今までの 'a' のような1文字（文字列）なら自動でリスト形式に包み直す
+              if isinstance(actress_id_field, list):
+                  target_ids = actress_id_field
+              else:
+                  target_ids = [actress_id_field]
+
+              gif_url = item.get('gif2Url') or item.get('gif1Url')
+              if not gif_url:
+                  continue
+                  
+              title = item.get('title', '')
+              xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
-              # 4人の例外を自動変換
+              # 共通のデータ構造を作成
+              video_entry = {
+                  'title': title,
+                  'catchphrase': item.get('catchphrase', ''),
+                  'type': item.get('type', ''),
+                  'tags': item.get('tags', []),
+                  'gif1Url': item.get('gif1Url', ''),
+                  'gif2Url': gif_url,
+                  'affiliateUrl': item.get('affiliateUrl', '')
+              }
+
+              # 4人の例外を自動変換するための辞書
               mapping = {
                   'toumine_hinako': 'higashimine-hinako',
                   'watanabe_hono': 'watanabe-hono',
                   'satsuki_nao': 'satsuki_nao-2',
                   'hakata_iroha': 'hakata-iroha'
               }
-              
-              slug = mapping.get(actressId, actressId)
-              
-              gif_url = item.get('gif2Url') or item.get('gif1Url')
-              if not gif_url:
-                  continue
-                  
-              title = item.get('title', '')
-              title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
-              
-              if slug not in actresses:
-                  actresses[slug] = []
-              actresses[slug].append({'src': gif_url, 'title': title})
 
-          # 3. テキスト処理で完璧なXMLを組み立てる（バックスラッシュのバグを完全消去！）
+              # 💡この作品に関わっているすべての女優の部屋（個別JSON）にデータをコピーして配る
+              processed_slugs = set()
+              for a_id in target_ids:
+                  a_id = str(a_id).strip()
+                  slug = mapping.get(a_id, a_id)
+                  
+                  if slug in processed_slugs:
+                      continue
+                  processed_slugs.add(slug)
+
+                  if slug not in actresses:
+                      actresses[slug] = []
+                  
+                  # あなたの今のJavaScriptが1ミリもバグらないように、
+                  # 配列だったactressIdを「その女優専用の1文字の形」に1件ずつ綺麗に翻訳し直して格納する
+                  instance_entry = video_entry.copy()
+                  instance_entry['actressId'] = a_id
+                  
+                  actresses[slug].append({
+                      'data': instance_entry,
+                      'xml_title': xml_title
+                  })
+
+              # 💡【関連記事の重複対策】配列化されたので作品データ自体は1件だけプールに登録。
+              # これで全く同じアフィリンク・同じGIFが並ぶダブりバグが物理的に消滅します！
+              related_pool.append({
+                  'actressIds': [str(x).strip() for x in target_ids], # 読んでいるページ以外の女優をシャッフルするための判定用
+                  'gif2Url': gif_url,
+                  'title': title,
+                  'affiliateUrl': video_entry['affiliateUrl']
+              })
+
+          # 3. あなたの今のJavaScriptが一番読みやすい形の個別ミニJSONファイルを自動生成
+          for slug, entries in actresses.items():
+              clean_items = [e['data'] for e in entries]
+              with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
+                  json.dump(clean_items, f, ensure_ascii=False, indent=2)
+
+          # 関連記事専用の軽量プールファイルを保存
+          with open('data/related_pool.json', 'w', encoding='utf-8') as f:
+              json.dump(related_pool, f, ensure_ascii=False, indent=2)
+
+          # 4. XML画像サイトマップの組み立て
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
-          xml_lines.append('<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\">')
+          xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
 
-          for slug, images in actresses.items():
+          for slug, entries in actresses.items():
               xml_lines.append('  <url>')
-              xml_lines.append(f'    <loc>{site_url.rstrip(\"/\")}/{slug.strip(\"/\")}/</loc>')
-              for img in images:
+              xml_lines.append(f'    <loc>{site_url}{slug}/</loc>')
+              for e in entries:
                   xml_lines.append('    <image:image>')
-                  xml_lines.append(f'      <image:loc>{img[\"src\"]}</image:loc>')
-                  if img['title']:
-                      xml_lines.append(f'      <image:title>{img[\"title\"]}</image:title>')
+                  xml_lines.append(f'      <image:loc>{e[\"data\"][\"gif2Url\"]}</image:loc>')
+                  if e['xml_title']:
+                      xml_lines.append(f'      <image:title>{e[\"xml_title\"]}</image:title>')
                   xml_lines.append('    </image:image>')
               xml_lines.append('  </url>')
 
           xml_lines.append('</urlset>')
 
-          # バックスラッシュを綺麗に消し去って、純粋なXMLとして保存する
           final_xml = '\n'.join(xml_lines).replace('\\\"', '\"')
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
               f.write(final_xml)
@@ -85,6 +142,6 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add sitemap-images.xml
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 画像サイトマップを全自動更新' && git push origin HEAD:main)
+          git config --global user.email '41898282+github-actions[bot]@://github.com'
+          git add sitemap-images.xml data/*.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 配列対応・分割JSON＆関連記事＆サイトマップ自動更新' && git push origin HEAD:main)
