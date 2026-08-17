@@ -47,7 +47,7 @@ jobs:
               if not actress_id_field:
                   continue
               
-              # 【バグ修正】配列形式 [\"a\", \"b\"] でも文字列 \"a\" でも、絶対に確実にリスト形式として抽出する安全設計
+              # 配列形式でも文字列でも確実に抽出
               target_ids = []
               if isinstance(actress_id_field, list):
                   for x in actress_id_field:
@@ -62,12 +62,13 @@ jobs:
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
-              # 共通のデータ構造を作成
+              # 💡【重要修正】あなたのJavaScriptが必要とするすべてのデータ（releaseDate等）を1ミリも漏らさず完全引き継ぎ！
               video_entry = {
                   'title': title,
                   'catchphrase': item.get('catchphrase', ''),
                   'type': item.get('type', ''),
                   'tags': item.get('tags', []),
+                  'releaseDate': item.get('releaseDate', ''), # ★これが抜けていたのがバグの犯人です！
                   'gif1Url': item.get('gif1Url', ''),
                   'gif2Url': gif_url,
                   'affiliateUrl': item.get('affiliateUrl', '')
@@ -84,8 +85,7 @@ jobs:
                   if slug not in actresses:
                       actresses[slug] = []
                   
-                  # あなたの今のJavaScriptが1ミリもバグらないように、
-                  # 配列だったactressIdを「そのページ専用の1文字」に綺麗に翻訳し直して格納！
+                  # 配列だったactressIdを「そのページ専用の1文字」に綺麗に翻訳し直して格納
                   instance_entry = video_entry.copy()
                   instance_entry['actressId'] = a_id
                   
@@ -102,7 +102,7 @@ jobs:
                   'affiliateUrl': video_entry['affiliateUrl']
               })
 
-          # 3. あなたの今のJavaScriptが一番読みやすい形の個別ミニJSONファイルを自動生成
+          # 3. 個別ミニJSONファイルを自動生成
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
@@ -140,4 +140,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 配列完全対応・自動分割JSON更新' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 配列完全対応・データ欠落バグ修正版JSON更新' && git push origin HEAD:main)
