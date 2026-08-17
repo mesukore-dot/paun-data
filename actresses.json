@@ -1,4 +1,22 @@
 [
+                 {
+    "actressId": "namahama_mitsuri",
+    "name": "長浜みつり",
+    "kana": "ながはまみつり",
+    "cup": "G",
+    "debutDate": "2024年1月5日",
+    "birthday": "2002年6月1日",
+    "birthplace": "神奈川県",
+    "bloodType": "A型",
+    "threeSize": "T161 / B90 / W58 / H90",
+    "height": 161,
+    "bust": 90,  
+    "hobby": "-",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/nagama_matsuri-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/namahama_mitsuri/"
+  },
            {
     "actressId": "kanematsu_kiho",
     "name": "金松季歩",
