@@ -1,4 +1,4 @@
-name: Split JSON and Generate Sitemap
+name: Super Advanced Split JSON and Generate Sitemap
 
 on:
   push:
@@ -22,18 +22,24 @@ jobs:
           python -c "
           import json
           import os
+          from datetime import datetime
 
-          # 1. 実際のファイルを読み込む
+          # 1. 大元のファイルを読み込む
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
           site_url = 'https://wpmesucolle.wpx.jp/'
-
           os.makedirs('data', exist_ok=True)
+
+          # カレンダー連動用の「今月（例: 2026年8月）」の文字を自動生成
+          now = datetime.now()
+          target_single = f'{now.year}年{now.month}月'
+          target_double = f'{now.year}年{str(now.month).zfill(2)}月'
+
+          new_arrival_pool = []
           related_pool = []
           actresses = {}
 
-          # 4人の例外を自動変換するための辞書
           mapping = {
               'toumine_hinako': 'higashimine-hinako',
               'watanabe_hono': 'watanabe-hono',
@@ -41,13 +47,12 @@ jobs:
               'hakata_iroha': 'hakata-iroha'
           }
 
-          # 2. データをスキャンして女優ごとに仕分け
+          # 2. データをスキャンして完全仕分け
           for item in data:
               actress_id_field = item.get('actressId')
               if not actress_id_field:
                   continue
               
-              # 配列形式でも文字列でも確実に抽出
               target_ids = []
               if isinstance(actress_id_field, list):
                   for x in actress_id_field:
@@ -62,19 +67,18 @@ jobs:
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
-              # 💡【重要修正】あなたのJavaScriptが必要とするすべてのデータ（releaseDate等）を1ミリも漏らさず完全引き継ぎ！
               video_entry = {
                   'title': title,
                   'catchphrase': item.get('catchphrase', ''),
                   'type': item.get('type', ''),
                   'tags': item.get('tags', []),
-                  'releaseDate': item.get('releaseDate', ''), # ★これが抜けていたのがバグの犯人です！
+                  'releaseDate': item.get('releaseDate', ''),
                   'gif1Url': item.get('gif1Url', ''),
                   'gif2Url': gif_url,
                   'affiliateUrl': item.get('affiliateUrl', '')
               }
 
-              # 💡この作品に関わっているすべての女優の個別ファイルにデータを配る
+              # 女優別の仕分け
               processed_slugs = set()
               for a_id in target_ids:
                   slug = mapping.get(a_id, a_id)
@@ -85,30 +89,46 @@ jobs:
                   if slug not in actresses:
                       actresses[slug] = []
                   
-                  # 配列だったactressIdを「そのページ専用の1文字」に綺麗に翻訳し直して格納
                   instance_entry = video_entry.copy()
                   instance_entry['actressId'] = a_id
-                  
-                  actresses[slug].append({
-                      'data': instance_entry,
-                      'xml_title': xml_title
-                  })
+                  actresses[slug].append({'data': instance_entry, 'xml_title': xml_title})
 
-              # 💡関連記事用のプールに登録（重複防止のため1件だけ）
+              # 💡【今月発売の重複排除＆厳選プール】
+              # 配信日（releaseDate）に今月の文字が含まれている場合だけ、アフィリンク重複を弾いて格納！
+              r_date = str(video_entry['releaseDate'])
+              if target_single in r_date or target_double in r_date:
+                  # アフィURLがまだ登録されていなければプールに追加
+                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
+                      new_arrival_pool.append({
+                          'gif2Url': gif_url,
+                          'title': title,
+                          'affiliateUrl': video_entry['affiliateUrl'],
+                          'releaseDate': video_entry['releaseDate']
+                      })
+
+              # 💡【関連記事用のプール】（※こちらも後ほど「3種類の関連記事」で重くならない仕掛けに使います）
               related_pool.append({
                   'actressIds': target_ids,
                   'gif2Url': gif_url,
                   'title': title,
-                  'affiliateUrl': video_entry['affiliateUrl']
+                  'affiliateUrl': video_entry['affiliateUrl'],
+                  'releaseDate': video_entry['releaseDate'],
+                  'tags': video_entry['tags'],
+                  'type': video_entry['type']
               })
 
-          # 3. 個別ミニJSONファイルを自動生成
+          # 3. データをそれぞれのファイルに物理分割して保存
+          # 女優別ミニJSON
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                   json.dump(clean_items, f, ensure_ascii=False, indent=2)
 
-          # 関連記事専用の軽量プールファイルを保存
+          # ★【新機能】今月の新作だけが入った、たった数KBの究極の軽量JSONを個別生成！
+          with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
+              json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
+
+          # 関連記事用プール
           with open('data/related_pool.json', 'w', encoding='utf-8') as f:
               json.dump(related_pool, f, ensure_ascii=False, indent=2)
 
@@ -116,7 +136,6 @@ jobs:
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
           xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
-
           for slug, entries in actresses.items():
               xml_lines.append('  <url>')
               xml_lines.append(f'    <loc>{site_url}{slug}/</loc>')
@@ -127,7 +146,6 @@ jobs:
                       xml_lines.append(f'      <image:title>{e[\"xml_title\"]}</image:title>')
                   xml_lines.append('    </image:image>')
               xml_lines.append('  </url>')
-
           xml_lines.append('</urlset>')
 
           final_xml = '\n'.join(xml_lines).replace('\\\"', '\"')
@@ -140,4 +158,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 配列完全対応・データ欠落バグ修正版JSON更新' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 今月の新作専用JSON分離＆サイトマップ自動更新' && git push origin HEAD:main)
