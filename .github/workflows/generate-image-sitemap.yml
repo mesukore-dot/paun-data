@@ -4,9 +4,9 @@ on:
   push:
     paths:
       - 'videos.json'
-  # ⏰ 1時間ごとにあなたの代わりに勝手に起動して、全データを激しくシャッフルするタイマー！
+  # ⏰ 1時間ごとにあなたの代わりに勝手に起動して、全データを激しくシャッフルするタイマー
   schedule:
-    - cron: '0 * * * *' # 毎時0分（1時間に1回）全自動で実行されます
+    - cron: '0 * * * *' 
 
 jobs:
   build:
@@ -26,11 +26,41 @@ jobs:
           import json
           import os
           import random
+          import re
           from datetime import datetime
 
-          # 1. 大元のファイルを読み込む
+          if not os.path.exists('videos.json'):
+              print('⚠️ videos.json が見つからないため、処理を安全にスキップします')
+              import sys
+              sys.exit(0)
+
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
+
+          # 💡【新機能】日本語の日付文字列（例: '2026年8月17日'）を安全に比較用の日付オブジェクトに変換する関数
+          def parse_date(date_str):
+              if not date_str:
+                  return datetime(1970, 1, 1)
+              try:
+                  # 全角数字を半角数字に変換し、スペースを除去
+                  clean_str = str(date_str).translate(str.maketrans('０１２３４５６７８９', '0123456789')).strip()
+                  # '年' と '月' をハイフンに置き換え、'日' を消去して 'YYYY-MM-DD' や 'YYYY-MM' の形にする
+                  clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
+                  clean_str = re.sub(r'\s+', '', clean_str)
+                  
+                  parts = [p for p in clean_str.split('-') if p]
+                  if len(parts) >= 3:
+                      return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
+                  elif len(parts) == 2:
+                      return datetime(int(parts[0]), int(parts[1]), 1)
+                  elif len(parts) == 1:
+                      return datetime(int(parts[0]), 1, 1)
+              except Exception:
+                  pass
+              return datetime(1970, 1, 1)
+
+          # 🌟【あなたのアイデア反映！】大元の全データを、あらかじめ「最新作順（新しい順）」に全自動ソート！
+          data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
           site_url = 'https://wpmesucolle.wpx.jp/'
           os.makedirs('data', exist_ok=True)
@@ -53,7 +83,6 @@ jobs:
               'hakata_iroha': 'hakata-iroha'
           }
 
-          # 2. データをスキャンして完全仕分け
           for item in data:
               actress_id_field = item.get('actressId')
               if not actress_id_field:
@@ -74,7 +103,6 @@ jobs:
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
-              # 💡 メモリ破壊を防ぐため、ループごとに完全に独立した新しい辞書オブジェクトとして生成
               video_entry = {
                   'title': title,
                   'catchphrase': item.get('catchphrase', ''),
@@ -98,11 +126,10 @@ jobs:
               r_date = str(video_entry['releaseDate'])
               if target_single in r_date or target_double in r_date:
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
-                      # 💡 上書きバグを完全に回避した、ピュアなキャッチコピーデータを格納！
                       new_arrival_pool.append({
                           'gif2Url': video_entry['gif2Url'],
                           'title': video_entry['title'],
-                          'catchphrase': video_entry['catchphrase'], # ★今度こそ確実に残ります！
+                          'catchphrase': video_entry['catchphrase'], 
                           'affiliateUrl': video_entry['affiliateUrl'],
                           'releaseDate': video_entry['releaseDate']
                       })
@@ -136,17 +163,15 @@ jobs:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(related_item)
 
-          # 3. 各ファイルへの書き出し処理
+          # 💡 大元データがすでに最新順ソートされているため、吐き出される各ファイルも「全自動で美しい最新作順」になります！
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                   json.dump(clean_items, f, ensure_ascii=False, indent=2)
 
-          # 💡 キャッチコピーの入った完璧な今月発売ミニJSONを独立保存
           with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
               json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
-          # 1時間ごとの250件シャッフル切り出し
           shuffled_normal = list(pool_normal)
           random.shuffle(shuffled_normal)
           with open('data/related_normal.json', 'w', encoding='utf-8') as f:
@@ -162,7 +187,6 @@ jobs:
           with open('data/related_dark.json', 'w', encoding='utf-8') as f:
               json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
 
-          # 4. XML画像サイトマップの組み立て
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
           xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
@@ -188,4 +212,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 メモリ衝突バグ完全修正・キャッチコピー復活確認版' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 全自動最新作順ソート機能付きJSON物理分割完了' && git push origin HEAD:main)
