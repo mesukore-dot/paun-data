@@ -1,4 +1,22 @@
 [
+           {
+    "actressId": "shidou_rui",
+    "name": "紫堂るい",
+    "kana": "しどうるい",
+    "cup": "I",
+    "debutDate": "2025年6月3日",
+    "birthday": "1999年5月29日",
+    "birthplace": "東京都",
+    "bloodType": "A型",
+    "threeSize": "T158 / B90 / W60 / H90",
+    "height": 158,
+    "bust": 90,  
+    "hobby": "-",
+    "isNew": false,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/snos00112jp-1.jpg-2.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/shidou_rui/"
+  },
                  {
     "actressId": "nagahama_mitsuri",
     "name": "長浜みつり",
