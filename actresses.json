@@ -1,4 +1,22 @@
 [
+          {
+    "actressId": "tano_yuu",
+    "name": "田野憂",
+    "kana": "たのゆう",
+    "cup": "L",
+    "debutDate": "2024年6月7日",
+    "birthday": "2003年12月24日",
+    "birthplace": "神奈川県",
+    "bloodType": "B型",
+    "threeSize": "T158 / B110 / W56 / H89",
+    "height": 158,
+    "bust": 110,  
+    "hobby": "料理・ダイビング",
+    "isNew": false,
+    "isPopular": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/tano_yuu-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/tano_yuu/"
+  },
                 {
     "actressId": "shiorina_yui",
     "name": "栞名結",
