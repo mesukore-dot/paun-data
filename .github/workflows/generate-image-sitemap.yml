@@ -79,7 +79,6 @@ jobs:
           mapping = {
               'toumine_hinako': 'higashimine-hinako',
               'watanabe_hono': 'watanabe-hono',
-              'satsuki_nao': 'satsuki_nao-2',
               'hakata_iroha': 'hakata-iroha'
           }
 
