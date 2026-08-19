@@ -1,4 +1,22 @@
 [
+       {
+    "actressId": "ichika",
+    "name": "いち花",
+    "kana": "いちか",
+    "cup": "H",
+    "debutDate": "2026年2月6日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T162 / B92 / W57 / H87",
+    "height": 162,
+    "bust": 92,  
+    "hobby": "-",
+    "isNew": false,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/ichika-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/ichika/"
+  },
               {
     "actressId": "haruna_noa",
     "name": "羽月乃蒼",
