@@ -1,4 +1,22 @@
 [
+              {
+    "actressId": "haruno_noa",
+    "name": "羽月乃蒼",
+    "kana": "はるなのあ",
+    "cup": "I",
+    "debutDate": "2023年6月20日",
+    "birthday": "2001年11月13日",
+    "birthplace": "東京都",
+    "bloodType": "A型",
+    "threeSize": "T158 / B98 / W63 / H93",
+    "height": 158,
+    "bust": 98,  
+    "hobby": "食事",
+    "isNew": false,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/haruna_noa-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/haruno_noa/"
+  },
             {
     "actressId": "kuroki_ria",
     "name": "黒木りあ",
