@@ -1,4 +1,22 @@
 [
+             {
+    "actressId": "nakamori_nanami",
+    "name": "中森ななみ",
+    "kana": "なかもりななみ",
+    "cup": "B",
+    "debutDate": "2025年1月16日",
+    "birthday": "2003年8月8日",
+    "birthplace": "兵庫県",
+    "bloodType": "A型",
+    "threeSize": "T154 / B83 / W57 / H90",
+    "height": 154,
+    "bust": 83,  
+    "hobby": "-",
+    "isNew": false,
+    "isPopular": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/nakamori_nanami-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/nakamori_nanami/"
+  },
           {
     "actressId": "tano_yuu",
     "name": "田野憂",
