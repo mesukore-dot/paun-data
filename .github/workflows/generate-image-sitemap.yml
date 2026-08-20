@@ -63,7 +63,8 @@ jobs:
               with open('actresses.json', 'r', encoding='utf-8') as f:
                   act_data = json.load(f)
               for act in act_data:
-                  act_id = clean_line_to_id(act.get('id', ''))
+                  # ★修正ポイント: お手元のデータに合わせて 'actressId' を読み込むように変更
+                  act_id = clean_line_to_id(act.get('actressId', ''))
                   if not act_id:
                       continue
                   if act_id in mgs_map:
@@ -219,7 +220,7 @@ jobs:
                           pool_normal.append(video_entry)
               for slug, entries in actresses_map.items():
                   clean_items = [e['data'] for e in entries]
-                  with open(f'data/{slug}.json', 'w', encoding='utf-8' if not os.path.exists(f'data/{slug}.json') else 'utf-8') as f:
+                  with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                       json.dump(clean_items, f, ensure_ascii=False, indent=2)
 
               fanza_rank_data = []
@@ -227,7 +228,8 @@ jobs:
               for act in act_data:
                   if act.get('badge'):
                       act_entry = {
-                          'actressId': act.get('id', ''),
+                          # ★修正ポイント: 出力するJSONのキー名もお手元の形式（actressId）に統一
+                          'actressId': act.get('actressId', ''),
                           'badge': act.get('badge', ''),
                           'badgeColor': act.get('badgeColor', '')
                       }
@@ -236,13 +238,13 @@ jobs:
                       else:
                           fanza_rank_data.append(act_entry)
 
-              with open('data/ranking_fanza.json', 'w', encoding='utf-8' if not os.path.exists('data/ranking_fanza.json') else 'utf-8') as f:
+              with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f:
                   json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
 
-              with open('data/ranking_mgs.json', 'w', encoding='utf-8' if not os.path.exists('data/ranking_mgs.json') else 'utf-8') as f:
+              with open('data/ranking_mgs.json', 'w', encoding='utf-8') as f:
                   json.dump(mgs_rank_data, f, ensure_ascii=False, indent=2)
 
-              with open('data/new_arrival.json', 'w', encoding='utf-8' if not os.path.exists('data/new_arrival.json') else 'utf-8') as f:
+              with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
                   json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
               shuffled_normal = list(pool_normal)
@@ -276,11 +278,10 @@ jobs:
               xml_lines.append('</urlset>')
 
               final_xml = '\n'.join(xml_lines).replace('\\"', '"')
-              with open('sitemap-images.xml', 'w', encoding='utf-8' if not os.path.exists('sitemap-images.xml') else 'utf-8') as f:
+              with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
                   f.write(final_xml)
           EOF
           
-          # スクリプトを安全に実行
           python script.py
 
       - name: Commit and Push Changes
@@ -289,3 +290,4 @@ jobs:
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json actresses.json
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合・女優ランキング特化：動画仕分け＆本物バッジ自動化インフラ始動' && git push origin HEAD:main)
+
