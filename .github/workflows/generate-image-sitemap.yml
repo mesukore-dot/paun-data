@@ -89,11 +89,11 @@ jobs:
                       clean_str = re.sub(r'\s+', '', clean_str)
                       parts = [p for p in clean_str.split('-') if p]
                       if len(parts) >= 3:
-                          return datetime(int(parts), int(parts), int(parts))
+                          return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
                       elif len(parts) == 2:
-                          return datetime(int(parts), int(parts), 1)
+                          return datetime(int(parts[0]), int(parts[1]), 1)
                       elif len(parts) == 1:
-                          return datetime(int(parts), 1, 1)
+                          return datetime(int(parts[0]), 1, 1)
                   except Exception:
                       pass
                   return datetime(1970, 1, 1)
@@ -270,7 +270,7 @@ jobs:
                   xml_lines.append('  </url>')
               xml_lines.append('</urlset>')
 
-              final_xml = '\n'.join(xml_lines).replace('\\"', '"')
+              final_xml = '\n'.join(xml_lines).replace(r'\"', '"')
               with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
                   f.write(final_xml)
           "
@@ -278,6 +278,6 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@://github.com'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add sitemap-images.xml data/*.json actresses.json
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：動画仕分け＆女優バッジ完全自動化インフラ始動' && git push origin HEAD:main)
