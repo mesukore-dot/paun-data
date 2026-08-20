@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Full Automation
         run: |
-          python -c "
+          python << 'EOF'
           import json
           import os
           import random
@@ -270,10 +270,10 @@ jobs:
                   xml_lines.append('  </url>')
               xml_lines.append('</urlset>')
 
-              final_xml = '\n'.join(xml_lines).replace(r'\"', '"')
+              final_xml = '\n'.join(xml_lines)
               with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
                   f.write(final_xml)
-          "
+          EOF
 
       - name: Commit and Push Changes
         run: |
