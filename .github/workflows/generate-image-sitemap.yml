@@ -1,9 +1,12 @@
-name: Hourly Split JSON and Generate Sitemap
+name: Ultimate Hourly Split JSON and Generate Sitemap
 
 on:
   push:
     paths:
       - 'videos.json'
+      - 'ranking_fanza.txt'
+      - 'ranking_mgs.txt'
+  workflow_dispatch:
   schedule:
     - cron: '0 * * * *' 
 
@@ -18,7 +21,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-
       - name: Process JSON and Sitemap
         run: |
           python -c "
@@ -27,12 +29,40 @@ jobs:
           import random
           import re
           from datetime import datetime
+          import sys
 
           if not os.path.exists('videos.json'):
               print('⚠️ videos.json が見つからないため、処理を安全にスキップします')
-              import sys
               sys.exit(0)
 
+          def clean_line_to_id(text_line):
+              if not text_line:
+                  return ''
+              return text_line.strip().lower().replace(' ', '').replace(',', '')
+
+          fanza_map = {}
+          if os.path.exists('ranking_fanza.txt'):
+              with open('ranking_fanza.txt', 'r', encoding='utf-8-sig') as f:
+                  idx = 1
+                  for line in f:
+                      if line.strip().startswith('#'):
+                          continue
+                      clean_id = clean_line_to_id(line)
+                      if clean_id:
+                          fanza_map[clean_id] = {'text': f'月間{idx}位', 'num': idx}
+                          idx += 1
+
+          mgs_map = {}
+          if os.path.exists('ranking_mgs.txt'):
+              with open('ranking_mgs.txt', 'r', encoding='utf-8-sig') as f:
+                  idx = 1
+                  for line in f:
+                      if line.strip().startswith('#'):
+                          continue
+                      clean_id = clean_line_to_id(line)
+                      if clean_id:
+                          mgs_map[clean_id] = {'text': f'MGS {idx}位', 'num': idx}
+                          idx += 1
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
@@ -45,11 +75,11 @@ jobs:
                   clean_str = re.sub(r'\s+', '', clean_str)
                   parts = [p for p in clean_str.split('-') if p]
                   if len(parts) >= 3:
-                      return datetime(int(parts), int(parts), int(parts))
+                      return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
                   elif len(parts) == 2:
-                      return datetime(int(parts), int(parts), 1)
+                      return datetime(int(parts[0]), int(parts[1]), 1)
                   elif len(parts) == 1:
-                      return datetime(int(parts), 1, 1)
+                      return datetime(int(parts[0]), 1, 1)
               except Exception:
                   pass
               return datetime(1970, 1, 1)
@@ -82,9 +112,9 @@ jobs:
               target_ids = []
               if isinstance(actress_id_field, list):
                   for x in actress_id_field:
-                      target_ids.append(str(x).strip())
+                      target_ids.append(clean_line_to_id(str(x)))
               else:
-                  target_ids.append(str(actress_id_field).strip())
+                  target_ids.append(clean_line_to_id(str(actress_id_field)))
 
               g1_url = item.get('gif1Url') or ''
               g2_url = item.get('gif2Url') or ''
@@ -93,12 +123,43 @@ jobs:
                   
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
+              
+              badge_text = ""
+              badge_color = ""
+              
+              best_fanza = 9999
+              best_mgs = 9999
+              for a_id in target_ids:
+                  if a_id in fanza_map and fanza_map[a_id]['num'] < best_fanza:
+                      best_fanza = fanza_map[a_id]['num']
+                  if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
+                      best_mgs = mgs_map[a_id]['num']
+
+              if best_mgs <= 100:
+                  for a_id in target_ids:
+                      if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
+                          badge_text = mgs_map[a_id]['text']
+                          badge_color = "mgs-rank"
+                          break
+              elif best_fanza <= 100:
+                  for a_id in target_ids:
+                      if a_id in fanza_map and fanza_map[a_id]['num'] == best_fanza:
+                          badge_text = fanza_map[a_id]['text']
+                          if best_fanza <= 10:
+                              badge_color = "gold"
+                          elif best_fanza <= 30:
+                              badge_color = "silver"
+                          elif best_fanza <= 50:
+                              badge_color = "bronze"
+                          else:
+                              badge_color = "gray"
+                          break
 
               video_entry = {
                   'title': title,
                   'catchphrase': item.get('catchphrase', ''),
-                  'badge': '',
-                  'badgeColor': '',
+                  'badge': badge_text, 
+                  'badgeColor': badge_color, 
                   'type': item.get('type', ''),
                   'tags': item.get('tags', []),
                   'releaseDate': item.get('releaseDate', ''),
@@ -122,9 +183,9 @@ jobs:
                       new_arrival_pool.append({
                           'gif2Url': video_entry['gif2Url'],
                           'title': video_entry['title'],
-                          'catchphrase': video_entry['catchphrase'],
-                          'badge': '',
-                          'badgeColor': '',
+                          'catchphrase': video_entry['catchphrase'], 
+                          'badge': video_entry['badge'], 
+                          'badgeColor': video_entry['badgeColor'],
                           'affiliateUrl': video_entry['affiliateUrl'],
                           'releaseDate': video_entry['releaseDate']
                       })
@@ -133,76 +194,77 @@ jobs:
               v_tags = [str(t).lower().strip() for t in video_entry['tags']]
               title_lower = title.lower()
 
-              related_item = {
-                  'actressIds': target_ids,
-                  'gif1Url': g1_url,
-                  'gif2Url': g2_url if g2_url else g1_url,
-                  'title': title,
-                  'catchphrase': video_entry['catchphrase'],
-                  'badge': '',
-                  'badgeColor': '',
-                  'type': video_entry['type'],
-                  'tags': video_entry['tags'],
-                  'releaseDate': video_entry['releaseDate'],
-                  'affiliateUrl': video_entry['affiliateUrl']
-              }
-
               if 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_vr):
-                      pool_vr.append(related_item)
+                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_vr):
+                      pool_vr.append(video_entry)
               if 'black' in v_tags:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_dark):
-                      pool_dark.append(related_item)
+                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_dark):
+                      pool_dark.append(video_entry)
               if not ('vr' in v_type or 'vr' in v_tags or 'vr' in title_lower) and not ('black' in v_tags):
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
-                      pool_normal.append(related_item)
+                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
+                      pool_normal.append(video_entry)
+          fanza_rank_data = []
+          mgs_rank_data = []
 
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                   json.dump(clean_items, f, ensure_ascii=False, indent=2)
+                  
+              for item_data in clean_items:
+                  b_col = item_data.get('badgeColor', '')
+                  if b_col == "mgs-rank" and item_data not in mgs_rank_data:
+                      mgs_rank_data.append(item_data)
+                  elif b_col in ["gold", "silver", "bronze", "gray"] and item_data not in fanza_rank_data:
+                      fanza_rank_data.append(item_data)
+
+          with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f:
+              json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
+
+          with open('data/ranking_mgs.json', 'w', encoding='utf-8') as f:
+              json.dump(mgs_rank_data, f, ensure_ascii=False, indent=2)
 
           with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
               json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
           shuffled_normal = list(pool_normal)
           random.shuffle(shuffled_normal)
-          with open('data/related_normal.json', 'w', encoding='utf-8') as f:
+          with open('data/related_normal.json', 'w', encoding='utf-8-sig') as f:
               json.dump(shuffled_normal[:250], f, ensure_ascii=False, indent=2)
 
           shuffled_vr = list(pool_vr)
           random.shuffle(shuffled_vr)
-          with open('data/related_vr.json', 'w', encoding='utf-8') as f:
+          with open('data/related_vr.json', 'w', encoding='utf-8-sig') as f:
               json.dump(shuffled_vr[:250], f, ensure_ascii=False, indent=2)
 
           shuffled_dark = list(pool_dark)
           random.shuffle(shuffled_dark)
-          with open('data/related_dark.json', 'w', encoding='utf-8') as f:
+          with open('data/related_dark.json', 'w', encoding='utf-8-sig') as f:
               json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
 
           xml_lines = []
-          xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
-          xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
+          xml_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
+          xml_lines.append('<urlset xmlns="http://sitemaps.org" xmlns:image="http://google.com">')
           for slug, entries in actresses.items():
               xml_lines.append('  <url>')
-              xml_lines.append(f'    <loc>{site_url}{slug}/</loc>')
+              xml_lines.append(f'    <loc>{site_url}/{slug}/</loc>')
               for e in entries:
                   xml_lines.append('    <image:image>')
-                  xml_lines.append(f'      <image:loc>{e[\"data\"][\"gif2Url\"]}</image:loc>')
+                  xml_lines.append(f'      <image:loc>{e["data"]["gif2Url"]}</image:loc>')
                   if e['xml_title']:
-                      xml_lines.append(f'      <image:title>{e[\"xml_title\"]}</image:title>')
+                      xml_lines.append(f'      <image:title>{e["xml_title"]}</image:title>')
                   xml_lines.append('    </image:image>')
               xml_lines.append('  </url>')
-          xml_lines.append('set>')
+          xml_lines.append('</urlset>')
 
-          final_xml = '\n'.join(xml_lines).replace('\\\"', '\"').replace('set>', '</urlset>')
+          final_xml = '\n'.join(xml_lines).replace('\\"', '"')
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
               f.write(final_xml)
-          "
+          '
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 リセット版：昨夜の平和な自動仕分けインフラへロールバック' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 箇条書きリスト完全自動最適化インフラ始動' && git push origin HEAD:main)
