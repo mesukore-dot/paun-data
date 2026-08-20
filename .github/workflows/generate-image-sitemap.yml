@@ -21,9 +21,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+
       - name: Process JSON and Sitemap
         run: |
-          python -c "
+          python - << 'EOF'
           import json
           import os
           import random
@@ -63,6 +64,7 @@ jobs:
                       if clean_id:
                           mgs_map[clean_id] = {'text': f'MGS {idx}位', 'num': idx}
                           idx += 1
+
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
@@ -98,8 +100,7 @@ jobs:
           pool_vr = []     
           pool_dark = []   
           pool_normal = [] 
-
-                    mapping = {
+          mapping = {
               'toumine_hinako': 'higashimine-hinako',
               'watanabe_hono': 'watanabe-hono',
               'hakata_iroha': 'hakata-iroha'
@@ -122,7 +123,6 @@ jobs:
                   continue
                   
               title = item.get('title', '')
-              # ↓ \" から バックスラッシュを消して普通のダブルクォーテーションに修正しました
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&apos;')
               
               badge_text = ""
@@ -204,6 +204,7 @@ jobs:
               if not ('vr' in v_type or 'vr' in v_tags or 'vr' in title_lower) and not ('black' in v_tags):
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(video_entry)
+
           fanza_rank_data = []
           mgs_rank_data = []
 
@@ -266,6 +267,6 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 箇条書きリスト完全自動最適化インフラ始動' && git push origin HEAD:main)
