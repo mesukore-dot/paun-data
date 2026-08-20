@@ -8,14 +8,10 @@ on:
       - 'ranking_mgs.txt'
   schedule:
     - cron: '0 * * * *' 
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # 💡書き込みエラーを防ぐ権限設定
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,7 +32,7 @@ jobs:
           import sys
 
           if not os.path.exists('videos.json'):
-              print('videos.json not found')
+              print('⚠️ videos.json が見つからないため、処理を安全にスキップします')
               sys.exit(0)
 
           def clean_line_to_id(text_line):
@@ -199,16 +195,13 @@ jobs:
               v_tags = [str(t).lower().strip() for t in video_entry['tags']]
               title_lower = title.lower()
 
-              is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
-              is_black = 'black' in v_tags
-
-              if is_vr:
+              if 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower:
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_vr):
                       pool_vr.append(video_entry)
-              if is_black:
+              if 'black' in v_tags:
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_dark):
                       pool_dark.append(video_entry)
-              if not is_vr and not is_black:
+              if not ('vr' in v_type or 'vr' in v_tags or 'vr' in title_lower) and not ('black' in v_tags):
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(video_entry)
 
@@ -266,10 +259,10 @@ jobs:
               xml_lines.append('  </url>')
           xml_lines.append('</urlset>')
 
-          final_xml = '\n'.join(xml_lines)
+          final_xml = '\n'.join(xml_lines).replace('\\"', '"')
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
               f.write(final_xml)
-          "
+          '
 
       - name: Commit and Push Changes
         run: |
