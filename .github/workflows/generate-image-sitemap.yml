@@ -13,6 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 💡書き込みエラーを防ぐ権限設定
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -88,7 +91,7 @@ jobs:
 
           data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
-          site_url = 'https://wpx.jp'
+          site_url = 'https://wpmesucolle.wpx.jp/'
           os.makedirs('data', exist_ok=True)
 
           now = datetime.now()
@@ -268,11 +271,6 @@ jobs:
               f.write(final_xml)
           "
 
-    # 💡 最後の Push で権限エラーになるのを防ぐ設定を追加
-    permissions:
-      contents: write
-
-    steps:
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
