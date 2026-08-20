@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Full Automation
         run: |
-          python << 'EOF'
+          python -c "
           import json
           import os
           import random
@@ -89,11 +89,11 @@ jobs:
                       clean_str = re.sub(r'\s+', '', clean_str)
                       parts = [p for p in clean_str.split('-') if p]
                       if len(parts) >= 3:
-                          return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
+                          return datetime(int(parts), int(parts), int(parts))
                       elif len(parts) == 2:
-                          return datetime(int(parts[0]), int(parts[1]), 1)
+                          return datetime(int(parts), int(parts), 1)
                       elif len(parts) == 1:
-                          return datetime(int(parts[0]), 1, 1)
+                          return datetime(int(parts), 1, 1)
                   except Exception:
                       pass
                   return datetime(1970, 1, 1)
@@ -216,20 +216,25 @@ jobs:
                   if not ('vr' in v_type or 'vr' in v_tags or 'vr' in title_lower) and not ('black' in v_tags):
                       if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
                           pool_normal.append(video_entry)
-              fanza_rank_data = []
-              mgs_rank_data = []
-
               for slug, entries in actresses_map.items():
                   clean_items = [e['data'] for e in entries]
                   with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                       json.dump(clean_items, f, ensure_ascii=False, indent=2)
-                      
-                  for item_data in clean_items:
-                      b_col = item_data.get('badgeColor', '')
-                      if b_col == 'mgs-rank' and item_data not in mgs_rank_data:
-                          mgs_rank_data.append(item_data)
-                      elif b_col in ['gold', 'silver', 'bronze', 'gray'] and item_data not in fanza_rank_data:
-                          fanza_rank_data.append(item_data)
+
+              # 🏆 【大正解】動画の山を流さず、女優ID・順位・色だけを綺麗に抽出！
+              fanza_rank_data = []
+              mgs_rank_data = []
+              for act in act_data:
+                  if act.get('badge'):
+                      act_entry = {
+                          'actressId': act.get('id', ''),
+                          'badge': act.get('badge', ''),
+                          'badgeColor': act.get('badgeColor', '')
+                      }
+                      if act.get('badgeColor') == 'mgs-rank':
+                          mgs_rank_data.append(act_entry)
+                      else:
+                          fanza_rank_data.append(act_entry)
 
               with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f:
                   json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
@@ -262,22 +267,22 @@ jobs:
                   xml_lines.append('  <url>')
                   xml_lines.append(f'    <loc>{site_url}/{slug}/</loc>')
                   for e in entries:
-                      xml_lines.append('    <image:image>')
-                      xml_lines.append(f'      <image:loc>{e["data"]["gif2Url"]}</image:loc>')
+                      xml_lines.append('  <image:image>')
+                      xml_lines.append(f'    <image:loc>{e["data"]["gif2Url"]}</image:loc>')
                       if e['xml_title']:
-                          xml_lines.append(f'      <image:title>{e["xml_title"]}</image:title>')
-                      xml_lines.append('    </image:image>')
+                          xml_lines.append(f'    <image:title>{e["xml_title"]}</image:title>')
+                      xml_lines.append('  </image:image>')
                   xml_lines.append('  </url>')
               xml_lines.append('</urlset>')
 
-              final_xml = '\n'.join(xml_lines)
+              final_xml = '\n'.join(xml_lines).replace('\\"', '"')
               with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
                   f.write(final_xml)
-          EOF
+          "
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json actresses.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：動画仕分け＆女優バッジ完全自動化インフラ始動' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合・女優ランキング特化：動画仕分け＆本物バッジ自動化インフラ始動' && git push origin HEAD:main)
