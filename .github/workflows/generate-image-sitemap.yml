@@ -95,7 +95,7 @@ jobs:
               'watanabe_hono': 'watanabe-hono',
               'hakata_iroha': 'hakata-iroha'
           }
-          for item in data:
+                    for item in data:
               actress_id_field = item.get('actressId')
               if not actress_id_field:
                   continue
@@ -115,11 +115,9 @@ jobs:
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
-              # 💡【神自動化】FANZAとMGSの2大ランキングからバッジの文字とカラークラスを判定
               badge_text = ""
               badge_color = ""
               
-              # まずはこの作品に関わる女優の各所属順位をチェック
               best_fanza = 9999
               best_mgs = 9999
               for a_id in target_ids:
@@ -128,14 +126,13 @@ jobs:
                   if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
                       best_mgs = mgs_map[a_id]['num']
 
-              # MGSランキングに載っている場合（MGSは公式風の黒地赤ライン仕様）
+              # 💡【修正ポイント】安全にバッジテキストとカラーのクラス名を確定
               if best_mgs <= 100:
                   for a_id in target_ids:
                       if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
                           badge_text = mgs_map[a_id]['text']
-                          badge_color = "mgs-rank" # ★MGS専用のクラス名！
+                          badge_color = "mgs-rank"
                           break
-              # FANZAランキングに載っている場合（金・銀・銅・グレーの4段階）
               elif best_fanza <= 100:
                   for a_id in target_ids:
                       if a_id in fanza_map and fanza_map[a_id]['num'] == best_fanza:
@@ -203,17 +200,20 @@ jobs:
                   'affiliateUrl': video_entry['affiliateUrl']
               }
 
-              if is_vr := 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower:
+              # 💡【バグ修正】条件分岐の変数定義エラーを安全に修正
+              is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
+              is_black = 'black' in v_tags
+
+              if is_vr:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_vr):
                       pool_vr.append(related_item)
-              if is_black := 'black' in v_tags:
+              if is_black:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_dark):
                       pool_dark.append(related_item)
               if not is_vr and not is_black:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(related_item)
 
-          # 💡【ランキング高速道路用JSON】2つの専用ページ用データを独立して1発自動生成
           fanza_rank_data = []
           mgs_rank_data = []
 
@@ -222,7 +222,6 @@ jobs:
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                   json.dump(clean_items, f, ensure_ascii=False, indent=2)
                   
-              # バッジ情報がある作品をそれぞれのランキングプールへ集計
               for item_data in clean_items:
                   b_col = item_data.get('badgeColor', '')
                   if b_col == "mgs-rank" and item_data not in mgs_rank_data:
@@ -279,5 +278,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 FANZAメタル ✕ MGS公式カラー2大ランキング配信インフラ完結版' && git push origin HEAD:main)
-
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 金銀銅グレー4段階バッジ自動判定インフラ修正完了' && git push origin HEAD:main)
