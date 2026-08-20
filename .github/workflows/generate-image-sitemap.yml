@@ -8,6 +8,7 @@ on:
       - 'ranking_mgs.txt'
   schedule:
     - cron: '0 * * * *' 
+  workflow_dispatch:
 
 jobs:
   build:
@@ -32,10 +33,9 @@ jobs:
           import sys
 
           if not os.path.exists('videos.json'):
-              print('⚠️ videos.json が見つからないため、処理を安全にスキップします')
+              print('videos.json not found')
               sys.exit(0)
 
-          # 💡 大文字小文字やゴミ文字を掃除する共通関数
           def clean_line_to_id(text_line):
               if not text_line:
                   return ''
@@ -46,7 +46,6 @@ jobs:
               with open('ranking_fanza.txt', 'r', encoding='utf-8-sig') as f:
                   idx = 1
                   for line in f:
-                      # 先にコメント行（#）を安全にスキップ
                       if line.strip().startswith('#'):
                           continue
                       clean_id = clean_line_to_id(line)
@@ -77,8 +76,6 @@ jobs:
                   clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
                   clean_str = re.sub(r'\s+', '', clean_str)
                   parts = [p for p in clean_str.split('-') if p]
-                  
-                  # ⭕ リストの各インデックスを明示的に指定して型エラーを回避
                   if len(parts) >= 3:
                       return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
                   elif len(parts) == 2:
@@ -91,7 +88,7 @@ jobs:
 
           data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
-          site_url = 'https://wpmesucolle.wpx.jp/'
+          site_url = 'https://wpx.jp'
           os.makedirs('data', exist_ok=True)
 
           now = datetime.now()
@@ -109,7 +106,7 @@ jobs:
               'watanabe_hono': 'watanabe-hono',
               'hakata_iroha': 'hakata-iroha'
           }
-                    for item in data:
+          for item in data:
               actress_id_field = item.get('actressId')
               if not actress_id_field:
                   continue
@@ -202,7 +199,6 @@ jobs:
               is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
               is_black = 'black' in v_tags
 
-              # ⭕ related_item を video_entry に修正してクラッシュを回避
               if is_vr:
                   if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_vr):
                       pool_vr.append(video_entry)
@@ -253,32 +249,33 @@ jobs:
               json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
 
           xml_lines = []
-          xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
-          # ⭕ Google画像サイトマップ用の正しいNamespace URLに修正
-          xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
+          xml_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
+          xml_lines.append('<urlset xmlns="http://sitemaps.org" xmlns:image="http://google.com">')
           for slug, entries in actresses.items():
               xml_lines.append('  <url>')
-              # ⭕ URL末尾のスラッシュのつながりを修正 (site_url と slug の間に / を追加)
               xml_lines.append(f'    <loc>{site_url}/{slug}/</loc>')
               for e in entries:
                   xml_lines.append('    <image:image>')
-                  xml_lines.append(f'      <image:loc>{e[\"data\"][\"gif2Url\"]}</image:loc>')
+                  xml_lines.append(f'      <image:loc>{e["data"]["gif2Url"]}</image:loc>')
                   if e['xml_title']:
-                      xml_lines.append(f'      <image:title>{e[\"xml_title\"]}</image:title>')
+                      xml_lines.append(f'      <image:title>{e["xml_title"]}</image:title>')
                   xml_lines.append('    </image:image>')
               xml_lines.append('  </url>')
           xml_lines.append('</urlset>')
 
-          final_xml = '\n'.join(xml_lines).replace('\\\"', '\"')
+          final_xml = '\n'.join(xml_lines)
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
               f.write(final_xml)
           "
 
+    # 💡 最後の Push で権限エラーになるのを防ぐ設定を追加
+    permissions:
+      contents: write
+
+    steps:
       - name: Commit and Push Changes
         run: |
-          # ⭕ git config の noreply アドレスのタイポを修正
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 箇条書きリスト完全自動最適化インフラ始動' && git push origin HEAD:main)
-
