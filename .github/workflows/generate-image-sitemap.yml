@@ -6,7 +6,7 @@ on:
       - 'videos.json'
       - 'ranking_fanza.txt'
       - 'ranking_mgs.txt'
-        workflow_dispatch: # 👑 これが画面に手動ボタンを大復活させる魔法の言葉です！
+  workflow_dispatch: # 👑 これが画面に手動ボタンを大復活させる魔法の言葉です！
   schedule:
     - cron: '0 * * * *' 
 
