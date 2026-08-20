@@ -263,7 +263,7 @@ jobs:
           final_xml = '\n'.join(xml_lines).replace('\\"', '"')
           with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
               f.write(final_xml)
-          '
+          " # ★ここに「 ' 」（シングルクォーテーション）を完璧に閉じました！
 
       - name: Commit and Push Changes
         run: |
