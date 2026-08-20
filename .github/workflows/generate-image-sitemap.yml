@@ -4,7 +4,8 @@ on:
   push:
     paths:
       - 'videos.json'
-  # ⏰ 1時間ごとにあなたの代わりに勝手に起動して、全データを激しくシャッフルするタイマー
+      - 'ranking_fanza.txt' # ★FANZAランキング変更時も自動起動
+      - 'ranking_mgs.txt'   # ★MGSランキング変更時も自動起動
   schedule:
     - cron: '0 * * * *' 
 
@@ -34,20 +35,35 @@ jobs:
               import sys
               sys.exit(0)
 
+          # 💡【FANZA ＆ MGS 2大ランキング解析】
+          fanza_map = {}
+          if os.path.exists('ranking_fanza.txt'):
+              with open('ranking_fanza.txt', 'r', encoding='utf-8') as f:
+                  lines = [line.strip() for line in f if line.strip()]
+                  for index, line in enumerate(lines):
+                      clean_id = re.sub(r'^\d+\s*\.\s*', '', line).strip()
+                      if clean_id:
+                          fanza_map[clean_id] = {'text': f'月間{index + 1}位', 'num': index + 1}
+
+          mgs_map = {}
+          if os.path.exists('ranking_mgs.txt'):
+              with open('ranking_mgs.txt', 'r', encoding='utf-8') as f:
+                  lines = [line.strip() for line in f if line.strip()]
+                  for index, line in enumerate(lines):
+                      clean_id = re.sub(r'^\d+\s*\.\s*', '', line).strip()
+                      if clean_id:
+                          mgs_map[clean_id] = {'text': f'MGS {index + 1}位', 'num': index + 1}
+
           with open('videos.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
 
-          # 💡【新機能】日本語の日付文字列（例: '2026年8月17日'）を安全に比較用の日付オブジェクトに変換する関数
           def parse_date(date_str):
               if not date_str:
                   return datetime(1970, 1, 1)
               try:
-                  # 全角数字を半角数字に変換し、スペースを除去
                   clean_str = str(date_str).translate(str.maketrans('０１２３４５６７８９', '0123456789')).strip()
-                  # '年' と '月' をハイフンに置き換え、'日' を消去して 'YYYY-MM-DD' や 'YYYY-MM' の形にする
                   clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
                   clean_str = re.sub(r'\s+', '', clean_str)
-                  
                   parts = [p for p in clean_str.split('-') if p]
                   if len(parts) >= 3:
                       return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
@@ -59,7 +75,6 @@ jobs:
                   pass
               return datetime(1970, 1, 1)
 
-          # 🌟【あなたのアイデア反映！】大元の全データを、あらかじめ「最新作順（新しい順）」に全自動ソート！
           data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
           site_url = 'https://wpmesucolle.wpx.jp/'
@@ -71,7 +86,6 @@ jobs:
 
           new_arrival_pool = []
           actresses = {}
-
           pool_vr = []     
           pool_dark = []   
           pool_normal = [] 
@@ -81,7 +95,6 @@ jobs:
               'watanabe_hono': 'watanabe-hono',
               'hakata_iroha': 'hakata-iroha'
           }
-
           for item in data:
               actress_id_field = item.get('actressId')
               if not actress_id_field:
@@ -102,9 +115,46 @@ jobs:
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
+              # 💡【神自動化】FANZAとMGSの2大ランキングからバッジの文字とカラークラスを判定
+              badge_text = ""
+              badge_color = ""
+              
+              # まずはこの作品に関わる女優の各所属順位をチェック
+              best_fanza = 9999
+              best_mgs = 9999
+              for a_id in target_ids:
+                  if a_id in fanza_map and fanza_map[a_id]['num'] < best_fanza:
+                      best_fanza = fanza_map[a_id]['num']
+                  if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
+                      best_mgs = mgs_map[a_id]['num']
+
+              # MGSランキングに載っている場合（MGSは公式風の黒地赤ライン仕様）
+              if best_mgs <= 100:
+                  for a_id in target_ids:
+                      if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
+                          badge_text = mgs_map[a_id]['text']
+                          badge_color = "mgs-rank" # ★MGS専用のクラス名！
+                          break
+              # FANZAランキングに載っている場合（金・銀・銅・グレーの4段階）
+              elif best_fanza <= 100:
+                  for a_id in target_ids:
+                      if a_id in fanza_map and fanza_map[a_id]['num'] == best_fanza:
+                          badge_text = fanza_map[a_id]['text']
+                          if best_fanza <= 10:
+                              badge_color = "gold"
+                          elif best_fanza <= 30:
+                              badge_color = "silver"
+                          elif best_fanza <= 50:
+                              badge_color = "bronze"
+                          else:
+                              badge_color = "gray"
+                          break
+
               video_entry = {
                   'title': title,
                   'catchphrase': item.get('catchphrase', ''),
+                  'badge': badge_text, 
+                  'badgeColor': badge_color, 
                   'type': item.get('type', ''),
                   'tags': item.get('tags', []),
                   'releaseDate': item.get('releaseDate', ''),
@@ -129,6 +179,8 @@ jobs:
                           'gif2Url': video_entry['gif2Url'],
                           'title': video_entry['title'],
                           'catchphrase': video_entry['catchphrase'], 
+                          'badge': video_entry['badge'], 
+                          'badgeColor': video_entry['badgeColor'],
                           'affiliateUrl': video_entry['affiliateUrl'],
                           'releaseDate': video_entry['releaseDate']
                       })
@@ -143,30 +195,46 @@ jobs:
                   'gif2Url': g2_url if g2_url else g1_url,
                   'title': title,
                   'catchphrase': video_entry['catchphrase'],
+                  'badge': video_entry['badge'], 
+                  'badgeColor': video_entry['badgeColor'],
                   'type': video_entry['type'],
                   'tags': video_entry['tags'],
                   'releaseDate': video_entry['releaseDate'],
                   'affiliateUrl': video_entry['affiliateUrl']
               }
 
-              is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
-              is_black = 'black' in v_tags
-
-              if is_vr:
+              if is_vr := 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_vr):
                       pool_vr.append(related_item)
-              if is_black:
+              if is_black := 'black' in v_tags:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_dark):
                       pool_dark.append(related_item)
               if not is_vr and not is_black:
                   if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
                       pool_normal.append(related_item)
 
-          # 💡 大元データがすでに最新順ソートされているため、吐き出される各ファイルも「全自動で美しい最新作順」になります！
+          # 💡【ランキング高速道路用JSON】2つの専用ページ用データを独立して1発自動生成
+          fanza_rank_data = []
+          mgs_rank_data = []
+
           for slug, entries in actresses.items():
               clean_items = [e['data'] for e in entries]
               with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                   json.dump(clean_items, f, ensure_ascii=False, indent=2)
+                  
+              # バッジ情報がある作品をそれぞれのランキングプールへ集計
+              for item_data in clean_items:
+                  b_col = item_data.get('badgeColor', '')
+                  if b_col == "mgs-rank" and item_data not in mgs_rank_data:
+                      mgs_rank_data.append(item_data)
+                  elif b_col in ["gold", "silver", "bronze", "gray"] and item_data not in fanza_rank_data:
+                      fanza_rank_data.append(item_data)
+
+          with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f:
+              json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
+
+          with open('data/ranking_mgs.json', 'w', encoding='utf-8') as f:
+              json.dump(mgs_rank_data, f, ensure_ascii=False, indent=2)
 
           with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
               json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
@@ -211,4 +279,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 全自動最新作順ソート機能付きJSON物理分割完了' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 FANZAメタル ✕ MGS公式カラー2大ランキング配信インフラ完結版' && git push origin HEAD:main)
+
