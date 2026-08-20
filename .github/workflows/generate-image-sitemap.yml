@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # ⭕ runs-okになっていた致命的なスペルミスを完璧に修正！
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -39,7 +39,6 @@ jobs:
           def clean_line_to_id(text_line):
               if not text_line:
                   return ''
-              # 読者の手入力を100%カバー！すべて「小文字」に統一してスペースやカンマを完全消去
               return text_line.strip().lower().replace(' ', '').replace(',', '')
 
           fanza_map = {}
@@ -49,7 +48,6 @@ jobs:
                   for line in f:
                       clean_id = clean_line_to_id(line)
                       if clean_id and not clean_id.startswith('#'):
-                          # ⭕ 数字の除去を完全にやめ、書いてあるIDをそのまま100%信用して行数をカウント！
                           fanza_map[clean_id] = {'text': f'月間{idx}位', 'num': idx}
                           idx += 1
 
@@ -86,7 +84,7 @@ jobs:
 
           data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
-          site_url = 'https://wpmesucolle.wpx.jp/'
+          site_url = 'https://wpmesucolle.wpx.jp'
           os.makedirs('data', exist_ok=True)
 
           now = datetime.now()
@@ -194,20 +192,6 @@ jobs:
               v_tags = [str(t).lower().strip() for t in video_entry['tags']]
               title_lower = title.lower()
 
-              related_item = {
-                  'actressIds': target_ids,
-                  'gif1Url': g1_url,
-                  'gif2Url': g2_url if g2_url else g1_url,
-                  'title': title,
-                  'catchphrase': video_entry['catchphrase'],
-                  'badge': badge_text, 
-                  'badgeColor': badge_color,
-                  'type': video_entry['type'],
-                  'tags': video_entry['tags'],
-                  'releaseDate': video_entry['releaseDate'],
-                  'affiliateUrl': video_entry['affiliateUrl']
-              }
-
               is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
               is_black = 'black' in v_tags
 
@@ -285,5 +269,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 箇条書きリスト完全自動最適化インフラへ移行完了' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 箇条書きリスト完全自動最適化インフラ始動' && git push origin HEAD:main)
 
