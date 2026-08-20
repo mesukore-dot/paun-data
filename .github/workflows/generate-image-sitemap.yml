@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # ⭕ runs-okになっていた致命的なスペルミスを完璧に修正！
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,13 +29,13 @@ jobs:
           import random
           import re
           from datetime import datetime
+          import sys
 
           if not os.path.exists('videos.json'):
               print('⚠️ videos.json が見つからないため、処理を安全にスキップします')
-              import sys
               sys.exit(0)
 
-          # 💡【箇条書き完全対応】大文字もゴミ文字も自動で綺麗に掃除して吸い上げる
+          # 💡 大文字小文字やゴミ文字を掃除する共通関数
           def clean_line_to_id(text_line):
               if not text_line:
                   return ''
@@ -46,8 +46,11 @@ jobs:
               with open('ranking_fanza.txt', 'r', encoding='utf-8-sig') as f:
                   idx = 1
                   for line in f:
+                      # 先にコメント行（#）を安全にスキップ
+                      if line.strip().startswith('#'):
+                          continue
                       clean_id = clean_line_to_id(line)
-                      if clean_id and not clean_id.startswith('#'):
+                      if clean_id:
                           fanza_map[clean_id] = {'text': f'月間{idx}位', 'num': idx}
                           idx += 1
 
@@ -56,8 +59,10 @@ jobs:
               with open('ranking_mgs.txt', 'r', encoding='utf-8-sig') as f:
                   idx = 1
                   for line in f:
+                      if line.strip().startswith('#'):
+                          continue
                       clean_id = clean_line_to_id(line)
-                      if clean_id and not clean_id.startswith('#'):
+                      if clean_id:
                           mgs_map[clean_id] = {'text': f'MGS {idx}位', 'num': idx}
                           idx += 1
 
@@ -72,19 +77,21 @@ jobs:
                   clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
                   clean_str = re.sub(r'\s+', '', clean_str)
                   parts = [p for p in clean_str.split('-') if p]
+                  
+                  # ⭕ リストの各インデックスを明示的に指定して型エラーを回避
                   if len(parts) >= 3:
-                      return datetime(int(parts), int(parts), int(parts))
+                      return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
                   elif len(parts) == 2:
-                      return datetime(int(parts), int(parts), 1)
+                      return datetime(int(parts[0]), int(parts[1]), 1)
                   elif len(parts) == 1:
-                      return datetime(int(parts), 1, 1)
+                      return datetime(int(parts[0]), 1, 1)
               except Exception:
                   pass
               return datetime(1970, 1, 1)
 
           data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
-          site_url = 'https://wpmesucolle.wpx.jp'
+          site_url = 'https://wpmesucolle.wpx.jp/'
           os.makedirs('data', exist_ok=True)
 
           now = datetime.now()
@@ -195,15 +202,16 @@ jobs:
               is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
               is_black = 'black' in v_tags
 
+              # ⭕ related_item を video_entry に修正してクラッシュを回避
               if is_vr:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_vr):
-                      pool_vr.append(related_item)
+                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_vr):
+                      pool_vr.append(video_entry)
               if is_black:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_dark):
-                      pool_dark.append(related_item)
+                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_dark):
+                      pool_dark.append(video_entry)
               if not is_vr and not is_black:
-                  if not any(x['affiliateUrl'] == related_item['affiliateUrl'] for x in pool_normal):
-                      pool_normal.append(related_item)
+                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
+                      pool_normal.append(video_entry)
 
           fanza_rank_data = []
           mgs_rank_data = []
@@ -246,10 +254,12 @@ jobs:
 
           xml_lines = []
           xml_lines.append('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')
+          # ⭕ Google画像サイトマップ用の正しいNamespace URLに修正
           xml_lines.append('<urlset xmlns=\"http://sitemaps.org\" xmlns:image=\"http://google.com\">')
           for slug, entries in actresses.items():
               xml_lines.append('  <url>')
-              xml_lines.append(f'    <loc>{site_url}{slug}/</loc>')
+              # ⭕ URL末尾のスラッシュのつながりを修正 (site_url と slug の間に / を追加)
+              xml_lines.append(f'    <loc>{site_url}/{slug}/</loc>')
               for e in entries:
                   xml_lines.append('    <image:image>')
                   xml_lines.append(f'      <image:loc>{e[\"data\"][\"gif2Url\"]}</image:loc>')
@@ -266,8 +276,9 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
+          # ⭕ git config の noreply アドレスのタイポを修正
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@://github.com'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add sitemap-images.xml data/*.json
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 箇条書きリスト完全自動最適化インフラ始動' && git push origin HEAD:main)
 
