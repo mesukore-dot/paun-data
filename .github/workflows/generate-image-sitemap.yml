@@ -1,4 +1,4 @@
-name: Ultimate Hourly Split JSON and Generate Sitemap
+name: Ultimate Hourly Video and Actress Ranking Automator
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - 'videos.json'
       - 'ranking_fanza.txt'
       - 'ranking_mgs.txt'
+      - 'actresses.json'
   workflow_dispatch:
   schedule:
     - cron: '0 * * * *' 
@@ -22,9 +23,9 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Process JSON and Sitemap
+      - name: Run Full Automation
         run: |
-          python - << 'EOF'
+          python -c "
           import json
           import os
           import random
@@ -32,25 +33,19 @@ jobs:
           from datetime import datetime
           import sys
 
-          if not os.path.exists('videos.json'):
-              print('⚠️ videos.json が見つからないため、処理を安全にスキップします')
-              sys.exit(0)
-
           def clean_line_to_id(text_line):
               if not text_line:
                   return ''
-              return text_line.strip().lower().replace(' ', '').replace(',', '')
+              return text_line.strip().lower().replace(' ', '').replace(',', '').replace('-', '_')
 
           fanza_map = {}
           if os.path.exists('ranking_fanza.txt'):
               with open('ranking_fanza.txt', 'r', encoding='utf-8-sig') as f:
                   idx = 1
                   for line in f:
-                      if line.strip().startswith('#'):
-                          continue
                       clean_id = clean_line_to_id(line)
                       if clean_id:
-                          fanza_map[clean_id] = {'text': f'月間{idx}位', 'num': idx}
+                          fanza_map[clean_id] = {'text': f'月間{idx}位', 'color': 'gold' if idx <= 10 else 'silver' if idx <= 30 else 'bronze' if idx <= 50 else 'gray', 'num': idx}
                           idx += 1
 
           mgs_map = {}
@@ -58,215 +53,231 @@ jobs:
               with open('ranking_mgs.txt', 'r', encoding='utf-8-sig') as f:
                   idx = 1
                   for line in f:
-                      if line.strip().startswith('#'):
-                          continue
                       clean_id = clean_line_to_id(line)
                       if clean_id:
-                          mgs_map[clean_id] = {'text': f'MGS {idx}位', 'num': idx}
+                          mgs_map[clean_id] = {'text': f'MGS {idx}位', 'color': 'mgs-rank', 'num': idx}
                           idx += 1
 
-          with open('videos.json', 'r', encoding='utf-8') as f:
-              data = json.load(f)
+          if os.path.exists('actresses.json'):
+              with open('actresses.json', 'r', encoding='utf-8') as f:
+                  act_data = json.load(f)
+              for act in act_data:
+                  act_id = clean_line_to_id(act.get('id', ''))
+                  if not act_id:
+                      continue
+                  if act_id in mgs_map:
+                      act['badge'] = mgs_map[act_id]['text']
+                      act['badgeColor'] = mgs_map[act_id]['color']
+                  elif act_id in fanza_map:
+                      act['badge'] = fanza_map[act_id]['text']
+                      act['badgeColor'] = fanza_map[act_id]['color']
+                  else:
+                      act['badge'] = ''
+                      act['badgeColor'] = ''
+              with open('actresses.json', 'w', encoding='utf-8') as f:
+                  json.dump(act_data, f, ensure_ascii=False, indent=2)
+          if os.path.exists('videos.json'):
+              with open('videos.json', 'r', encoding='utf-8') as f:
+                  data = json.load(f)
 
-          def parse_date(date_str):
-              if not date_str:
+              def parse_date(date_str):
+                  if not date_str:
+                      return datetime(1970, 1, 1)
+                  try:
+                      clean_str = str(date_str).translate(str.maketrans('０１２３４５６７８９', '0123456789')).strip()
+                      clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
+                      clean_str = re.sub(r'\s+', '', clean_str)
+                      parts = [p for p in clean_str.split('-') if p]
+                      if len(parts) >= 3:
+                          return datetime(int(parts), int(parts), int(parts))
+                      elif len(parts) == 2:
+                          return datetime(int(parts), int(parts), 1)
+                      elif len(parts) == 1:
+                          return datetime(int(parts), 1, 1)
+                  except Exception:
+                      pass
                   return datetime(1970, 1, 1)
-              try:
-                  clean_str = str(date_str).translate(str.maketrans('０１２３４５６７８９', '0123456789')).strip()
-                  clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
-                  clean_str = re.sub(r'\s+', '', clean_str)
-                  parts = [p for p in clean_str.split('-') if p]
-                  if len(parts) >= 3:
-                      return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
-                  elif len(parts) == 2:
-                      return datetime(int(parts[0]), int(parts[1]), 1)
-                  elif len(parts) == 1:
-                      return datetime(int(parts[0]), 1, 1)
-              except Exception:
-                  pass
-              return datetime(1970, 1, 1)
 
-          data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
+              data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
-          site_url = 'https://wpmesucolle.wpx.jp/'
-          os.makedirs('data', exist_ok=True)
+              site_url = 'https://wpmesucolle.wpx.jp/'
+              os.makedirs('data', exist_ok=True)
 
-          now = datetime.now()
-          target_single = f'{now.year}年{now.month}月'
-          target_double = f'{now.year}年{str(now.month).zfill(2)}月'
+              now = datetime.now()
+              target_single = f'{now.year}年{now.month}月'
+              target_double = f'{now.year}年{str(now.month).zfill(2)}月'
 
-          new_arrival_pool = []
-          actresses = {}
-          pool_vr = []     
-          pool_dark = []   
-          pool_normal = [] 
-          mapping = {
-              'toumine_hinako': 'higashimine-hinako',
-              'watanabe_hono': 'watanabe-hono',
-              'hakata_iroha': 'hakata-iroha'
-          }
-          for item in data:
-              actress_id_field = item.get('actressId')
-              if not actress_id_field:
-                  continue
-              
-              target_ids = []
-              if isinstance(actress_id_field, list):
-                  for x in actress_id_field:
-                      target_ids.append(clean_line_to_id(str(x)))
-              else:
-                  target_ids.append(clean_line_to_id(str(actress_id_field)))
+              new_arrival_pool = []
+              actresses_map = {}
+              pool_vr = []     
+              pool_dark = []   
+              pool_normal = [] 
 
-              g1_url = item.get('gif1Url') or ''
-              g2_url = item.get('gif2Url') or ''
-              if not g1_url and not g2_url:
-                  continue
-                  
-              title = item.get('title', '')
-              xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&apos;')
-              
-              badge_text = ""
-              badge_color = ""
-              
-              best_fanza = 9999
-              best_mgs = 9999
-              for a_id in target_ids:
-                  if a_id in fanza_map and fanza_map[a_id]['num'] < best_fanza:
-                      best_fanza = fanza_map[a_id]['num']
-                  if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
-                      best_mgs = mgs_map[a_id]['num']
-
-              if best_mgs <= 100:
-                  for a_id in target_ids:
-                      if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
-                          badge_text = mgs_map[a_id]['text']
-                          badge_color = "mgs-rank"
-                          break
-              elif best_fanza <= 100:
-                  for a_id in target_ids:
-                      if a_id in fanza_map and fanza_map[a_id]['num'] == best_fanza:
-                          badge_text = fanza_map[a_id]['text']
-                          if best_fanza <= 10:
-                              badge_color = "gold"
-                          elif best_fanza <= 30:
-                              badge_color = "silver"
-                          elif best_fanza <= 50:
-                              badge_color = "bronze"
-                          else:
-                              badge_color = "gray"
-                          break
-
-              video_entry = {
-                  'title': title,
-                  'catchphrase': item.get('catchphrase', ''),
-                  'badge': badge_text, 
-                  'badgeColor': badge_color, 
-                  'type': item.get('type', ''),
-                  'tags': item.get('tags', []),
-                  'releaseDate': item.get('releaseDate', ''),
-                  'gif1Url': g1_url,
-                  'gif2Url': g2_url if g2_url else g1_url,
-                  'affiliateUrl': item.get('affiliateUrl', '')
+              slug_mapping = {
+                  'toumine_hinako': 'higashimine-hinako',
+                  'watanabe_hono': 'watanabe-hono',
+                  'hakata_iroha': 'hakata-iroha'
               }
 
-              for a_id in target_ids:
-                  slug = mapping.get(a_id, a_id)
-                  if slug not in actresses:
-                      actresses[slug] = []
+              for item in data:
+                  actress_id_field = item.get('actressId')
+                  if not actress_id_field:
+                      continue
                   
-                  instance_entry = video_entry.copy()
-                  instance_entry['actressId'] = a_id
-                  actresses[slug].append({'data': instance_entry, 'xml_title': xml_title})
+                  target_ids = []
+                  if isinstance(actress_id_field, list):
+                      for x in actress_id_field:
+                          target_ids.append(clean_line_to_id(str(x)))
+                  else:
+                      target_ids.append(clean_line_to_id(str(actress_id_field)))
 
-              r_date = str(video_entry['releaseDate'])
-              if target_single in r_date or target_double in r_date:
-                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
-                      new_arrival_pool.append({
-                          'gif2Url': video_entry['gif2Url'],
-                          'title': video_entry['title'],
-                          'catchphrase': video_entry['catchphrase'], 
-                          'badge': video_entry['badge'], 
-                          'badgeColor': video_entry['badgeColor'],
-                          'affiliateUrl': video_entry['affiliateUrl'],
-                          'releaseDate': video_entry['releaseDate']
-                      })
-
-              v_type = str(video_entry['type']).lower()
-              v_tags = [str(t).lower().strip() for t in video_entry['tags']]
-              title_lower = title.lower()
-
-              if 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower:
-                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_vr):
-                      pool_vr.append(video_entry)
-              if 'black' in v_tags:
-                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_dark):
-                      pool_dark.append(video_entry)
-              if not ('vr' in v_type or 'vr' in v_tags or 'vr' in title_lower) and not ('black' in v_tags):
-                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
-                      pool_normal.append(video_entry)
-
-          fanza_rank_data = []
-          mgs_rank_data = []
-
-          for slug, entries in actresses.items():
-              clean_items = [e['data'] for e in entries]
-              with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
-                  json.dump(clean_items, f, ensure_ascii=False, indent=2)
+                  g1_url = item.get('gif1Url') or ''
+                  g2_url = item.get('gif2Url') or ''
+                  if not g1_url and not g2_url:
+                      continue
+                      
+                  title = item.get('title', '')
+                  xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
                   
-              for item_data in clean_items:
-                  b_col = item_data.get('badgeColor', '')
-                  if b_col == "mgs-rank" and item_data not in mgs_rank_data:
-                      mgs_rank_data.append(item_data)
-                  elif b_col in ["gold", "silver", "bronze", "gray"] and item_data not in fanza_rank_data:
-                      fanza_rank_data.append(item_data)
+                  v_badge_text = ''
+                  v_badge_color = ''
+                  best_fanza = 9999
+                  best_mgs = 9999
+                  for a_id in target_ids:
+                      if a_id in fanza_map and fanza_map[a_id]['num'] < best_fanza:
+                          best_fanza = fanza_map[a_id]['num']
+                      if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
+                          best_mgs = mgs_map[a_id]['num']
 
-          with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f:
-              json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
+                  if best_mgs <= 100:
+                      for a_id in target_ids:
+                          if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
+                              v_badge_text = mgs_map[a_id]['text']
+                              v_badge_color = 'mgs-rank'
+                              break
+                  elif best_fanza <= 100:
+                      for a_id in target_ids:
+                          if a_id in fanza_map and fanza_map[a_id]['num'] == best_fanza:
+                              v_badge_text = fanza_map[a_id]['text']
+                              if best_fanza <= 10:
+                                  v_badge_color = 'gold'
+                              elif best_fanza <= 30:
+                                  v_badge_color = 'silver'
+                              elif best_fanza <= 50:
+                                  v_badge_color = 'bronze'
+                              else:
+                                  v_badge_color = 'gray'
+                              break
 
-          with open('data/ranking_mgs.json', 'w', encoding='utf-8') as f:
-              json.dump(mgs_rank_data, f, ensure_ascii=False, indent=2)
+                  video_entry = {
+                      'title': title,
+                      'catchphrase': item.get('catchphrase', ''),
+                      'badge': v_badge_text, 
+                      'badgeColor': v_badge_color, 
+                      'type': item.get('type', ''),
+                      'tags': item.get('tags', []),
+                      'releaseDate': item.get('releaseDate', ''),
+                      'gif1Url': g1_url,
+                      'gif2Url': g2_url if g2_url else g1_url,
+                      'affiliateUrl': item.get('affiliateUrl', '')
+                  }
 
-          with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
-              json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
+                  for a_id in target_ids:
+                      slug = slug_mapping.get(a_id, a_id)
+                      if slug not in actresses_map:
+                          actresses_map[slug] = []
+                      instance_entry = video_entry.copy()
+                      instance_entry['actressId'] = a_id
+                      actresses_map[slug].append({'data': instance_entry, 'xml_title': xml_title})
 
-          shuffled_normal = list(pool_normal)
-          random.shuffle(shuffled_normal)
-          with open('data/related_normal.json', 'w', encoding='utf-8-sig') as f:
-              json.dump(shuffled_normal[:250], f, ensure_ascii=False, indent=2)
+                  r_date = str(video_entry['releaseDate'])
+                  if target_single in r_date or target_double in r_date:
+                      if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
+                          new_arrival_pool.append({
+                              'gif2Url': video_entry['gif2Url'],
+                              'title': video_entry['title'],
+                              'catchphrase': video_entry['catchphrase'], 
+                              'badge': video_entry['badge'], 
+                              'badgeColor': video_entry['badgeColor'],
+                              'affiliateUrl': video_entry['affiliateUrl'],
+                              'releaseDate': video_entry['releaseDate']
+                          })
 
-          shuffled_vr = list(pool_vr)
-          random.shuffle(shuffled_vr)
-          with open('data/related_vr.json', 'w', encoding='utf-8-sig') as f:
-              json.dump(shuffled_vr[:250], f, ensure_ascii=False, indent=2)
+                  v_type = str(video_entry['type']).lower()
+                  v_tags = [str(t).lower().strip() for t in video_entry['tags']]
+                  title_lower = title.lower()
 
-          shuffled_dark = list(pool_dark)
-          random.shuffle(shuffled_dark)
-          with open('data/related_dark.json', 'w', encoding='utf-8-sig') as f:
-              json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
+                  if 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower:
+                      if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_vr):
+                          pool_vr.append(video_entry)
+                  if 'black' in v_tags:
+                      if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_dark):
+                          pool_dark.append(video_entry)
+                  if not ('vr' in v_type or 'vr' in v_tags or 'vr' in title_lower) and not ('black' in v_tags):
+                      if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
+                          pool_normal.append(video_entry)
+              fanza_rank_data = []
+              mgs_rank_data = []
 
-          xml_lines = []
-          xml_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-          xml_lines.append('<urlset xmlns="http://sitemaps.org" xmlns:image="http://google.com">')
-          for slug, entries in actresses.items():
-              xml_lines.append('  <url>')
-              xml_lines.append(f'    <loc>{site_url}/{slug}/</loc>')
-              for e in entries:
-                  xml_lines.append('    <image:image>')
-                  xml_lines.append(f'      <image:loc>{e["data"]["gif2Url"]}</image:loc>')
-                  if e['xml_title']:
-                      xml_lines.append(f'      <image:title>{e["xml_title"]}</image:title>')
-                  xml_lines.append('    </image:image>')
-              xml_lines.append('  </url>')
-          xml_lines.append('</urlset>')
+              for slug, entries in actresses_map.items():
+                  clean_items = [e['data'] for e in entries]
+                  with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
+                      json.dump(clean_items, f, ensure_ascii=False, indent=2)
+                      
+                  for item_data in clean_items:
+                      b_col = item_data.get('badgeColor', '')
+                      if b_col == 'mgs-rank' and item_data not in mgs_rank_data:
+                          mgs_rank_data.append(item_data)
+                      elif b_col in ['gold', 'silver', 'bronze', 'gray'] and item_data not in fanza_rank_data:
+                          fanza_rank_data.append(item_data)
 
-          final_xml = '\n'.join(xml_lines)
-          with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
-              f.write(final_xml)
-          EOF
+              with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f:
+                  json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
+
+              with open('data/ranking_mgs.json', 'w', encoding='utf-8') as f:
+                  json.dump(mgs_rank_data, f, ensure_ascii=False, indent=2)
+
+              with open('data/new_arrival.json', 'w', encoding='utf-8') as f:
+                  json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
+
+              shuffled_normal = list(pool_normal)
+              random.shuffle(shuffled_normal)
+              with open('data/related_normal.json', 'w', encoding='utf-8-sig') as f:
+                  json.dump(shuffled_normal[:250], f, ensure_ascii=False, indent=2)
+
+              shuffled_vr = list(pool_vr)
+              random.shuffle(shuffled_vr)
+              with open('data/related_vr.json', 'w', encoding='utf-8-sig') as f:
+                  json.dump(shuffled_vr[:250], f, ensure_ascii=False, indent=2)
+
+              shuffled_dark = list(pool_dark)
+              random.shuffle(shuffled_dark)
+              with open('data/related_dark.json', 'w', encoding='utf-8-sig') as f:
+                  json.dump(shuffled_dark[:250], f, ensure_ascii=False, indent=2)
+
+              xml_lines = []
+              xml_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
+              xml_lines.append('<urlset xmlns="http://sitemaps.org" xmlns:image="http://google.com">')
+              for slug, entries in actresses_map.items():
+                  xml_lines.append('  <url>')
+                  xml_lines.append(f'    <loc>{site_url}/{slug}/</loc>')
+                  for e in entries:
+                      xml_lines.append('    <image:image>')
+                      xml_lines.append(f'      <image:loc>{e["data"]["gif2Url"]}</image:loc>')
+                      if e['xml_title']:
+                          xml_lines.append(f'      <image:title>{e["xml_title"]}</image:title>')
+                      xml_lines.append('    </image:image>')
+                  xml_lines.append('  </url>')
+              xml_lines.append('</urlset>')
+
+              final_xml = '\n'.join(xml_lines).replace('\\"', '"')
+              with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
+                  f.write(final_xml)
+          "
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
-          git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 箇条書きリスト完全自動最適化インフラ始動' && git push origin HEAD:main)
+          git add sitemap-images.xml data/*.json actresses.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：動画仕分け＆女優バッジ完全自動化インフラ始動' && git push origin HEAD:main)
