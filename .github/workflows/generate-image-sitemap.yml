@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Full Automation
         run: |
-          python -c "
+          python -c r"""
           import json
           import os
           import random
@@ -58,6 +58,7 @@ jobs:
                           mgs_map[clean_id] = {'text': f'MGS {idx}位', 'color': 'mgs-rank', 'num': idx}
                           idx += 1
 
+          act_data = []
           if os.path.exists('actresses.json'):
               with open('actresses.json', 'r', encoding='utf-8') as f:
                   act_data = json.load(f)
@@ -89,11 +90,11 @@ jobs:
                       clean_str = re.sub(r'\s+', '', clean_str)
                       parts = [p for p in clean_str.split('-') if p]
                       if len(parts) >= 3:
-                          return datetime(int(parts), int(parts), int(parts))
+                          return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
                       elif len(parts) == 2:
-                          return datetime(int(parts), int(parts), 1)
+                          return datetime(int(parts[0]), int(parts[1]), 1)
                       elif len(parts) == 1:
-                          return datetime(int(parts), 1, 1)
+                          return datetime(int(parts[0]), 1, 1)
                   except Exception:
                       pass
                   return datetime(1970, 1, 1)
@@ -221,7 +222,6 @@ jobs:
                   with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
                       json.dump(clean_items, f, ensure_ascii=False, indent=2)
 
-              # 🏆 【大正解】動画の山を流さず、女優ID・順位・色だけを綺麗に抽出！
               fanza_rank_data = []
               mgs_rank_data = []
               for act in act_data:
@@ -278,7 +278,7 @@ jobs:
               final_xml = '\n'.join(xml_lines).replace('\\"', '"')
               with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
                   f.write(final_xml)
-          "
+          """
 
       - name: Commit and Push Changes
         run: |
