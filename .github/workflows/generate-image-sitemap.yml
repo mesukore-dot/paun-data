@@ -277,7 +277,7 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
           git add sitemap-images.xml data/*.json actresses.json
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：動画仕分け＆女優バッジ完全自動化インフラ始動' && git push origin HEAD:main)
