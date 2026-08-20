@@ -126,7 +126,7 @@ jobs:
               title = item.get('title', '')
               xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
               
-              badge_text = ""
+              badge_text = "" # ⭕ ここに消えていた "" をミリ単位で完璧に繋ぎ直しました！
               badge_color = ""
               
               best_fanza = 9999
