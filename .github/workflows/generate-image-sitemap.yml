@@ -95,7 +95,7 @@ jobs:
               'watanabe_hono': 'watanabe-hono',
               'hakata_iroha': 'hakata-iroha'
           }
-                    for item in data:
+          for item in data:
               actress_id_field = item.get('actressId')
               if not actress_id_field:
                   continue
@@ -126,7 +126,6 @@ jobs:
                   if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
                       best_mgs = mgs_map[a_id]['num']
 
-              # 💡【修正ポイント】安全にバッジテキストとカラーのクラス名を確定
               if best_mgs <= 100:
                   for a_id in target_ids:
                       if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
@@ -186,21 +185,6 @@ jobs:
               v_tags = [str(t).lower().strip() for t in video_entry['tags']]
               title_lower = title.lower()
 
-              related_item = {
-                  'actressIds': target_ids,
-                  'gif1Url': g1_url,
-                  'gif2Url': g2_url if g2_url else g1_url,
-                  'title': title,
-                  'catchphrase': video_entry['catchphrase'],
-                  'badge': video_entry['badge'], 
-                  'badgeColor': video_entry['badgeColor'],
-                  'type': video_entry['type'],
-                  'tags': video_entry['tags'],
-                  'releaseDate': video_entry['releaseDate'],
-                  'affiliateUrl': video_entry['affiliateUrl']
-              }
-
-              # 💡【バグ修正】条件分岐の変数定義エラーを安全に修正
               is_vr = 'vr' in v_type or 'vr' in v_tags or 'vr' in title_lower
               is_black = 'black' in v_tags
 
@@ -278,4 +262,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 金銀銅グレー4段階バッジ自動判定インフラ修正完了' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 2大ランキング完全防弾インフラアップデート版' && git push origin HEAD:main)
