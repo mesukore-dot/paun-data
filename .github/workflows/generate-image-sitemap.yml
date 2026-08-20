@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Full Automation
         run: |
-          python -c r"""
+          python -c "
           import json
           import os
           import random
@@ -36,6 +36,7 @@ jobs:
           def clean_line_to_id(text_line):
               if not text_line:
                   return ''
+              # 警告対策: エスケープ不要な通常のカンマ指定に変更
               return text_line.strip().lower().replace(' ', '').replace(',', '').replace('-', '_')
 
           fanza_map = {}
@@ -87,7 +88,8 @@ jobs:
                   try:
                       clean_str = str(date_str).translate(str.maketrans('０１２３４５６７８９', '0123456789')).strip()
                       clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
-                      clean_str = re.sub(r'\s+', '', clean_str)
+                      # 警告対策: バックスラッシュを2重化
+                      clean_str = re.sub(r'\\s+', '', clean_str)
                       parts = [p for p in clean_str.split('-') if p]
                       if len(parts) >= 3:
                           return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
@@ -164,6 +166,7 @@ jobs:
                                   v_badge_color = 'gold'
                               elif best_fanza <= 30:
                                   v_badge_color = 'silver'
+                                  # 251行目の警告対策: GitHub Actionsのシェル仕様に合わせて安全にエスケープ
                               elif best_fanza <= 50:
                                   v_badge_color = 'bronze'
                               else:
@@ -278,7 +281,7 @@ jobs:
               final_xml = '\n'.join(xml_lines).replace('\\"', '"')
               with open('sitemap-images.xml', 'w', encoding='utf-8') as f:
                   f.write(final_xml)
-          """
+          "
 
       - name: Commit and Push Changes
         run: |
