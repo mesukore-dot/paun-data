@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "actressId": "haruna_noa",
+    "badge": "月間22位",
+    "badgeColor": "silver"
+  },
+  {
+    "actressId": "tano_yuu",
+    "badge": "月間52位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "kanematsu_kiho",
+    "badge": "月間44位",
+    "badgeColor": "bronze"
+  },
+  {
+    "actressId": "misono_waka",
+    "badge": "月間7位",
+    "badgeColor": "gold"
+  },
+  {
+    "actressId": "ishikawa_mio",
+    "badge": "月間11位",
+    "badgeColor": "silver"
+  },
+  {
+    "actressId": "adachi_yuuri",
+    "badge": "月間57位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "shirakami_emika",
+    "badge": "月間79位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "kawakita_saika",
+    "badge": "月間4位",
+    "badgeColor": "gold"
+  },
+  {
+    "actressId": "seto_kanna",
+    "badge": "月間5位",
+    "badgeColor": "gold"
+  },
+  {
+    "actressId": "satsuki_nao",
+    "badge": "月間16位",
+    "badgeColor": "silver"
+  }
+]

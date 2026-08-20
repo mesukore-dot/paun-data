@@ -15,7 +15,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/ichika-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/ichika/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/ichika/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "haruna_noa",
@@ -33,7 +35,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/haruna_noa-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/haruno_noa/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/haruno_noa/",
+    "badge": "月間22位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "kuroki_ria",
@@ -51,7 +55,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/kuroki_ria-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/kuroki_ria/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/kuroki_ria/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "miyoshi_uta",
@@ -69,7 +75,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/miyoshi_uta-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/miyoshi_uta/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/miyoshi_uta/",
+    "badge": "MGS 3位",
+    "badgeColor": "mgs-rank"
   },
   {
     "actressId": "nakamori_nanami",
@@ -87,7 +95,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/nakamori_nanami-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/nakamori_nanami/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/nakamori_nanami/",
+    "badge": "MGS 7位",
+    "badgeColor": "mgs-rank"
   },
   {
     "actressId": "tano_yuu",
@@ -105,7 +115,9 @@
     "isNew": false,
     "isPopular": true,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/tano_yuu-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/tano_yuu/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/tano_yuu/",
+    "badge": "月間52位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "shiorina_yui",
@@ -123,7 +135,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/shiorina_yui-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/shiorina_yui/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/shiorina_yui/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "shiraishi_koharu",
@@ -141,7 +155,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/shiraishi_koharu-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/shiraishi_koharu/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/shiraishi_koharu/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "shidou_rui",
@@ -159,7 +175,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/snos00112jp-1.jpg-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/shidou_rui/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/shidou_rui/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "nagahama_mitsuri",
@@ -177,7 +195,9 @@
     "isNew": false,
     "isPopular": true,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/nagama_matsuri-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/nagahama_mitsuri/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/nagahama_mitsuri/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "kanematsu_kiho",
@@ -195,7 +215,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/kanematsu_kiho-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/kanematsu_kiho/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/kanematsu_kiho/",
+    "badge": "月間44位",
+    "badgeColor": "bronze"
   },
   {
     "actressId": "misono_waka",
@@ -213,7 +235,9 @@
     "isNew": false,
     "isPopular": true,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/misono_waka-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/misono_waka/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/misono_waka/",
+    "badge": "月間7位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "ishikawa_mio",
@@ -231,7 +255,9 @@
     "isNew": false,
     "isPopular": true,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/ishikawa_mio.jpg-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/ishikawa_mio/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/ishikawa_mio/",
+    "badge": "月間11位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "yano_aimi",
@@ -249,7 +275,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/mida00796jp-10.jpg-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/yano_aimi/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/yano_aimi/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "sannoki_kanna",
@@ -267,7 +295,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/sannoki_kanna-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/sannoki_kanna/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/sannoki_kanna/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "mirai_miu",
@@ -285,7 +315,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/mirai_miu-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/mirai_miu/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/mirai_miu/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "adachi_yuuri",
@@ -303,7 +335,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/adachi-yuuri.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/adachi_yuuri/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/adachi_yuuri/",
+    "badge": "月間57位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "shirakami_emika",
@@ -321,7 +355,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/shirakami_emika-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/shirakami_emika/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/shirakami_emika/",
+    "badge": "月間79位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "araki_noa",
@@ -339,7 +375,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/araki_noa-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/araki_noa/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/araki_noa/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "hatsumi_nanoka",
@@ -357,7 +395,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/hatsumi_nanoka.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/hatsumi_nanoka/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/hatsumi_nanoka/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "mashiro_sana",
@@ -375,7 +415,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/mashiro_sana-profile.2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/mashiro_sana/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/mashiro_sana/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "kimura_ako",
@@ -393,7 +435,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/kimura_ako-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/kimura_ako/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/kimura_ako/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "nanami_mano",
@@ -411,7 +455,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/nanami_mano-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/nanami_mano/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/nanami_mano/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "hayasaka_kanon",
@@ -429,7 +475,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/hayasaka_kanon-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/hayasaka_kanon/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/hayasaka_kanon/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "kashiwagi_fumika",
@@ -447,7 +495,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/kashiwagi_humika-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/kashiwagi_fumika/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/kashiwagi_fumika/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "daimon_reya",
@@ -465,7 +515,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/ebwh00350jp-1.jpg-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/daimon_reya/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/daimon_reya/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "kikuno_ran",
@@ -483,7 +535,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/kikuno_ran-profile-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/kikuno_ran/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/kikuno_ran/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "yakuno_marina",
@@ -501,7 +555,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/yakuno_marina-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/yakuno_marina/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/yakuno_marina/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "kawakita_saika",
@@ -519,7 +575,9 @@
     "isNew": false,
     "isPopular": true,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/kawakita_saika-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/kawakita_saika/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/kawakita_saika/",
+    "badge": "月間4位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "shiraishi_towa",
@@ -537,7 +595,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/shiraishi_towa-profile-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/shiraishi_towa/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/shiraishi_towa/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "mitsu_konoha",
@@ -555,7 +615,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/snos00257jp-1.jpg-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/mitsu_konoha/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/mitsu_konoha/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "neo_akari",
@@ -573,7 +635,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/neo_akari-package.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/neo_akari/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/neo_akari/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "mikoto_chio",
@@ -591,7 +655,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/mikoto_chio-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/mikoto_chio/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/mikoto_chio/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "seto_kanna",
@@ -609,7 +675,9 @@
     "isNew": false,
     "isPopular": true,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/snos00064jp-1.jpg-3.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/seto_kanna/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/seto_kanna/",
+    "badge": "月間5位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "hakata_iroha",
@@ -627,7 +695,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/hakata_iroha-profile-2.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/hakata-iroha/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/hakata-iroha/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "hoshizora_neru",
@@ -645,7 +715,9 @@
     "isNew": true,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/hoshizora_neru-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/hoshizora_neru/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/hoshizora_neru/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "satsuki_nao",
@@ -663,7 +735,9 @@
     "isNew": false,
     "isPopular": true,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/satsuki_nao-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/satsuki_nao/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/satsuki_nao/",
+    "badge": "月間16位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "toumine_hinako",
@@ -681,7 +755,9 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/higashimine-hinako_profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/higashimine-hinako/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/higashimine-hinako/",
+    "badge": "",
+    "badgeColor": ""
   },
   {
     "actressId": "watanabe_hono",
@@ -699,6 +775,8 @@
     "isNew": false,
     "isPopular": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/07/watanabe-hono-profile.webp",
-    "pageUrl": "https://wpmesucolle.wpx.jp/watanabe-hono/"
+    "pageUrl": "https://wpmesucolle.wpx.jp/watanabe-hono/",
+    "badge": "",
+    "badgeColor": ""
   }
 ]
