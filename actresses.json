@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "kitaoka_karin",
+    "name": "北岡果林",
+    "kana": "きたおかかりん",
+    "cup": "D",
+    "debutDate": "2024年4月5日",
+    "birthday": "2003年9月19日",
+    "birthplace": "東京都",
+    "bloodType": "B型",
+    "threeSize": "T160 / B86 / W57 / H84",
+    "height": 160,
+    "bust": 86,
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/kitaoka_karin-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kitaoka_karin/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "aizawa_miyu",
     "name": "逢沢みゆ",
