@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "matsumoto_ichika",
+    "name": "松本いちか",
+    "kana": "まつもといちか",
+    "cup": "B",
+    "debutDate": "2019年9月26日",
+    "birthday": "2000年2月19日",
+    "birthplace": "宮城県仙台市",
+    "bloodType": "A型",
+    "threeSize": "T153 / B68 / W58 / H86",
+    "height": 153,
+    "bust": 68,
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/matsumoto_ichika-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/matsumoto_ichika/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "ichika",
     "name": "いち花",
