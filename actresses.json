@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "kitaoka_karin",
     "name": "北岡果林",
     "kana": "きたおかかりん",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/kitaoka_karin-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/kitaoka_karin/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間2位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "aizawa_miyu",
