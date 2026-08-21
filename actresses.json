@@ -1,5 +1,5 @@
 [
-     {
+  {
     "actressId": "aizawa_miyu",
     "name": "逢沢みゆ",
     "kana": "あいざわみゆ",
@@ -15,10 +15,10 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/aizawa_miyu-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/aizawa_miyu/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間3位",
+    "badgeColor": "gold"
   },
-   {
+  {
     "actressId": "unpai",
     "name": "うんぱい",
     "kana": "うんぱい",
@@ -34,8 +34,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/unpai-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/unpai/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間65位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "matsumoto_ichika",

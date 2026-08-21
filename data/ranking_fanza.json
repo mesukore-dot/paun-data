@@ -1,5 +1,15 @@
 [
   {
+    "actressId": "aizawa_miyu",
+    "badge": "月間3位",
+    "badgeColor": "gold"
+  },
+  {
+    "actressId": "unpai",
+    "badge": "月間65位",
+    "badgeColor": "gray"
+  },
+  {
     "actressId": "matsumoto_ichika",
     "badge": "月間1位",
     "badgeColor": "gold"
