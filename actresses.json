@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "matsumoto_ichika",
     "name": "松本いちか",
     "kana": "まつもといちか",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/matsumoto_ichika-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/matsumoto_ichika/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間1位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "ichika",

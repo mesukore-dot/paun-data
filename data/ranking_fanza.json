@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "matsumoto_ichika",
+    "badge": "月間1位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "haruna_noa",
     "badge": "月間22位",
     "badgeColor": "silver"
