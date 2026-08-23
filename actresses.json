@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "nijimura_yumi",
+    "name": "虹村ゆみ",
+    "kana": "にじむらゆみ",
+    "cup": "D",
+    "debutDate": "2024年8月2日",
+    "birthday": "2003年7月10日",
+    "birthplace": "北海道",
+    "bloodType": "-",
+    "threeSize": "T164 / B85 / W63 / H87",
+    "height": 164,
+    "bust": 85,
+    "hobby": "旅行・買い物",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/nijimura_yumi-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/nijimura_yumi/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "yukimura_itsuki",
     "name": "幸村泉希",
