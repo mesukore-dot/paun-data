@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "otsu_arisu",
+    "badge": "月間6位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "kitaoka_karin",
     "badge": "月間2位",
     "badgeColor": "gold"

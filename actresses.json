@@ -1,5 +1,5 @@
 [
-    {
+  {
     "actressId": "otsu_arisu",
     "name": "乙アリス",
     "kana": "おつありす",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/otsu_arisu-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/otsu_arisu/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間6位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "nijimura_yumi",
