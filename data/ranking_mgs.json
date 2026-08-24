@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "kawai_asuna",
+    "badge": "MGS 6位",
+    "badgeColor": "mgs-rank"
+  },
+  {
     "actressId": "miyoshi_uta",
     "badge": "MGS 3位",
     "badgeColor": "mgs-rank"

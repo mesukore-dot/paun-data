@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "kawai_asuna",
     "name": "河合あすな",
     "kana": "かわいあすな",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/kawai_asuna-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/kawai_asuna/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "MGS 6位",
+    "badgeColor": "mgs-rank"
   },
   {
     "actressId": "otsu_arisu",
