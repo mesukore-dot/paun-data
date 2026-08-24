@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "satsuki_ena",
+    "name": "沙月恵奈",
+    "kana": "さつきえな",
+    "cup": "E",
+    "debutDate": "2020年10月22日",
+    "birthday": "1999年6月11日",
+    "birthplace": "千葉県",
+    "bloodType": "A型",
+    "threeSize": "T152 / B85 / W67 / H95",
+    "height": 152,
+    "bust": 85,
+    "hobby": "ゲーム・アニメ",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/satsuki_ena-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/satsuki_ena/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "kawai_asuna",
     "name": "河合あすな",
