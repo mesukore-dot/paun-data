@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "satsuki_ena",
     "name": "沙月恵奈",
     "kana": "さつきえな",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/satsuki_ena-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/satsuki_ena/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間8位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "kawai_asuna",

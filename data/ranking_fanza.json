@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "satsuki_ena",
+    "badge": "月間8位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "otsu_arisu",
     "badge": "月間6位",
     "badgeColor": "gold"
