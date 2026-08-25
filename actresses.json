@@ -1,4 +1,23 @@
 [
+    {
+    "actressId": "toujou_natsu",
+    "name": "東條なつ",
+    "kana": "とうじょうなつ",
+    "cup": "C",
+    "debutDate": "2020年3月12日",
+    "birthday": "1999年8月19日",
+    "birthplace": "栃木県",
+    "bloodType": "A型",
+    "threeSize": "T156 / B78 / W55 / H85",
+    "height": 156,
+    "bust": 78,
+    "hobby": "楽器・習字・カラオケ・スノーボード",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/toujou_natsu.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/toujou_natsu/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "yayoi_miduki",
     "name": "弥生みづき",
