@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "haruhi_moka",
+    "name": "春陽モカ",
+    "kana": "はるひもか",
+    "cup": "G",
+    "debutDate": "2024年3月5日",
+    "birthday": "2002年5月27日",
+    "birthplace": "-",
+    "bloodType": "A型",
+    "threeSize": "T163 / B90 / W57 / H85",
+    "height": 163,
+    "bust": 90,
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/haruhi_moka-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/haruhi_moka/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "toujou_natsu",
     "name": "東條なつ",
