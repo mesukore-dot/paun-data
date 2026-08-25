@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "toujou_natsu",
+    "badge": "月間51位",
+    "badgeColor": "gray"
+  },
+  {
     "actressId": "yayoi_miduki",
     "badge": "月間9位",
     "badgeColor": "gold"

@@ -1,5 +1,5 @@
 [
-    {
+  {
     "actressId": "toujou_natsu",
     "name": "東條なつ",
     "kana": "とうじょうなつ",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/toujou_natsu.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/toujou_natsu/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間51位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "yayoi_miduki",
