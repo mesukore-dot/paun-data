@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "haruhi_moka",
+    "badge": "月間71位",
+    "badgeColor": "gray"
+  },
+  {
     "actressId": "toujou_natsu",
     "badge": "月間51位",
     "badgeColor": "gray"

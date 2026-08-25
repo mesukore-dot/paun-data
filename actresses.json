@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "haruhi_moka",
     "name": "春陽モカ",
     "kana": "はるひもか",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/haruhi_moka-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/haruhi_moka/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間71位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "toujou_natsu",
