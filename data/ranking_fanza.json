@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "hatano_yui",
+    "badge": "月間10位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "haruhi_moka",
     "badge": "月間71位",
     "badgeColor": "gray"

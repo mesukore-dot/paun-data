@@ -1,5 +1,5 @@
 [
-    {
+  {
     "actressId": "hatano_yui",
     "name": "波多野結衣",
     "kana": "はたのゆい",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/hatano_yui-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/hatano_yui/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間10位",
+    "badgeColor": "gold"
   },
   {
     "actressId": "haruhi_moka",
