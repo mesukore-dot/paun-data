@@ -1,4 +1,23 @@
 [
+    {
+    "actressId": "hatano_yui",
+    "name": "波多野結衣",
+    "kana": "はたのゆい",
+    "cup": "H",
+    "debutDate": "2008年6月3日",
+    "birthday": "1988年5月24日",
+    "birthplace": "京都府",
+    "bloodType": "A型",
+    "threeSize": "T163 / B93 / W59 / H103",
+    "height": 163,
+    "bust": 93,
+    "hobby": "アニメ・ゲーム",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/hatano_yui-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/hatano_yui/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "haruhi_moka",
     "name": "春陽モカ",
