@@ -1,5 +1,5 @@
 [
-    {
+  {
     "actressId": "mikami_yua",
     "name": "三上悠亜",
     "kana": "みかみゆあ",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/mikami_yua-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/mikami_yua/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間12位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "miduki_yui",
