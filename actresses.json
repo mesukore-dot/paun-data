@@ -1,4 +1,23 @@
 [
+    {
+    "actressId": "mikami_yua",
+    "name": "三上悠亜",
+    "kana": "みかみゆあ",
+    "cup": "G",
+    "debutDate": "2015年6月1日",
+    "birthday": "1993年8月16日",
+    "birthplace": "愛知県名古屋市",
+    "bloodType": "A型",
+    "threeSize": "T159 / B88 / W57 / H83",
+    "height": 159,
+    "bust": 88,
+    "hobby": "歌・ダンス",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/mikami_yua-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/mikami_yua/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "miduki_yui",
     "name": "美月結衣",
