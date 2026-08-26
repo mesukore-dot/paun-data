@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "yumeno_aika",
+    "name": "夢乃あいか",
+    "kana": "ゆめのあいか",
+    "cup": "H",
+    "debutDate": "2013年5月3日",
+    "birthday": "1994年8月26日",
+    "birthplace": "東京都",
+    "bloodType": "-",
+    "threeSize": "T149 / B79 / W52 / H78",
+    "height": 149,
+    "bust": 79,
+    "hobby": "食べること・ウィンドウショッピング・ピアノ",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/yumeno_aika-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/yumeno_aika/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "nishimoto_meisa",
     "name": "西元めいさ",
