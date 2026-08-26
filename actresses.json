@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "yumeno_aika",
     "name": "夢乃あいか",
     "kana": "ゆめのあいか",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/yumeno_aika-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/yumeno_aika/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間13位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "nishimoto_meisa",
