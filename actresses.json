@@ -1,4 +1,23 @@
 [
+    {
+    "actressId": "nishimoto_meisa",
+    "name": "西元めいさ",
+    "kana": "にしもとめいさ",
+    "cup": "C",
+    "debutDate": "2020年9月15日",
+    "birthday": "1999年4月30日",
+    "birthplace": "千葉県",
+    "bloodType": "O型",
+    "threeSize": "T152 / B80 / W56 / H84",
+    "height": 152,
+    "bust": 80,
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/nishimoto_meisa-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/nishimoto_meisa/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "mikami_yua",
     "name": "三上悠亜",
@@ -184,7 +203,7 @@
     "bust": 85,
     "hobby": "ゲーム・アニメ",
     "isNew": false,
-    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/satsuki_ena-profile.webp",
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/satsuki_ena-profile2.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/satsuki_ena/",
     "badge": "月間8位",
     "badgeColor": "gold"
