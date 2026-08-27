@@ -1,4 +1,23 @@
 [
+    {
+    "actressId": "tenma_yui",
+    "name": "天馬ゆい",
+    "kana": "てんまゆい",
+    "cup": "D",
+    "debutDate": "2018年4月7日",
+    "birthday": "1998年2月14日",
+    "birthplace": "青森県",
+    "bloodType": "A型",
+    "threeSize": "T162 / B85 / W61 / H87",
+    "height": 162,
+    "bust": 85,
+    "hobby": "アニメ・ゲーム・コスプレ",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/tenma_yui-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/tenma_yui/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "yumeno_aika",
     "name": "夢乃あいか",
