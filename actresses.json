@@ -1,5 +1,5 @@
 [
-    {
+  {
     "actressId": "tenma_yui",
     "name": "天馬ゆい",
     "kana": "てんまゆい",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/tenma_yui-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/tenma_yui/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間14位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "yumeno_aika",
