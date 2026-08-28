@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "washio_mei",
+    "name": "鷲尾めい",
+    "kana": "わしおめい/かけいじゅん",
+    "cup": "L",
+    "debutDate": "2019年4月4日",
+    "birthday": "1997年10月20日",
+    "birthplace": "神奈川県",
+    "bloodType": "A型",
+    "threeSize": "T164 / B104 / W59 / H89",
+    "height": 164,
+    "bust": 104,
+    "hobby": "プラネタリウム鑑賞",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/washio_mei-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/washio_mei/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "gojou_ren",
     "name": "五条恋",
