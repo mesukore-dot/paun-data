@@ -1,5 +1,24 @@
 [
   {
+    "actressId": "gojou_ren",
+    "name": "五条恋",
+    "kana": "ごじょうれん",
+    "cup": "J",
+    "debutDate": "2023年9月26日",
+    "birthday": "1997年11月18日",
+    "birthplace": "山梨県",
+    "bloodType": "AB型",
+    "threeSize": "T153 / B105 / W59 / H80",
+    "height": 153,
+    "bust": 105,
+    "hobby": "お笑い",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/gojou_ren-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/gojou_ren/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "tenma_yui",
     "name": "天馬ゆい",
     "kana": "てんまゆい",
