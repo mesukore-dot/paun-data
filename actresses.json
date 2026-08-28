@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "washio_mei",
     "name": "鷲尾めい",
     "kana": "わしおめい/かけいじゅん",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/washio_mei-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/washio_mei/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間15位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "gojou_ren",

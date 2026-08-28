@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "washio_mei",
+    "badge": "月間15位",
+    "badgeColor": "silver"
+  },
+  {
     "actressId": "gojou_ren",
     "badge": "月間91位",
     "badgeColor": "gray"
