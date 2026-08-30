@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "yatsugake_umi",
     "name": "八掛うみ",
     "kana": "やつがけうみ",
@@ -15,8 +15,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/yatsugake_umi-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/yatsugake_umi/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "MGS 8位",
+    "badgeColor": "mgs-rank"
   },
   {
     "actressId": "washio_mei",

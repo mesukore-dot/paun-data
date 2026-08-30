@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "yatsugake_umi",
+    "badge": "MGS 8位",
+    "badgeColor": "mgs-rank"
+  },
+  {
     "actressId": "kawai_asuna",
     "badge": "MGS 6位",
     "badgeColor": "mgs-rank"
