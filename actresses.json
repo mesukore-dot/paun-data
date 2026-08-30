@@ -1,4 +1,23 @@
 [
+   {
+    "actressId": "yatsugake_umi",
+    "name": "八掛うみ",
+    "kana": "やつがけうみ",
+    "cup": "A",
+    "debutDate": "2020年11月6日",
+    "birthday": "2000年9月2日",
+    "birthplace": "東京都",
+    "bloodType": "A型",
+    "threeSize": "T160 / B80 / W57 / H85",
+    "height": 160,
+    "bust": 80,
+    "hobby": "料理",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/yatsugake_umi-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/yatsugake_umi/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "washio_mei",
     "name": "鷲尾めい",
