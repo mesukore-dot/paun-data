@@ -1,4 +1,23 @@
 [
+    {
+    "actressId": "shishido_riho",
+    "name": "宍戸里帆",
+    "kana": "ししどりほ",
+    "cup": "G",
+    "debutDate": "2022年2月25日",
+    "birthday": "2001年10月14日",
+    "birthplace": "東京都",
+    "bloodType": "-",
+    "threeSize": "T153 / B86 / W73 / H103",
+    "height": 153,
+    "bust": 86,
+    "hobby": "洋画鑑賞",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/shishido-riho-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/shishido_riho/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "marumo_rea",
     "name": "丸最レア",
