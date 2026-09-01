@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "kitano_mina",
     "name": "北野未奈",
     "kana": "kitano_mina",
@@ -17,8 +17,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kitano_mina-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/kitano_mina/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間29位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "shishido_riho",

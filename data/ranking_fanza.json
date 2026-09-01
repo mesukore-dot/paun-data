@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "kitano_mina",
+    "badge": "月間29位",
+    "badgeColor": "silver"
+  },
+  {
     "actressId": "shishido_riho",
     "badge": "月間41位",
     "badgeColor": "bronze"
