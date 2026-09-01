@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "kitano_mina",
+    "name": "北野未奈",
+    "kana": "kitano_mina",
+    "cup": "G",
+    "debutDate": "2021年4月9日",
+    "birthday": "2000年5月20日",
+    "birthplace": "-",
+    "bloodType": "O型",
+    "threeSize": "T162 / B95 / W58 / H90",
+    "height": 162,
+    "bust": 95,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kitano_mina-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kitano_mina/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "shishido_riho",
     "name": "宍戸里帆",
