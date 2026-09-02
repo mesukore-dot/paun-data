@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "kashiwagi_konatsu",
+    "badge": "月間7位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "kitano_mina",
     "badge": "月間19位",
     "badgeColor": "silver"
