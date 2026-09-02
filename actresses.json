@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "chisaki_china",
+    "name": "千咲ちな",
+    "kana": "ちさきちな",
+    "cup": "G",
+    "debutDate": "2025年9月12日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T170 / B92 / W61 / H90",
+    "height": 170,
+    "bust": 92,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/chisaki_china/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "kiduki_amane",
     "name": "希月あまね",
@@ -23,7 +44,7 @@
   {
     "actressId": "kitano_mina",
     "name": "北野未奈",
-    "kana": "kitano_mina",
+    "kana": "きたのみな",
     "cup": "G",
     "debutDate": "2021年4月9日",
     "birthday": "2000年5月20日",
