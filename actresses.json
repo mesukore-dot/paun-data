@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "kashiwagi_konatsu",
+    "name": "柏木こなつ",
+    "kana": "かしわぎこなつ",
+    "cup": "F",
+    "debutDate": "2021年11月1日",
+    "birthday": "2003年7月13日",
+    "birthplace": "山梨県",
+    "bloodType": "O型",
+    "threeSize": "T155 / B86 / W59 / H88",
+    "height": 155,
+    "bust": 86,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kashiwagi_konatsu-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kashiwagi_konatsu/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "hanasaki_yura",
     "name": "花咲ゆら",
