@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "kiduki_amane",
+    "name": "希月あまね",
+    "kana": "きづきあまね",
+    "cup": "K",
+    "debutDate": "2026年10月2日",
+    "birthday": "2001年8月16日",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T167 / B103 / W67 / H90",
+    "height": 167,
+    "bust": 103,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "映画鑑賞・旅行",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kiduki_amane-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kiduki_amane/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "kitano_mina",
     "name": "北野未奈",
