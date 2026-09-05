@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "itou_mayuki",
+    "name": "伊藤舞雪",
+    "kana": "いとうまゆき",
+    "cup": "F",
+    "debutDate": "2017年12月27日",
+    "birthday": "1997年11月30日",
+    "birthplace": "神奈川県",
+    "bloodType": "O型",
+    "threeSize": "T160 / B88 / W54 / H89",
+    "height": 160,
+    "bust": 88,
+    "hip": 89,
+    "status": "現役",
+    "hobby": "映画鑑賞・音楽",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/itou_mayuki-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/itou_mayuki/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "amagi_nene",
     "name": "天城ねね",
