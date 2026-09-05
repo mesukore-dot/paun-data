@@ -1,4 +1,25 @@
 [
+    {
+    "actressId": "misaki_karen",
+    "name": "美咲夏蓮",
+    "kana": "みさきかれん",
+    "cup": "G",
+    "debutDate": "2026年10月2日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T- / B- / W- / H-",
+    "height": null,
+    "bust": null,
+    "hip": null,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/misaki_karen-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/misaki_karen/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "kazami_natsuki",
     "name": "風見渚月",
