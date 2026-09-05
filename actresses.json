@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "itou_mayuki",
     "name": "伊藤舞雪",
     "kana": "いとうまゆき",
@@ -17,8 +17,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/itou_mayuki-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/itou_mayuki/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間33位",
+    "badgeColor": "bronze"
   },
   {
     "actressId": "amagi_nene",
