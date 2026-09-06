@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "kuno_hinano",
+    "name": "九野ひなの",
+    "kana": "くのひなの",
+    "cup": "G",
+    "debutDate": "2022年9月2日",
+    "birthday": "2001年5月25日",
+    "birthplace": "福岡県",
+    "bloodType": "A型",
+    "threeSize": "T157 / B90 / W60 / H88",
+    "height": 157,
+    "bust": 90,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kuno_hinano-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kuno_hinano/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "itou_mayuki",
     "name": "伊藤舞雪",
