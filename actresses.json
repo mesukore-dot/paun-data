@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "himesaki_hana",
+    "name": "姫咲はな",
+    "kana": "ひめさきはな",
+    "cup": "I",
+    "debutDate": "2020年6月9日",
+    "birthday": "1999年5月21日",
+    "birthplace": "北海道",
+    "bloodType": "A型",
+    "threeSize": "T156 / B100 / W62 / H94",
+    "height": 156,
+    "bust": 100,
+    "hip": 94,
+    "status": "現役",
+    "hobby": "ショッピング",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/himesaki_hana-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/himesaki_hana/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "takafuji_nahono",
     "name": "高藤なほの",
