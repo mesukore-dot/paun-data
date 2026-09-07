@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "kinoshita_himari",
+    "name": "木下ひまり",
+    "kana": "きのしたひまり/はなざわひまり",
+    "cup": "D",
+    "debutDate": "2020年4月17日",
+    "birthday": "1996年5月21日",
+    "birthplace": "-",
+    "bloodType": "A型",
+    "threeSize": "T169 / B88 / W57 / H88",
+    "height": 169,
+    "bust": 88,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "ショッピング",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kinoshita_himari-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kinoshita_himari/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "himesaki_hana",
     "name": "姫咲はな",
