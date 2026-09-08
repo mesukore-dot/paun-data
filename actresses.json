@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "onami_aya",
+    "name": "小那海あや",
+    "kana": "おなみあや/さざなみあや",
+    "cup": "E",
+    "debutDate": "2016年12月13日",
+    "birthday": "1997年4月10日",
+    "birthplace": "奈良県",
+    "bloodType": "AB型",
+    "threeSize": "T150 / B82 / W56 / H90",
+    "height": 150,
+    "bust": 82,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "野球観戦",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/onami_aya-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/onami_aya/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "kinoshita_himari",
     "name": "木下ひまり",
