@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "onami_aya",
     "name": "小那海あや",
     "kana": "おなみあや/さざなみあや",
@@ -17,8 +17,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/onami_aya-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/onami_aya/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "月間100位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "kinoshita_himari",

@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "onami_aya",
+    "badge": "月間100位",
+    "badgeColor": "gray"
+  },
+  {
     "actressId": "kinoshita_himari",
     "badge": "月間11位",
     "badgeColor": "silver"
