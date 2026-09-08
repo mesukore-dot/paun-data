@@ -181,7 +181,8 @@ jobs:
                       'releaseDate': item.get('releaseDate', ''),
                       'gif1Url': g1_url,
                       'gif2Url': g2_url if g2_url else g1_url,
-                      'affiliateUrl': item.get('affiliateUrl', '')
+                      'affiliateUrl': item.get('affiliateUrl', ''),
+                      'actressId': target_ids,
                   }
 
                   for a_id in target_ids:
