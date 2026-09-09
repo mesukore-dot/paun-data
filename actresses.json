@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "momozono_rena",
+    "name": "桃園怜奈",
+    "kana": "ももぞのれな",
+    "cup": "I",
+    "debutDate": "2016年1月1日",
+    "birthday": "1996年7月27日",
+    "birthplace": "兵庫県",
+    "bloodType": "B型",
+    "threeSize": "T155 / B97 / W56 / H91",
+    "height": 155,
+    "bust": 97,
+    "hip": 91,
+    "status": "現役",
+    "hobby": "音楽鑑賞",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/momozono_rena-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/momozono_rena/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "onami_aya",
     "name": "小那海あや",
