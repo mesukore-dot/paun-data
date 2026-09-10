@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "zenba_mami",
+    "name": "善場まみ",
+    "kana": "ぜんばまみ　ましろまみ",
+    "cup": "G",
+    "debutDate": "2023年5月25日",
+    "birthday": "1999年7月20日",
+    "birthplace": "神奈川県",
+    "bloodType": "O型",
+    "threeSize": "T152 / B86 / W58 / H88",
+    "height": 152,
+    "bust": 86,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/zenba_mami-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/zenba_mami/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "suzuki_nozomi",
     "name": "鈴木希",
