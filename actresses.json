@@ -1,4 +1,25 @@
 [
+    {
+    "actressId": "hoshino_nami",
+    "name": "星野ナミ",
+    "kana": "ほしのなみ",
+    "cup": "G",
+    "debutDate": "2012年8月3日",
+    "birthday": "1992年7月3日",
+    "birthplace": "福岡県",
+    "bloodType": "A型",
+    "threeSize": "T152 / B90 / W59 / H90",
+    "height": 152,
+    "bust": 90,
+    "hip": 90,
+    "status": "引退済み",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/hoshino_nami/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "zenba_mami",
     "name": "善場まみ",
