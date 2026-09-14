@@ -1,5 +1,5 @@
 [
-   {
+  {
     "actressId": "suzumori_remu",
     "name": "涼森れむ",
     "kana": "すずもりれむ",
@@ -17,8 +17,8 @@
     "isNew": false,
     "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzumori_remu-profile.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/suzumori_remu/",
-    "badge": "",
-    "badgeColor": ""
+    "badge": "MGS 1位",
+    "badgeColor": "mgs-rank"
   },
   {
     "actressId": "hoshino_nami",
