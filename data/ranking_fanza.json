@@ -1,5 +1,15 @@
 [
   {
+    "actressId": "ohana_non",
+    "badge": "月間68位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "tanaka_nene",
+    "badge": "月間88位",
+    "badgeColor": "gray"
+  },
+  {
     "actressId": "onami_aya",
     "badge": "月間100位",
     "badgeColor": "gray"
