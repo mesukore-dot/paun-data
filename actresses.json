@@ -1,4 +1,25 @@
 [
+   {
+    "actressId": "suzumori_remu",
+    "name": "涼森れむ",
+    "kana": "すずもりれむ",
+    "cup": "D",
+    "debutDate": "2019年4月19日",
+    "birthday": "1997年12月3日",
+    "birthplace": "三重県",
+    "bloodType": "O型",
+    "threeSize": "T160 / B87 / W58 / H85",
+    "height": 160,
+    "bust": 87,
+    "hip": 85,
+    "status": "現役",
+    "hobby": "音楽鑑賞・けん玉",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzumori_remu-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/suzumori_remu/",
+    "badge": "",
+    "badgeColor": ""
+  },
   {
     "actressId": "hoshino_nami",
     "name": "星野ナミ",
