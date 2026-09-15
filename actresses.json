@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "odakura_reika",
+    "name": "小田倉れいか",
+    "kana": "おだくられいか",
+    "cup": "N",
+    "debutDate": "2026年10月16日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T- / B- / W- / H-",
+    "height": null,
+    "bust": null,
+    "hip": null,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/odakura_reika-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/odakura_reika/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "kanade_tamaki",
     "name": "奏たまき",
     "kana": "かなでたまき",
