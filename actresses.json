@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "tsukino_kasumi",
+    "name": "月野かすみ",
+    "kana": "つきのかすみ",
+    "cup": "H",
+    "debutDate": "2020年10月7日",
+    "birthday": "2002年1月26日",
+    "birthplace": "神奈川県鎌倉市",
+    "bloodType": "O型",
+    "threeSize": "T151 / B96 / W57 / H84",
+    "height": 151,
+    "bust": 96,
+    "hip": 84,
+    "status": "現役",
+    "hobby": "茶道・料理",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/tsukino_kasumi-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/tsukino_kasumi/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "odakura_reika",
     "name": "小田倉れいか",
     "kana": "おだくられいか",
