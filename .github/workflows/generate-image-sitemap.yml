@@ -203,6 +203,7 @@ jobs:
                         'xml_title': xml_title,
                         'xml_catch': xml_catch
                     })
+
                   r_date = str(video_entry['releaseDate'])
                   if target_single in r_date or target_double in r_date:
                       if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
