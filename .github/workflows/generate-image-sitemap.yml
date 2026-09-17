@@ -61,7 +61,7 @@ jobs:
                         clean_str = str(date_str).translate(str.maketrans('０１２３４５６７８９', '0123456789')).strip()
                         clean_str = clean_str.replace('年', '-').replace('月', '-').replace('日', '')
                         parts = [p for p in clean_str.split('-') if p]
-                        if len(parts) >= 3: return datetime(int(parts[0]), int(parts[1]), int(parts[2])) # 🟢 日付のバグを完璧に修復！
+                        if len(parts) >= 3: return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
                         elif len(parts) == 2: return datetime(int(parts[0]), int(parts[1]), 1)
                         elif len(parts) == 1: return datetime(int(parts[0]), 1, 1)
                     except: pass
@@ -148,10 +148,9 @@ jobs:
                     xml_lines = []
                     xml_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
                     xml_lines.append('<urlset xmlns="http://sitemaps.org" xmlns:image="http://google.com">')
-                    # 🛠️ 新規ページに関係なく、全女優をループしてサイトマップを100%強制更新する無敵のロジックへリフォーム！
                     for slug in actresses_map.keys():
                         xml_lines.append('  <url>')
-                        xml_lines.append(f'    <loc>{site_url}{slug}</loc>') # 🟢 スラッシュ連続バグ＆お尻スラッシュバグを永久消滅！
+                        xml_lines.append(f'    <loc>{site_url}{slug}</loc>')
                         actress_name = act_name_map.get(slug, slug.replace('_', ' ').title())
                         for e in actresses_map[slug]:
                             if e["data"]["gif1Url"]:
@@ -167,13 +166,15 @@ jobs:
                         xml_lines.append('  </url>')
                     xml_lines.append('</urlset>')
                     final_xml = '\n'.join(xml_lines).replace('\\"', '"')
-                    with open('sitemap-images.xml', 'w', encoding='utf-8') as f: f.write(final_xml)
+                    # 🛠️ 大元のルート階層へ確実にファイルを書き出すパス指定へ強制アップデート！
+                    with open(os.path.join(os.getcwd(), 'sitemap-images.xml'), 'w', encoding='utf-8') as f: f.write(final_xml)
                 EOF
                 python script.py
             - name: Commit and Push Changes
               run: |
                 git config --global user.name 'github-actions[bot]'
                 git config --global user.email '41898282+github-actions[bot]@://github.com'
-                git add sitemap-images.xml data/*.json actresses.json
-                git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合・画像検索ハック：全作品サンプル1・2自動ネスト＆最強SEOタイトル一斉埋め込みインフラ完了' && git push origin HEAD:main)
+                # 🛠️ 大元のルートフォルダーにあるsitemap-images.xmlを確実に指定してコミットさせる無敵コマンド！
+                git add "$GITHUB_WORKSPACE/sitemap-images.xml" data/*.json actresses.json
+                git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合・階層バグ完全打破：全作品サンプル1・2自動ネスト＆最強画像SEOインフラ実戦配備完了' && git push origin HEAD:main)
       
