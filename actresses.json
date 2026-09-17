@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "miyoshi_yuka",
+    "name": "三好佑香",
+    "kana": "みよしゆか",
+    "cup": "D",
+    "debutDate": "2025年5月20日",
+    "birthday": "2001年7月7日",
+    "birthplace": "愛知県",
+    "bloodType": "-",
+    "threeSize": "T168 / B85 / W59 / H90",
+    "height": 168,
+    "bust": 85,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "温泉・サウナ",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/miyoshi_yuka-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/miyoshi_yuka/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "tsukino_kasumi",
     "name": "月野かすみ",
     "kana": "つきのかすみ",
