@@ -59,14 +59,17 @@ jobs:
                           idx += 1
 
           act_data = []
+          act_name_map = {}
           if os.path.exists('actresses.json'):
               with open('actresses.json', 'r', encoding='utf-8') as f:
                   act_data = json.load(f)
               for act in act_data:
-                  # ★修正ポイント: お手元のデータに合わせて 'actressId' を読み込むように変更
                   act_id = clean_line_to_id(act.get('actressId', ''))
                   if not act_id:
                       continue
+                  if act.get('name'):
+                      act_name_map[act_id] = act['name']
+
                   if act_id in mgs_map:
                       act['badge'] = mgs_map[act_id]['text']
                       act['badgeColor'] = mgs_map[act_id]['color']
@@ -78,6 +81,7 @@ jobs:
                       act['badgeColor'] = ''
               with open('actresses.json', 'w', encoding='utf-8') as f:
                   json.dump(act_data, f, ensure_ascii=False, indent=2)
+
           if os.path.exists('videos.json'):
               with open('videos.json', 'r', encoding='utf-8') as f:
                   data = json.load(f)
@@ -102,7 +106,7 @@ jobs:
 
               data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
 
-              site_url = 'https://wpmesucolle.wpx.jp/'
+              site_url = 'https://wpx.jp'
               os.makedirs('data', exist_ok=True)
 
               now = datetime.now()
@@ -122,77 +126,83 @@ jobs:
               }
 
               for item in data:
-                  actress_id_field = item.get('actressId')
-                  if not actress_id_field:
-                      continue
-                  
-                  target_ids = []
-                  if isinstance(actress_id_field, list):
-                      for x in actress_id_field:
-                          target_ids.append(clean_line_to_id(str(x)))
-                  else:
-                      target_ids.append(clean_line_to_id(str(actress_id_field)))
+                actress_id_field = item.get('actressId')
+                if not actress_id_field:
+                    continue
+                
+                target_ids = []
+                if isinstance(actress_id_field, list):
+                    for x in actress_id_field:
+                        target_ids.append(clean_line_to_id(str(x)))
+                else:
+                    target_ids.append(clean_line_to_id(str(actress_id_field)))
 
-                  g1_url = item.get('gif1Url') or ''
-                  g2_url = item.get('gif2Url') or ''
-                  if not g1_url and not g2_url:
-                      continue
-                      
-                  title = item.get('title', '')
-                  xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
-                  
-                  v_badge_text = ''
-                  v_badge_color = ''
-                  best_fanza = 9999
-                  best_mgs = 9999
-                  for a_id in target_ids:
-                      if a_id in fanza_map and fanza_map[a_id]['num'] < best_fanza:
-                          best_fanza = fanza_map[a_id]['num']
-                      if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
-                          best_mgs = mgs_map[a_id]['num']
+                g1_url = item.get('gif1Url') or ''
+                g2_url = item.get('gif2Url') or ''
+                if not g1_url and not g2_url:
+                    continue
+                    
+                title = item.get('title', '')
+                xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
+                
+                catchphrase = item.get('catchphrase', '')
+                xml_catch = catchphrase.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
 
-                  if best_mgs <= 100:
-                      for a_id in target_ids:
-                          if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
-                              v_badge_text = mgs_map[a_id]['text']
-                              v_badge_color = 'mgs-rank'
-                              break
-                  elif best_fanza <= 100:
-                      for a_id in target_ids:
-                          if a_id in fanza_map and fanza_map[a_id]['num'] == best_fanza:
-                              v_badge_text = fanza_map[a_id]['text']
-                              if best_fanza <= 10:
-                                  v_badge_color = 'gold'
-                              elif best_fanza <= 30:
-                                  v_badge_color = 'silver'
-                              elif best_fanza <= 50:
-                                  v_badge_color = 'bronze'
-                              else:
-                                  v_badge_color = 'gray'
-                              break
+                v_badge_text = ''
+                v_badge_color = ''
+                best_fanza = 9999
+                best_mgs = 9999
+                for a_id in target_ids:
+                    if a_id in fanza_map and fanza_map[a_id]['num'] < best_fanza:
+                        best_fanza = fanza_map[a_id]['num']
+                    if a_id in mgs_map and mgs_map[a_id]['num'] < best_mgs:
+                        best_mgs = mgs_map[a_id]['num']
 
-                  video_entry = {
-                      'title': title,
-                      'catchphrase': item.get('catchphrase', ''),
-                      'badge': v_badge_text, 
-                      'badgeColor': v_badge_color, 
-                      'type': item.get('type', ''),
-                      'tags': item.get('tags', []),
-                      'releaseDate': item.get('releaseDate', ''),
-                      'gif1Url': g1_url,
-                      'gif2Url': g2_url if g2_url else g1_url,
-                      'affiliateUrl': item.get('affiliateUrl', ''),
-                      'actressId': target_ids,
-                  }
+                if best_mgs <= 100:
+                    for a_id in target_ids:
+                        if a_id in mgs_map and mgs_map[a_id]['num'] == best_mgs:
+                            v_badge_text = mgs_map[a_id]['text']
+                            v_badge_color = 'mgs-rank'
+                            break
+                elif best_fanza <= 100:
+                    for a_id in target_ids:
+                        if a_id in fanza_map and fanza_map[a_id]['num'] == best_fanza:
+                            v_badge_text = fanza_map[a_id]['text']
+                            if best_fanza <= 10:
+                                v_badge_color = 'gold'
+                            elif best_fanza <= 30:
+                                v_badge_color = 'silver'
+                            elif best_fanza <= 50:
+                                v_badge_color = 'bronze'
+                            else:
+                                v_badge_color = 'gray'
+                            break
 
-                  for a_id in target_ids:
-                      slug = slug_mapping.get(a_id, a_id)
-                      if slug not in actresses_map:
-                          actresses_map[slug] = []
-                      instance_entry = video_entry.copy()
-                      instance_entry['actressId'] = a_id
-                      actresses_map[slug].append({'data': instance_entry, 'xml_title': xml_title})
+                video_entry = {
+                    'title': title,
+                    'catchphrase': catchphrase,
+                    'badge': v_badge_text, 
+                    'badgeColor': v_badge_color, 
+                    'type': item.get('type', ''),
+                    'tags': item.get('tags', []),
+                    'releaseDate': item.get('releaseDate', ''),
+                    'gif1Url': g1_url,
+                    'gif2Url': g2_url if g2_url else g1_url,
+                    'affiliateUrl': item.get('affiliateUrl', ''),
+                    'actressId': target_ids,
+                }
 
+                for a_id in target_ids:
+                    slug = slug_mapping.get(a_id, a_id)
+                    if slug not in actresses_map:
+                        actresses_map[slug] = []
+                    instance_entry = video_entry.copy()
+                    instance_entry['actressId'] = a_id
+                    actresses_map[slug].append({
+                        'data': instance_entry, 
+                        'xml_title': xml_title,
+                        'xml_catch': xml_catch
+                    })
                   r_date = str(video_entry['releaseDate'])
                   if target_single in r_date or target_double in r_date:
                       if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
@@ -219,6 +229,7 @@ jobs:
                   if not ('vr' in v_type or 'vr' in v_tags or 'vr' in title_lower) and not ('black' in v_tags):
                       if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in pool_normal):
                           pool_normal.append(video_entry)
+
               for slug, entries in actresses_map.items():
                   clean_items = [e['data'] for e in entries]
                   with open(f'data/{slug}.json', 'w', encoding='utf-8') as f:
@@ -229,7 +240,6 @@ jobs:
               for act in act_data:
                   if act.get('badge'):
                       act_entry = {
-                          # ★修正ポイント: 出力するJSONのキー名もお手元の形式（actressId）に統一
                           'actressId': act.get('actressId', ''),
                           'badge': act.get('badge', ''),
                           'badgeColor': act.get('badgeColor', '')
@@ -268,13 +278,25 @@ jobs:
               xml_lines.append('<urlset xmlns="http://sitemaps.org" xmlns:image="http://google.com">')
               for slug, entries in actresses_map.items():
                   xml_lines.append('  <url>')
-                  xml_lines.append(f'    <loc>{site_url}/{slug}/</loc>')
+                  xml_lines.append(f'    <loc>{site_url}{slug}/</loc>')
+                  
+                  actress_name = act_name_map.get(slug, slug.replace('_', ' ').title())
+
                   for e in entries:
-                      xml_lines.append('  <image:image>')
-                      xml_lines.append(f'    <image:loc>{e["data"]["gif2Url"]}</image:loc>')
-                      if e['xml_title']:
-                          xml_lines.append(f'    <image:title>{e["xml_title"]}</image:title>')
-                      xml_lines.append('  </image:image>')
+                      if e["data"]["gif1Url"]:
+                          xml_lines.append('    <image:image>')
+                          xml_lines.append(f'      <image:loc>{e["data"]["gif1Url"]}</image:loc>')
+                          seo_title = f'【極上Gif】{actress_name} {e["xml_title"]} {e["xml_catch"]}'.strip()
+                          xml_lines.append(f'      <image:title>{seo_title}</image:title>')
+                          xml_lines.append('    </image:image>')
+                      
+                      if e["data"]["gif2Url"] and e["data"]["gif2Url"] != e["data"]["gif1Url"]:
+                          xml_lines.append('    <image:image>')
+                          xml_lines.append(f'      <image:loc>{e["data"]["gif2Url"]}</image:loc>')
+                          seo_title_2 = f'【神シーンGif】{actress_name} {e["xml_title"]} {e["xml_catch"]}'.strip()
+                          xml_lines.append(f'      <image:title>{seo_title_2}</image:title>')
+                          xml_lines.append('    </image:image>')
+                          
                   xml_lines.append('  </url>')
               xml_lines.append('</urlset>')
 
@@ -290,5 +312,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add sitemap-images.xml data/*.json actresses.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合・女優ランキング特化：動画仕分け＆本物バッジ自動化インフラ始動' && git push origin HEAD:main)
-
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合・画像検索ハック：全作品サンプル1・2自動ネスト＆最強SEOタイトル一斉埋め込みインフラ完了' && git push origin HEAD:main)
