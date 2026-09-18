@@ -72,7 +72,7 @@ jobs:
                   except: pass
                   return datetime(1970, 1, 1)
               data.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
-              site_url = 'https://wpx.jp'
+              site_url = 'https://wpmesucolle.wpx.jp'
               os.makedirs('data', exist_ok=True)
               now = datetime.now()
               target_single, target_double = f'{now.year}年{now.month}月', f'{now.year}年{str(now.month).zfill(2)}月'
