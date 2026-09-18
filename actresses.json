@@ -1,4 +1,24 @@
-[
+[  {
+  "actressId": "yamagishi_ayaka",
+  "name": "山岸あや花",
+  "kana": "やまぎしあやか",
+  "cup": "C",
+  "debutDate": "2017年7月25日",
+  "birthday": "1992年11月30日",
+  "birthplace": "神奈川県",
+  "bloodType": "B型",
+  "threeSize": "T160 / B82 / W59 / H81",
+  "height": 160,
+  "bust": 82,
+  "hip": 81,
+  "status": "現役",
+  "hobby": "カフェ巡り",
+  "isNew": false,
+  "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/yamagishi_ayaka-profile.webp",
+  "pageUrl": "https://wpmesucolle.wpx.jp/yamagishi_ayaka/",
+  "badge": "",
+  "badgeColor": ""
+},
   {
     "actressId": "miyoshi_yuka",
     "name": "三好佑香",
