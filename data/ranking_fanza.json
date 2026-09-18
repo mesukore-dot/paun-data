@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "tsukino_kasumi",
+    "badge": "月間32位",
+    "badgeColor": "bronze"
+  },
+  {
     "actressId": "ohana_non",
     "badge": "月間68位",
     "badgeColor": "gray"
