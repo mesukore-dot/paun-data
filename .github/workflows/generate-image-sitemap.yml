@@ -153,7 +153,7 @@ jobs:
     
               xml_lines = []
               xml_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-              xml_lines.append('<urlset xmlns="http://sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://google.com/schemas/sitemap-image/1.1">')
+              xml_lines.append('<urlset xmlns="http://sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">')
               for slug in actresses_map.keys():
                   xml_lines.append('  <url>')
                   xml_lines.append(f'    <loc>{site_url}{slug}</loc>')
@@ -162,12 +162,10 @@ jobs:
                       if e["data"]["gif1Url"]:
                           xml_lines.append('    <image:image>')
                           xml_lines.append(f'      <image:loc>{e["data"]["gif1Url"]}</image:loc>')
-                          xml_lines.append(f'      <image:title>【極上Gif】{actress_name} {e["xml_title"]} {e["xml_catch"]}</image:title>')
                           xml_lines.append('    </image:image>')
                       if e["data"]["gif2Url"] and e["data"]["gif2Url"] != e["data"]["gif1Url"]:
                           xml_lines.append('    <image:image>')
                           xml_lines.append(f'      <image:loc>{e["data"]["gif2Url"]}</image:loc>')
-                          xml_lines.append(f'      <image:title>【神シーンGif】{actress_name} {e["xml_title"]} {e["xml_catch"]}</image:title>')
                           xml_lines.append('    </image:image>')
                   xml_lines.append('  </url>')
               xml_lines.append('</urlset>')
