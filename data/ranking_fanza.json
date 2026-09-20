@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "koyoi_konan",
+    "badge": "月間75位",
+    "badgeColor": "gray"
+  },
+  {
     "actressId": "yamagishi_ayaka",
     "badge": "月間62位",
     "badgeColor": "gray"
