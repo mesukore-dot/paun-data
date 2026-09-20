@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "koyoi_konan",
+    "name": "小宵こなん",
+    "kana": "こよいこなん",
+    "cup": "H",
+    "debutDate": "2021年5月19日",
+    "birthday": "1999年4月2日",
+    "birthplace": "東京都",
+    "bloodType": "B型",
+    "threeSize": "T164 / B100 / W59 / H92",
+    "height": 164,
+    "bust": 100,
+    "hip": 92,
+    "status": "引退済み",
+    "hobby": "ジム・AV鑑賞",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/koyoi_konan.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/koyoi_konan/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "mishiro_ruru",
     "name": "美城るる",
     "kana": "みしろるる",
