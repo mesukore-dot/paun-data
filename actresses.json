@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "mishiro_ruru",
+    "name": "美城るる",
+    "kana": "みしろるる",
+    "cup": "C",
+    "debutDate": "2022年9月2日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T- / B85 / W58 / H83",
+    "height": null,
+    "bust": 85,
+    "hip": 83,
+    "status": "引退済み",
+    "hobby": "料理・お菓子作り",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/mishiro_ruru/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "yamagishi_ayaka",
     "name": "山岸あや花",
     "kana": "やまぎしあやか",
