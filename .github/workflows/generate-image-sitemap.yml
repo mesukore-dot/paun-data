@@ -78,6 +78,9 @@ jobs:
               os.makedirs(genre_dir, exist_ok=True)
               new_arrival_pool, actresses_map, tags_map = [], {}, {}
               slug_mapping = {'toumine_hinako': 'higashimine-hinako', 'watanabe_hono': 'watanabe-hono', 'hakata_iroha': 'hakata-iroha'}
+              # 🌟 実行した瞬間の「今日のローカル日付」を取得（未来日判定用）
+              today_date = datetime.now()
+
               for item in data:
                   actress_id_field = item.get('actressId')
                   if not actress_id_field: continue
@@ -113,6 +116,11 @@ jobs:
                       'gif1Url': g1_url, 'gif2Url': g2_url if g2_url else g1_url, 'affiliateUrl': item.get('affiliateUrl', ''), 'actressId': target_ids,
                   }
 
+                  # 💡 【重要】発売日が今日より「未来」の予約作品は、すべての配備プールから一律除外する
+                  item_release_datetime = parse_date(item.get('releaseDate', ''))
+                  if item_release_datetime > today_date:
+                      continue
+
                   for a_id in target_ids:
                       slug = slug_mapping.get(a_id, a_id)
                       if slug not in actresses_map: actresses_map[slug] = []
@@ -142,12 +150,11 @@ jobs:
               with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f: json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
               with open('data/ranking_mgs.json', 'w', encoding='utf-8') as f: json.dump(mgs_rank_data, f, ensure_ascii=False, indent=2)
 
-              # 🌟【新仕様】全データから純粋に新しい順で最大200件を抽出する新着プール
+              # 全データ（今日発売分まで）から重複を弾いて新着プールを生成
               all_videos = []
               for slug, entries in actresses_map.items():
                   for e in entries:
                       if not any(x['affiliateUrl'] == e['data']['affiliateUrl'] for x in all_videos):
-                          # 作品用の不要なバッジ項目を除去したエントリーを作成
                           clean_entry = e['data'].copy()
                           clean_entry.pop('badge', None)
                           clean_entry.pop('badgeColor', None)
@@ -158,7 +165,6 @@ jobs:
               with open('data/new_arrival.json', 'w', encoding='utf-8') as f: json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
               for tag_name, items in tags_map.items():
-                  # ジャンル別用からも作品用不要バッジを除去
                   clean_tag_items = []
                   for item_entry in items:
                       c_entry = item_entry.copy()
@@ -199,4 +205,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add "$GITHUB_WORKSPACE/sitemap-images.xml" data/*.json data/genre/*.json actresses.json || true
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：新着プール全作品化・作品バッジ除去・GIF2枚最適化完了' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：今日より未来の作品を除外する本番自動スケジュールインフラ配備完了' && git push origin HEAD:main)
