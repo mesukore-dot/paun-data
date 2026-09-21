@@ -76,8 +76,6 @@ jobs:
               os.makedirs('data', exist_ok=True)
               genre_dir = os.path.join('data', 'genre')
               os.makedirs(genre_dir, exist_ok=True)
-              now = datetime.now()
-              target_single, target_double = f'{now.year}年{now.month}月', f'{now.year}年{str(now.month).zfill(2)}月'
               new_arrival_pool, actresses_map, tags_map = [], {}, {}
               slug_mapping = {'toumine_hinako': 'higashimine-hinako', 'watanabe_hono': 'watanabe-hono', 'hakata_iroha': 'hakata-iroha'}
               for item in data:
@@ -93,6 +91,7 @@ jobs:
                   xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
                   catchphrase = item.get('catchphrase', '')
                   xml_catch = catchphrase.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
+                  
                   v_badge_text, v_badge_color, best_fanza, best_mgs = '', '', 9999, 9999
                   for a_id in target_ids:
                       if a_id in fanza_map and fanza_map[a_id]['num'] < best_fanza: best_fanza = fanza_map[a_id]['num']
@@ -119,13 +118,6 @@ jobs:
                       if slug not in actresses_map: actresses_map[slug] = []
                       instance_entry = video_entry.copy(); instance_entry['actressId'] = a_id
                       actresses_map[slug].append({'data': instance_entry, 'xml_title': xml_title, 'xml_catch': xml_catch})
-                      r_date = str(video_entry['releaseDate'])
-                      if target_single in r_date or target_double in r_date:
-                          if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in new_arrival_pool):
-                              new_arrival_pool.append({
-                                  'gif2Url': video_entry['gif2Url'], 'title': video_entry['title'], 'catchphrase': video_entry['catchphrase'], 
-                                  'badge': video_entry['badge'], 'badgeColor': video_entry['badgeColor'], 'affiliateUrl': video_entry['affiliateUrl'], 'releaseDate': video_entry['releaseDate']
-                              })
 
                   v_tags = item.get('tags', [])
                   if isinstance(v_tags, list):
@@ -149,13 +141,32 @@ jobs:
                       else: fanza_rank_data.append(act_entry)
               with open('data/ranking_fanza.json', 'w', encoding='utf-8') as f: json.dump(fanza_rank_data, f, ensure_ascii=False, indent=2)
               with open('data/ranking_mgs.json', 'w', encoding='utf-8') as f: json.dump(mgs_rank_data, f, ensure_ascii=False, indent=2)
+
+              # 🌟【新仕様】全データから純粋に新しい順で最大200件を抽出する新着プール
+              all_videos = []
+              for slug, entries in actresses_map.items():
+                  for e in entries:
+                      if not any(x['affiliateUrl'] == e['data']['affiliateUrl'] for x in all_videos):
+                          # 作品用の不要なバッジ項目を除去したエントリーを作成
+                          clean_entry = e['data'].copy()
+                          clean_entry.pop('badge', None)
+                          clean_entry.pop('badgeColor', None)
+                          all_videos.append(clean_entry)
               
-              new_arrival_pool.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
+              all_videos.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
+              new_arrival_pool = all_videos[:200]
               with open('data/new_arrival.json', 'w', encoding='utf-8') as f: json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
               for tag_name, items in tags_map.items():
-                  sample_size = min(len(items), 200)
-                  random_sampled_items = random.sample(items, sample_size)
+                  # ジャンル別用からも作品用不要バッジを除去
+                  clean_tag_items = []
+                  for item_entry in items:
+                      c_entry = item_entry.copy()
+                      c_entry.pop('badge', None)
+                      c_entry.pop('badgeColor', None)
+                      clean_tag_items.append(c_entry)
+                  sample_size = min(len(clean_tag_items), 200)
+                  random_sampled_items = random.sample(clean_tag_items, sample_size)
                   random_sampled_items.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
                   file_name = f"{tag_name}_tag.json"
                   file_path = os.path.join(genre_dir, file_name)
@@ -188,4 +199,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add "$GITHUB_WORKSPACE/sitemap-images.xml" data/*.json data/genre/*.json actresses.json || true
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：VR/Black一元化＆ジャンル別200件ランダム抽出最新順インフラ完全配備' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 超融合：新着プール全作品化・作品バッジ除去・GIF2枚最適化完了' && git push origin HEAD:main)
