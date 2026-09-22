@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://wpmesucolle.wpx.jp/akari_nonoka</loc>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/akari_nonoka-300MIUM-1460-GIF_20260922_111953_681.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/akari_nonoka-300MIUM-1460-GIF_20260922_112736_181.gif</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://wpmesucolle.wpx.jp/kawai_asuna</loc>
     <image:image>
       <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kawai_asuna-ABF-385-GIF_20260922_110012_227.gif</image:loc>
