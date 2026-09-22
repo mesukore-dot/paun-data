@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "akari_nonoka",
+    "name": "有加里ののか ",
+    "kana": "あかりののか",
+    "cup": "F",
+    "debutDate": "2022年6月7日",
+    "birthday": "2003年1月17日",
+    "birthplace": "大阪府",
+    "bloodType": "O型",
+    "threeSize": "T155 / B89 / W60 / H87",
+    "height": 155,
+    "bust": 89,
+    "hip": 87,
+    "status": "現役",
+    "hobby": "映画鑑賞",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/akari_nonoka-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/akari_nonoka/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "kokonoi_sunao",
     "name": "九井スナオ",
     "kana": "ここのいすなお",
