@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://wpmesucolle.wpx.jp/kokonoi_sunao</loc>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kokonoi_sunao-300MIUM-1398-GIF_20260922_100420_776.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kokonoi_sunao-300MIUM-1398-GIF_20260922_100603_506.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-kavr00498jp-12.jpg.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-kavr00498jp-2.jpg.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-amamiya_hibiki-kokonoi_sunao-azuma_fuuka-kavr00499jp-2.jpg.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-amamiya_hibiki-kokonoi_sunao-azuma_fuuka-kavr00499jp-3.jpg.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://wpmesucolle.wpx.jp/koyoi_konan</loc>
     <image:image>
       <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/koyoi_konan-ssis00281-GIF_20260922_114700_097.gif</image:loc>
@@ -1894,21 +1915,6 @@
     </image:image>
     <image:image>
       <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-13dsvr01810jp-4.jpg.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://wpmesucolle.wpx.jp/kokonoi_sunao</loc>
-    <image:image>
-      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-kavr00498jp-12.jpg.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-kavr00498jp-2.jpg.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-amamiya_hibiki-kokonoi_sunao-azuma_fuuka-kavr00499jp-2.jpg.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://wpmesucolle.wpx.jp/wp-content/uploads/2026/08/marumo_rea-amamiya_hibiki-kokonoi_sunao-azuma_fuuka-kavr00499jp-3.jpg.webp</image:loc>
     </image:image>
   </url>
   <url>
