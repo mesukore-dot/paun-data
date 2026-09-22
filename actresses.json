@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "kokonoi_sunao",
+    "name": "九井スナオ",
+    "kana": "ここのいすなお",
+    "cup": "H",
+    "debutDate": "2023年8月11日",
+    "birthday": "2002年1月30日",
+    "birthplace": "広島県",
+    "bloodType": "O型",
+    "threeSize": "T160 / B90 / W59 / H88",
+    "height": 160,
+    "bust": 90,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "旅行・韓国語・カメラ",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kokonoi_sunao-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kokonoi_sunao/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "koyoi_konan",
     "name": "小宵こなん",
     "kana": "こよいこなん",
