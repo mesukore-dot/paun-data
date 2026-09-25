@@ -5,14 +5,17 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "oil",
       "splash",
       "SP"
     ],
     "releaseDate": "2026年6月5日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00206-GIF_20260910_105519_230.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00206-GIF_20260910_105717_467.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00206-GIF_20260910_105519_230.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00206-GIF_20260910_105717_467.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00206&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "suzuki_nozomi"
   },
@@ -22,13 +25,16 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "hamedori",
       "SP"
     ],
     "releaseDate": "2026年5月8日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00205-GIF_20260910_105127_657.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00205-GIF_20260910_105251_510.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00205-GIF_20260910_105127_657.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00205-GIF_20260910_105251_510.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00205&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "suzuki_nozomi"
   },
@@ -38,10 +44,13 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [],
     "releaseDate": "2026年4月10日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00124-GIF_20260910_104540_315.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00124-GIF_20260910_104651_225.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00124-GIF_20260910_104540_315.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00124-GIF_20260910_104651_225.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00124&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "suzuki_nozomi"
   },
@@ -51,12 +60,15 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "debut"
     ],
     "releaseDate": "2026年3月6日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00081-GIF_20260910_103658_101.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00081-GIF_20260910_104308_195.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00081-GIF_20260910_103658_101.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/suzuki_nozomi-snos00081-GIF_20260910_104308_195.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00081&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "suzuki_nozomi"
   }

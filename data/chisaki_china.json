@@ -5,12 +5,15 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "sports"
     ],
     "releaseDate": "2026年6月19日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-royd00325-GIF_20260902_091919_017.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-royd00325-GIF_20260902_092005_809.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-royd00325-GIF_20260902_091919_017.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-royd00325-GIF_20260902_092005_809.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Droyd00325&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "chisaki_china"
   },
@@ -20,13 +23,16 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "black",
       "mizugi"
     ],
     "releaseDate": "2026年6月5日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dsod00005-GIF_20260902_091641_532.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dsod00005-GIF_20260902_091740_838.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dsod00005-GIF_20260902_091641_532.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dsod00005-GIF_20260902_091740_838.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Ddsod00005&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "chisaki_china"
   },
@@ -36,13 +42,16 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "black",
       "sukumizu"
     ],
     "releaseDate": "2026年5月22日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dass00971-GIF_20260902_091515_607.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dass00971-GIF_20260902_091434_408.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dass00971-GIF_20260902_091515_607.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/chisaki_china-dass00971-GIF_20260902_091434_408.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Ddass00971&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "chisaki_china"
   }

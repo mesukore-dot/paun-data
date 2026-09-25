@@ -5,13 +5,16 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "bunny",
       "SP"
     ],
     "releaseDate": "2016年9月3日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00725-GIF_20260911_121332_255.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00725-GIF_20260911_121415_635.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00725-GIF_20260911_121332_255.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00725-GIF_20260911_121415_635.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnis00725&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "hoshino_nami"
   },
@@ -21,10 +24,13 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [],
     "releaseDate": "2015年12月3日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00555-GIF_20260911_120901_546.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00555-GIF_20260911_121130_418.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00555-GIF_20260911_120901_546.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hoshino_nami-snis00555-GIF_20260911_121130_418.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnis00555&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "hoshino_nami"
   }

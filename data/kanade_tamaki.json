@@ -4,14 +4,18 @@
     "catchphrase": "【AVデビュー】人生初の3Pに大興奮！天然巨乳を揉みしだきいただく",
     "badge": "",
     "badgeColor": "",
-    "type": "single",
+    "type": "reserve",
+    "isReserve": true,
     "tags": [
       "debut",
-      "mizugi"
+      "mizugi",
+      "reserve"
     ],
     "releaseDate": "2026年10月16日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kanade_tamaki-mida00791-GIF_20260915_112054_076.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kanade_tamaki-mida00791-GIF_20260915_112149_199.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kanade_tamaki-mida00791-GIF_20260915_112054_076.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kanade_tamaki-mida00791-GIF_20260915_112149_199.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00791&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "kanade_tamaki"
   }

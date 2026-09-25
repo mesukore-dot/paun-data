@@ -5,6 +5,7 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "sports",
       "nama",
@@ -13,8 +14,10 @@
       "SP"
     ],
     "releaseDate": "2023年4月28日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00568-GIF_20260920_110915_941.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00568-GIF_20260920_111128_232.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00568-GIF_20260920_110915_941.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00568-GIF_20260920_111128_232.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dcawd00568&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "mishiro_ruru"
   },
@@ -24,6 +27,7 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "convenience",
       "nama",
@@ -31,8 +35,10 @@
       "SP"
     ],
     "releaseDate": "2023年3月3日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00505-GIF_20260920_110431_488.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00505-GIF_20260920_110538_901.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00505-GIF_20260920_110431_488.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00505-GIF_20260920_110538_901.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dcawd00505&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "mishiro_ruru"
   },
@@ -42,12 +48,15 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "splash"
     ],
     "releaseDate": "2022年10月28日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00443-GIF_20260920_105802_786.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00443-GIF_20260920_105924_743.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00443-GIF_20260920_105802_786.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00443-GIF_20260920_105924_743.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dcawd00443&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "mishiro_ruru"
   },
@@ -57,12 +66,15 @@
     "badge": "",
     "badgeColor": "",
     "type": "single",
+    "isReserve": false,
     "tags": [
       "debut"
     ],
     "releaseDate": "2022年9月2日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00425-GIF_20260920_105146_396.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00425-GIF_20260920_104656_962.gif",
+    "gifs": [
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00425-GIF_20260920_105146_396.gif",
+      "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mishiro_ruru-cawd00425-GIF_20260920_104656_962.gif"
+    ],
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dcawd00425&af_id=mesucolle-003&ch=toolbar&ch_id=text",
     "actressId": "mishiro_ruru"
   }
