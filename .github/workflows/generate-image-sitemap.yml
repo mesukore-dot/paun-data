@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    - cron: '17 * * * *' # 🌟0分を避けて遅延を回避する設定に変えておきました！
+    - cron: '17 * * * *' 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -79,7 +79,6 @@ jobs:
               new_arrival_pool, actresses_map, tags_map = [], {}, {}
               slug_mapping = {'toumine_hinako': 'higashimine-hinako', 'watanabe_hono': 'watanabe-hono', 'hakata_iroha': 'hakata-iroha'}
               
-              # 🌟 日本時間（JST）への時差9時間修正
               today_date = datetime.now() + timedelta(hours=9)
 
               for item in data:
@@ -90,20 +89,16 @@ jobs:
                       for x in actress_id_field: target_ids.append(clean_line_to_id(str(x)))
                   else: target_ids.append(clean_line_to_id(str(actress_id_field)))
                   
-                  # 🌟 GifUrlの可変配列化（gif3Url以降も自動で全回収します）
-                  gif_list = []
-                  for k in sorted(item.keys()):
-                      if k.startswith('gif') and k.endswith('Url') and item[k]:
-                          gif_list.append(item[k])
-                  
-                  if not gif_list: continue
+                  # 🌟 安全策：既存の gif1Url と gif2Url は絶対にそのまま残す！消さない！
+                  g1_url = item.get('gif1Url') or ''
+                  g2_url = item.get('gif2Url') or ''
+                  if not g1_url and not g2_url: continue
                   
                   title = item.get('title', '')
                   xml_title = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
                   catchphrase = item.get('catchphrase', '')
                   xml_catch = catchphrase.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&quot;').replace('\'', '&apos;')
                   
-                  # 🌟 作品ごとの不要なバッジ計算（AIのバグ）を一散
                   item_release_datetime = parse_date(item.get('releaseDate', ''))
                   is_reserve = item_release_datetime > today_date
                   
@@ -115,16 +110,21 @@ jobs:
                       if 'reserve' not in current_tags:
                           current_tags.append('reserve')
 
-                  # フロントのJSと連動する予約用の新設キーを配備
+                  # 🌟 安全策：出力される個別JSONの中身にも、gif1Url と gif2Url を完璧に残す！
+                  # さらに、gif3Url、gif4Url…と動的に増えた分もすべてそのまま格納してフロントに渡します。
                   video_entry = {
                       'title': title, 'catchphrase': catchphrase,
                       'badge': '', 'badgeColor': '', 
                       'type': 'reserve' if is_reserve else item.get('type', ''), 
                       'isReserve': is_reserve, 
                       'tags': current_tags, 'releaseDate': item.get('releaseDate', ''),
-                      'gifs': gif_list, 
                       'affiliateUrl': item.get('affiliateUrl', ''), 'actressId': target_ids,
                   }
+                  
+                  # JSONデータ内にある「gif」で始まるすべてのURLタグ（gif1Url〜gif10Urlまで全部）をそのままコピーして移植する
+                  for k, v in item.items():
+                      if k.startswith('gif') and k.endswith('Url') and v:
+                          video_entry[k] = v
                   # 💡 【超融合・大改良】発売日が今日より「未来」の予約作品の処理
                   item_release_datetime = parse_date(item.get('releaseDate', ''))
                   
@@ -195,22 +195,23 @@ jobs:
                   file_path = os.path.join(genre_dir, file_name)
                   with open(file_path, 'w', encoding='utf-8') as f: json.dump(random_sampled_items, f, ensure_ascii=False, indent=2)
     
-              # 8. 🌟 画像サイトマップ（sitemap-images.xml）の自動生成（可変Gif対応）
+              # 8. 🌟 画像サイトマップ（sitemap-images.xml）の自動生成
+              # データ構造は壊さず、キーの名前を自動スキャンして存在するGifを何枚でもすべてサイトマップに登録します！
               xml_lines = []
               xml_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-              xml_lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">')
+              xml_lines.append('<urlset xmlns="http://sitemaps.org" xmlns:image="http://google.com">')
               for slug in actresses_map.keys():
                   xml_lines.append('  <url>')
                   xml_lines.append(f'    <loc>{site_url}{slug}</loc>')
                   
                   # 登録されている全作品をループ
                   for e in actresses_map[slug]:
-                      # 配列化された gifs（3枚、5枚、10枚など）の中身を全て自動でバラバラに展開してサイトマップに詰め込む
-                      img_urls = e["data"].get("gifs", [])
-                      for u in img_urls:
-                          if u:
+                      video_data = e["data"]
+                      # gif1Url, gif2Url, gif3Url... と順番に回して入っているURLをすべてサイトマップに突っ込む
+                      for k in sorted(video_data.keys()):
+                          if k.startswith('gif') and k.endswith('Url') and video_data[k]:
                               xml_lines.append('    <image:image>')
-                              xml_lines.append(f'      <image:loc>{u}</image:loc>')
+                              xml_lines.append(f'      <image:loc>{video_data[k]}</image:loc>')
                               xml_lines.append('    </image:image>')
                               
                   xml_lines.append('  </url>')
