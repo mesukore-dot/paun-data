@@ -4,15 +4,17 @@
     "catchphrase": "こんなに可愛い女の子が…！？AVデビューします！",
     "badge": "",
     "badgeColor": "",
-    "type": "single",
+    "type": "reserve",
+    "isReserve": true,
     "tags": [
       "debut",
-      "seifuku"
+      "seifuku",
+      "reserve"
     ],
     "releaseDate": "2026年10月2日",
-    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hirano_kaede-mida00812-GIF_20260904_135818_504.gif",
-    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hirano_kaede-mida00812-GIF_20260904_135956_339.gif",
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00812&af_id=mesucolle-003&ch=toolbar&ch_id=text",
-    "actressId": "hirano_kaede"
+    "actressId": "hirano_kaede",
+    "gif1Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hirano_kaede-mida00812-GIF_20260904_135818_504.gif",
+    "gif2Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/hirano_kaede-mida00812-GIF_20260904_135956_339.gif"
   }
 ]
