@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "yoshine_yuria",
+    "name": "吉根ゆりあ",
+    "kana": "よしねゆりあ",
+    "cup": "M",
+    "debutDate": "2019年6月19日",
+    "birthday": "1996年5月26日",
+    "birthplace": "-",
+    "bloodType": "O型",
+    "threeSize": "T153 / B111 / W61 / H95",
+    "height": 153,
+    "bust": 111,
+    "hip": 95,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/yoshine_yuria-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/yoshine_yuria/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "akari_nonoka",
     "name": "有加里ののか",
     "kana": "あかりののか",
