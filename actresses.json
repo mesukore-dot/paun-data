@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "aizawa_minami",
+    "name": "相沢みなみ",
+    "kana": "あいざわみなみ",
+    "cup": "C",
+    "debutDate": "2016年9月1日",
+    "birthday": "1996年6月14日",
+    "birthplace": "香港・アメリカ",
+    "bloodType": "A型",
+    "threeSize": "T155 / B80 / W54 / H82",
+    "height": 155,
+    "bust": 80,
+    "hip": 82,
+    "status": "現役",
+    "hobby": "アクセサリー作り",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/aizawa_minami-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/aizawa_minami/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "mitani_akane",
     "name": "美谷朱音",
     "kana": "みたにあかね",
