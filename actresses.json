@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "mitani_akane",
+    "name": "美谷朱音",
+    "kana": "みたにあかね",
+    "cup": "E",
+    "debutDate": "2017年7月19日",
+    "birthday": "1996年5月25日",
+    "birthplace": "埼玉県",
+    "bloodType": "A型",
+    "threeSize": "T166 / B83 / W58 / H96",
+    "height": 166,
+    "bust": 83,
+    "hip": 96,
+    "status": "現役",
+    "hobby": "ダンス",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/mitani_akane-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/mitani_akane/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "yoshine_yuria",
     "name": "吉根ゆりあ",
     "kana": "よしねゆりあ",
