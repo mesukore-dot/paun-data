@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "aoi_suzu",
+    "name": "蒼井すず",
+    "kana": "あおいすず",
+    "cup": "I",
+    "debutDate": "2026年10月9日",
+    "birthday": "2006年5月1日",
+    "birthplace": "長野県",
+    "bloodType": "-",
+    "threeSize": "T- / B100 / W59 / H90",
+    "height": null,
+    "bust": 100,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/aoi_suzu-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/aoi_suzu/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "aizawa_minami",
     "name": "相沢みなみ",
     "kana": "あいざわみなみ",
