@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "kiritani_ema",
+    "name": "桐谷エマ",
+    "kana": "きりたにえま",
+    "cup": "E",
+    "debutDate": "2026年10月23日",
+    "birthday": "-",
+    "birthplace": "神奈川県",
+    "bloodType": "-",
+    "threeSize": "T153 / B82 / W54 / H84",
+    "height": 153,
+    "bust": 82,
+    "hip": 84,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/09/kiritani_ema-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kiritani_ema/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "aoi_suzu",
     "name": "蒼井すず",
     "kana": "あおいすず",
