@@ -79,7 +79,9 @@ jobs:
               new_arrival_pool, actresses_map, tags_map = [], {}, {}
               slug_mapping = {'toumine_hinako': 'higashimine-hinako', 'watanabe_hono': 'watanabe-hono', 'hakata_iroha': 'hakata-iroha'}
               
-              today_date = datetime.now() + timedelta(hours=9)
+              now_jst = datetime.now() + timedelta(hours=9)
+              today_date = datetime(now_jst.year, now_jst.month, now_jst.day)
+
 
               for item in data:
                   actress_id_field = item.get('actressId')
