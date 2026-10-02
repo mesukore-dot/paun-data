@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "taki_yuina",
+    "name": "滝ゆいな",
+    "kana": "たきゆいな",
+    "cup": "G",
+    "debutDate": "2022年10月6日",
+    "birthday": "1997年7月7日",
+    "birthplace": "埼玉県",
+    "bloodType": "A型",
+    "threeSize": "T173 / B87 / W60 / H94",
+    "height": 173,
+    "bust": 87,
+    "hip": 94,
+    "status": "新作停止中",
+    "hobby": "サウナ",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/taki_yuina-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/taki_yuina/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "kiritani_ema",
     "name": "桐谷エマ",
     "kana": "きりたにえま",
