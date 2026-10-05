@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "riri_haruka",
+    "name": "莉々はるか",
+    "kana": "りりはるか　いなばるか",
+    "cup": "H",
+    "debutDate": "2019年3月13日",
+    "birthday": "2000年1月8日",
+    "birthplace": "東京都",
+    "bloodType": "O型",
+    "threeSize": "T160 / B93 / W59 / H87",
+    "height": 160,
+    "bust": 93,
+    "hip": 87,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/riri_haruka-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/riri_haruka/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "taki_yuina",
     "name": "滝ゆいな",
     "kana": "たきゆいな",
