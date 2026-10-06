@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "kaede_karen",
+    "name": "楓カレン",
+    "kana": "かえでかれん",
+    "cup": "D",
+    "debutDate": "2018年12月13日",
+    "birthday": "1999年8月25日",
+    "birthplace": "東京都",
+    "bloodType": "O型",
+    "threeSize": "T162 / B82 / W56 / H81",
+    "height": 162,
+    "bust": 82,
+    "hip": 81,
+    "status": "現役",
+    "hobby": "アニメ・BL・料理",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/kaede_karen-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kaede_karen/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "oohara_reina",
     "name": "大原伶菜",
     "kana": "おおはられいな",
