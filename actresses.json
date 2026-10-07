@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "tsujii_honoka",
+    "name": "辻井ほのか",
+    "kana": "つじいほのか",
+    "cup": "H",
+    "debutDate": "2019年3月22日",
+    "birthday": "1995年11月15日",
+    "birthplace": "東京都",
+    "bloodType": "O型",
+    "threeSize": "T172 / B96 / W60 / H88",
+    "height": 172,
+    "bust": 96,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "映画鑑賞",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/tsujii_honoka-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/tsubaki_rika/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "tsubaki_rika",
     "name": "椿りか",
     "kana": "つばきりか",
