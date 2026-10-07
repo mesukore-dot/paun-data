@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "tsubaki_rika",
+    "name": "椿りか",
+    "kana": "つばきりか",
+    "cup": "G",
+    "debutDate": "2017年4月1日",
+    "birthday": "1999年6月5日",
+    "birthplace": "神奈川県横浜市",
+    "bloodType": "A型",
+    "threeSize": "T158 / B87 / W58 / H85",
+    "height": 158,
+    "bust": 87,
+    "hip": 85,
+    "status": "現役",
+    "hobby": "パチンコ",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/tubaki_rika-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/tsubaki_rika/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "kaede_karen",
     "name": "楓カレン",
     "kana": "かえでかれん",
