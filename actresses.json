@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "suehiro_jun",
+    "name": "末広純",
+    "kana": "すえひろじゅん",
+    "cup": "D",
+    "debutDate": "2022年4月12日",
+    "birthday": "2000年1月10日",
+    "birthplace": "山梨県",
+    "bloodType": "-",
+    "threeSize": "T151 / B82 / W60 / H90",
+    "height": 151,
+    "bust": 82,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/suehiro_jun-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/suehiro_jun/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "tsujii_honoka",
     "name": "辻井ほのか",
     "kana": "つじいほのか",
