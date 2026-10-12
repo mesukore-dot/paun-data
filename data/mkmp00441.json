@@ -37,11 +37,27 @@
   "gif9Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/yoshine_yuria-mkmp00441-9.gif",
   "gif10Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/yoshine_yuria-mkmp00441-10.gif",
   "gif11Url": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/yoshine_yuria-mkmp00441-11.jpg.webp",
-  "actress": {
-    "actressId": "yoshine_yuria",
-    "name": "吉根ゆりあ",
-    "pageUrl": "./yoshine_yuria/",
-    "badge": "月間46位",
-    "rank": 46
-  }
+  "actresses": [
+    {
+      "actressId": "yoshine_yuria",
+      "name": "吉根ゆりあ",
+      "pageUrl": "./yoshine_yuria/",
+      "badge": "月間46位",
+      "rank": 46
+    },
+    {
+      "actressId": "riri_haruka",
+      "name": "莉々はるか",
+      "pageUrl": "./riri_haruka/",
+      "badge": "",
+      "rank": 9999
+    },
+    {
+      "actressId": "takarada_monami",
+      "name": "takarada_monami",
+      "pageUrl": "./takarada_monami/",
+      "badge": "",
+      "rank": 9999
+    }
+  ]
 }
