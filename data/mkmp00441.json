@@ -41,23 +41,23 @@
     {
       "actressId": "yoshine_yuria",
       "name": "吉根ゆりあ",
-      "pageUrl": "./yoshine_yuria/",
+      "pageUrl": "https://wpmesucolle.wpx.jp/yoshine_yuria/",
       "badge": "月間46位",
-      "rank": 46
+      "badgeColor": "bronze"
     },
     {
       "actressId": "riri_haruka",
       "name": "莉々はるか",
-      "pageUrl": "./riri_haruka/",
+      "pageUrl": "https://wpmesucolle.wpx.jp/riri_haruka/",
       "badge": "",
-      "rank": 9999
+      "badgeColor": ""
     },
     {
       "actressId": "takarada_monami",
       "name": "takarada_monami",
       "pageUrl": "./takarada_monami/",
       "badge": "",
-      "rank": 9999
+      "badgeColor": ""
     }
   ]
 }
