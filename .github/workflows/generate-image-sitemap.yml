@@ -124,36 +124,39 @@ jobs:
                       if (k.startswith('gif') and k.endswith('Url') and v) or (k.startswith('seo') and v) or (k in meta_keys and v):
                           video_entry[k] = v
                           
-                  # 品番ごとの個別JSONファイル出力処理
+                  # 🌟 全女優の配列を作成して個別JSONに出力
                   number_val = item.get('number', '')
                   if number_val:
                       clean_number_id = clean_line_to_id(number_val)
                       if clean_number_id:
-                          primary_act_id = target_ids[0] if target_ids else ''
-                          slug = slug_mapping.get(primary_act_id, primary_act_id)
-                          page_url = f"./{slug}/" if slug else './'
-                          
-                          badge_text = ''
-                          rank_num = 9999
-                          if primary_act_id in fanza_map:
-                              badge_text = fanza_map[primary_act_id]['text']
-                              rank_num = fanza_map[primary_act_id]['num']
-                          elif primary_act_id in mgs_map:
-                              badge_text = mgs_map[primary_act_id]['text']
-                              rank_num = mgs_map[primary_act_id]['num']
+                          actresses_list = []
+                          for a_id in target_ids:
+                              slug = slug_mapping.get(a_id, a_id)
+                              page_url = f"./{slug}/" if slug else './'
+                              
+                              badge_text = ''
+                              rank_num = 9999
+                              if a_id in fanza_map:
+                                  badge_text = fanza_map[a_id]['text']
+                                  rank_num = fanza_map[a_id]['num']
+                              elif a_id in mgs_map:
+                                  badge_text = mgs_map[a_id]['text']
+                                  rank_num = mgs_map[a_id]['num']
+
+                              actresses_list.append({
+                                  "actressId": a_id,
+                                  "name": act_name_map.get(a_id, a_id),
+                                  "pageUrl": page_url,
+                                  "badge": badge_text,
+                                  "rank": rank_num
+                              })
 
                           single_video_payload = video_entry.copy()
-                          single_video_payload['actress'] = {
-                              "actressId": primary_act_id,
-                              "name": act_name_map.get(primary_act_id, primary_act_id),
-                              "pageUrl": page_url,
-                              "badge": badge_text,
-                              "rank": rank_num
-                          }
+                          single_video_payload['actresses'] = actresses_list
                           
                           with open(os.path.join('data', f"{clean_number_id}.json"), 'w', encoding='utf-8') as sf:
                               json.dump(single_video_payload, sf, ensure_ascii=False, indent=2)
-
+                              
                   for a_id in target_ids:
                       slug = slug_mapping.get(a_id, a_id)
                       if slug not in actresses_map: actresses_map[slug] = []
@@ -254,6 +257,4 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add "$GITHUB_WORKSPACE/sitemap-images.xml" data/*.json data/genre/*.json actresses.json || true
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 品番別個別JSONおよびカタログ・ランキングの自動生成完了' && git push origin HEAD:main)
-
-
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 複数女優対応の品番別JSON自動生成機能を追加' && git push origin HEAD:main)
