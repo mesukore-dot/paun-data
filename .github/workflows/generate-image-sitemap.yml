@@ -206,14 +206,19 @@ jobs:
               with open('data/new_arrival.json', 'w', encoding='utf-8') as f: json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
               # 6.5. 🌟 品番カタログ用JSON（data/product_catalog.json）の生成
-              product_catalog_pool = []
-              for v in all_videos:
-                  if v.get('number'):
-                      catalog_entry = v.copy()
-                      product_catalog_pool.append(catalog_entry)
-              
-              product_catalog_pool.sort(key=lambda x: parse_date(x.get('releaseDate', '')), reverse=True)
-              with open('data/product_catalog.json', 'w', encoding='utf-8') as f: json.dump(product_catalog_pool, f, ensure_ascii=False, indent=2)
+              # 【解決】上のループで予約作品がスキップされてしまっているため、
+              # 元の生データ(data)から直接、既発売・予約問わずすべての品番のみを抽出します。
+              product_catalog_data = []
+              for item in data:
+                  number_val = item.get('number', '')
+                  if number_val:
+                      clean_num = str(number_val).strip()
+                      # 重複していなければ品番をリストに追加
+                      if clean_num not in product_catalog_data:
+                          product_catalog_data.append(clean_num)
+
+              with open('data/product_catalog.json', 'w', encoding='utf-8') as f:
+                  json.dump(product_catalog_data, f, ensure_ascii=False, indent=2)
 
               # 7. ジャンルタグ別JSONの書き出し
               for tag_name, items in tags_map.items():
