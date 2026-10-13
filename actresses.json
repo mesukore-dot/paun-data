@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "tsuji_sarasa",
+    "name": "辻更紗",
+    "kana": "つじさらさ",
+    "cup": "I",
+    "debutDate": "2026年11月6日",
+    "birthday": "-",
+    "birthplace": "京都府",
+    "bloodType": "-",
+    "threeSize": "T161 / B98 / W59 / H95",
+    "height": 161,
+    "bust": 98,
+    "hip": 95,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/tsuji_sarasa-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/tsuji_sarasa/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "kawahiro_ena",
     "name": "川広えな",
     "kana": "かわひろえな",
