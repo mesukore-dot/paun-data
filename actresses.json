@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "kohinata_miyuu",
+    "name": "小日向みゆう",
+    "kana": "こひなたみゆう/きよはらみゆう",
+    "cup": "H",
+    "debutDate": "2023年6月13日",
+    "birthday": "2002年7月10日",
+    "birthplace": "宮城県",
+    "bloodType": "-",
+    "threeSize": "T160 / B95 / W58 / H87",
+    "height": 160,
+    "bust": 95,
+    "hip": 87,
+    "status": "現役",
+    "hobby": "ウォーキング・ネイル",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/kohinata_miyuu-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kohinata_miyuu/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "sono_rinon",
     "name": "園梨音",
     "kana": "そのりのん",
@@ -15,7 +36,7 @@
     "status": "現役",
     "hobby": "水泳・編み物",
     "isNew": false,
-    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/sono_rinon-profile.webp",
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/sono_rinon-profile2.webp",
     "pageUrl": "https://wpmesucolle.wpx.jp/sono_rinon/",
     "badge": "",
     "badgeColor": ""
