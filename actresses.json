@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "sono_rinon",
+    "name": "園梨音",
+    "kana": "そのりのん",
+    "cup": "F",
+    "debutDate": "2026年6月5日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T165 / B87 / W58 / H88",
+    "height": 165,
+    "bust": 87,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "水泳・編み物",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/sono_rinon-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/sono_rinon/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "tsuji_sarasa",
     "name": "辻更紗",
     "kana": "つじさらさ",
