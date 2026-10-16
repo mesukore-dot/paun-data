@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "mizuhara_misono",
+    "name": "水原みその",
+    "kana": "みずはらみその",
+    "cup": "J",
+    "debutDate": "2021年8月13日",
+    "birthday": "1998年9月15日",
+    "birthplace": "奈良県",
+    "bloodType": "O型",
+    "threeSize": "T156 / B101 / W64 / H96",
+    "height": 156,
+    "bust": 101,
+    "hip": 96,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/mizuhara_misono-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/mizuhara_misono/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "kohinata_miyuu",
     "name": "小日向みゆう",
     "kana": "こひなたみゆう/きよはらみゆう",
