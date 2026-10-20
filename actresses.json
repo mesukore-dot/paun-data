@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "natsume_kotori",
+    "name": "夏目琴理",
+    "kana": "なつめことり",
+    "cup": "J",
+    "debutDate": "2026年11月13日",
+    "birthday": "2004年4月22日",
+    "birthplace": "兵庫県",
+    "bloodType": "A型",
+    "threeSize": "T155 / B100 / W57 / H83",
+    "height": 155,
+    "bust": 100,
+    "hip": 83,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/natsume_kotori-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/natsume_kotori/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "mizuhara_misono",
     "name": "水原みその",
     "kana": "みずはらみその",
