@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "hasegawa_yukine",
+    "name": "長谷川雪音",
+    "kana": "はせがわゆきね",
+    "cup": "H",
+    "debutDate": "2026年11月13日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T170 / B- / W- / H-",
+    "height": 170,
+    "bust": null,
+    "hip": null,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/hasegawa_yukine-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/hasegawa_yukine/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "natsume_kotori",
     "name": "夏目琴理",
     "kana": "なつめことり",
