@@ -72,7 +72,7 @@ jobs:
 
           if os.path.exists('videos.json'):
               with open('videos.json', 'r', encoding='utf-8') as f: data = json.load(f)
-              site_url = 'https://wpmesucolle.wpx.jp/'
+              site_url = 'https://wpx.jp'
               os.makedirs('data', exist_ok=True)
               genre_dir = os.path.join('data', 'genre')
               os.makedirs(genre_dir, exist_ok=True)
@@ -117,6 +117,9 @@ jobs:
                       'isReserve': is_reserve, 
                       'tags': current_tags, 'releaseDate': item.get('releaseDate', ''),
                       'affiliateUrl': item.get('affiliateUrl', ''), 'actressId': target_ids,
+                      'package_file': item.get('package_file', ''),
+                      'thumbnail1Url': item.get('thumbnail1Url', ''),
+                      'thumbnail2Url': item.get('thumbnail2Url', '')
                   }
                   
                   meta_keys = {'number', 'volume', 'series', 'maker', 'label'}
@@ -150,29 +153,25 @@ jobs:
                                   "badgeColor": badge_color_val
                               })
 
+                              if a_id not in actresses_map:
+                                  actresses_map[a_id] = []
+                              if not any(x['data']['affiliateUrl'] == video_entry['affiliateUrl'] for x in actresses_map[a_id]):
+                                  actresses_map[a_id].append({'data': video_entry})
+
+                          # ここからジャンルマップ（tags_map）への仕分け処理に繋がります
+                          for t in current_tags:
+                              clean_t = clean_line_to_id(t)
+                              if clean_t:
+                                  if clean_t not in tags_map:
+                                      tags_map[clean_t] = []
+                                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in tags_map[clean_t]):
+                                      tags_map[clean_t].append(video_entry)
+
                           single_video_payload = video_entry.copy()
                           single_video_payload['actresses'] = actresses_list
                           
                           with open(os.path.join('data', f"{clean_number_id}.json"), 'w', encoding='utf-8') as sf:
                               json.dump(single_video_payload, sf, ensure_ascii=False, indent=2)
-
-                  for a_id in target_ids:
-                      slug = slug_mapping.get(a_id, a_id)
-                      if slug not in actresses_map: actresses_map[slug] = []
-                      instance_entry = video_entry.copy(); instance_entry['actressId'] = a_id
-                      actresses_map[slug].append({'data': instance_entry, 'xml_title': xml_title, 'xml_catch': xml_catch})
-
-                  if item_release_datetime > today_date:
-                      continue
-
-                  v_tags = item.get('tags', [])
-                  if isinstance(v_tags, list):
-                      for raw_tag in v_tags:
-                          clean_tag = str(raw_tag).strip().lower()
-                          if not clean_tag: continue
-                          if clean_tag not in tags_map: tags_map[clean_tag] = []
-                          if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in tags_map[clean_tag]):
-                              tags_map[clean_tag].append(video_entry)
                               
               # 4. 女優個別JSONの書き出し
               for slug, entries in actresses_map.items():
@@ -206,14 +205,11 @@ jobs:
               with open('data/new_arrival.json', 'w', encoding='utf-8') as f: json.dump(new_arrival_pool, f, ensure_ascii=False, indent=2)
 
               # 6.5. 🌟 品番カタログ用JSON（data/product_catalog.json）の生成
-              # 【解決】上のループで予約作品がスキップされてしまっているため、
-              # 元の生データ(data)から直接、既発売・予約問わずすべての品番のみを抽出します。
               product_catalog_data = []
               for item in data:
                   number_val = item.get('number', '')
                   if number_val:
                       clean_num = str(number_val).strip()
-                      # 重複していなければ品番をリストに追加
                       if clean_num not in product_catalog_data:
                           product_catalog_data.append(clean_num)
 
@@ -259,6 +255,6 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config --global user.email '41898282+github-actions[bot]@://github.com'
           git add "$GITHUB_WORKSPACE/sitemap-images.xml" data/*.json data/genre/*.json actresses.json || true
-          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 品番別JSONの複数女優・正しいURL・badgeColor対応完了' && git push origin HEAD:main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 各種JSONへpackage_file・thumbnailの反映完了' && git push origin HEAD:main)
