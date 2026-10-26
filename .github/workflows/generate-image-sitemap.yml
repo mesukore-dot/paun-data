@@ -117,9 +117,6 @@ jobs:
                       'isReserve': is_reserve, 
                       'tags': current_tags, 'releaseDate': item.get('releaseDate', ''),
                       'affiliateUrl': item.get('affiliateUrl', ''), 'actressId': target_ids,
-                      'package_file': item.get('package_file', ''),
-                      'thumbnail1Url': item.get('thumbnail1Url', ''),
-                      'thumbnail2Url': item.get('thumbnail2Url', '')
                   }
                   
                   meta_keys = {'number', 'volume', 'series', 'maker', 'label'}
@@ -159,6 +156,24 @@ jobs:
                           with open(os.path.join('data', f"{clean_number_id}.json"), 'w', encoding='utf-8') as sf:
                               json.dump(single_video_payload, sf, ensure_ascii=False, indent=2)
 
+                  for a_id in target_ids:
+                      slug = slug_mapping.get(a_id, a_id)
+                      if slug not in actresses_map: actresses_map[slug] = []
+                      instance_entry = video_entry.copy(); instance_entry['actressId'] = a_id
+                      actresses_map[slug].append({'data': instance_entry, 'xml_title': xml_title, 'xml_catch': xml_catch})
+
+                  if item_release_datetime > today_date:
+                      continue
+
+                  v_tags = item.get('tags', [])
+                  if isinstance(v_tags, list):
+                      for raw_tag in v_tags:
+                          clean_tag = str(raw_tag).strip().lower()
+                          if not clean_tag: continue
+                          if clean_tag not in tags_map: tags_map[clean_tag] = []
+                          if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in tags_map[clean_tag]):
+                              tags_map[clean_tag].append(video_entry)
+                              
               # 4. 女優個別JSONの書き出し
               for slug, entries in actresses_map.items():
                   clean_items = [e['data'] for e in entries]
@@ -244,6 +259,6 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@://github.com'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add "$GITHUB_WORKSPACE/sitemap-images.xml" data/*.json data/genre/*.json actresses.json || true
           git diff --quiet && git diff --staged --quiet || (git commit -m '🤖 品番別JSONの複数女優・正しいURL・badgeColor対応完了' && git push origin HEAD:main)
