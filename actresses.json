@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "imai_natsume",
+    "name": "今井なつめ",
+    "kana": "いまいなつめ",
+    "cup": "-",
+    "debutDate": "2026年10月30日",
+    "birthday": "-",
+    "birthplace": "静岡県",
+    "bloodType": "-",
+    "threeSize": "T- / B- / W- / H-",
+    "height": null,
+    "bust": null,
+    "hip": null,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/imai_natsume-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/imai_natsume/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "hinagata_mikuru",
     "name": "雛形みくる",
     "kana": "ひながたみくる",
