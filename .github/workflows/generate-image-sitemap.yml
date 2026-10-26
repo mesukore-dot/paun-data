@@ -158,6 +158,7 @@ jobs:
                           
                           with open(os.path.join('data', f"{clean_number_id}.json"), 'w', encoding='utf-8') as sf:
                               json.dump(single_video_payload, sf, ensure_ascii=False, indent=2)
+
               # 4. 女優個別JSONの書き出し
               for slug, entries in actresses_map.items():
                   clean_items = [e['data'] for e in entries]
