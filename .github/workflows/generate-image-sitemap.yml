@@ -117,6 +117,9 @@ jobs:
                       'isReserve': is_reserve, 
                       'tags': current_tags, 'releaseDate': item.get('releaseDate', ''),
                       'affiliateUrl': item.get('affiliateUrl', ''), 'actressId': target_ids,
+                      'package_file': item.get('package_file', ''),
+                      'thumbnail1Url': item.get('thumbnail1Url', ''),
+                      'thumbnail2Url': item.get('thumbnail2Url', '')
                   }
                   
                   meta_keys = {'number', 'volume', 'series', 'maker', 'label'}
