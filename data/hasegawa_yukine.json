@@ -14,7 +14,12 @@
     ],
     "releaseDate": "2026年11月13日",
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Debwh00383&af_id=mesucolle-003&ch=toolbar&ch_id=text",
-    "actressId": "hasegawa_yukine",
+    "actressId": [
+      "hasegawa_yukine"
+    ],
+    "package_file": "",
+    "thumbnail1Url": "",
+    "thumbnail2Url": "",
     "number": "ebwh00383",
     "volume": "150分",
     "series": "E-BODY専属デビュー",

@@ -13,7 +13,13 @@
     ],
     "releaseDate": "2026年11月6日",
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00484&af_id=mesucolle-003&ch=toolbar&ch_id=text",
-    "actressId": "kawagoe_niko",
+    "actressId": [
+      "adachi_yuuri",
+      "kawagoe_niko"
+    ],
+    "package_file": "",
+    "thumbnail1Url": "",
+    "thumbnail2Url": "",
     "number": "snos00484",
     "volume": "140分",
     "series": "-",
