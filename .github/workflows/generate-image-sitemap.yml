@@ -72,7 +72,7 @@ jobs:
 
           if os.path.exists('videos.json'):
               with open('videos.json', 'r', encoding='utf-8') as f: data = json.load(f)
-              site_url = 'https://wpx.jp'
+              site_url = 'https://wpmesucolle.wpx.jp/'
               os.makedirs('data', exist_ok=True)
               genre_dir = os.path.join('data', 'genre')
               os.makedirs(genre_dir, exist_ok=True)
