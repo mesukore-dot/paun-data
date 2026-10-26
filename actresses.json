@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "yukino_hina",
+    "name": "雪野緋七",
+    "kana": "ゆきのひな",
+    "cup": "-",
+    "debutDate": "2026年11月20日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T- / B- / W- / H-",
+    "height": null,
+    "bust": null,
+    "hip": null,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/yukino_hina-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/yukino_hina/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "sano_saku",
     "name": "佐野咲空",
     "kana": "さのさく",
