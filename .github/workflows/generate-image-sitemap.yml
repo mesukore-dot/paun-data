@@ -153,19 +153,27 @@ jobs:
                                   "badgeColor": badge_color_val
                               })
 
+                              # 【修正】女優個別マップへ正しく保存（インデント位置を1つ前に戻しました）
                               if a_id not in actresses_map:
                                   actresses_map[a_id] = []
                               if not any(x['data']['affiliateUrl'] == video_entry['affiliateUrl'] for x in actresses_map[a_id]):
                                   actresses_map[a_id].append({'data': video_entry})
 
-                          # ここからジャンルマップ（tags_map）への仕分け処理に繋がります
-                          for t in current_tags:
-                              clean_t = clean_line_to_id(t)
-                              if clean_t:
-                                  if clean_t not in tags_map:
-                                      tags_map[clean_t] = []
-                                  if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in tags_map[clean_t]):
-                                      tags_map[clean_t].append(video_entry)
+                          single_video_payload = video_entry.copy()
+                          single_video_payload['actresses'] = actresses_list
+                          
+                          with open(os.path.join('data', f"{clean_number_id}.json"), 'w', encoding='utf-8') as sf:
+                              json.dump(single_video_payload, sf, ensure_ascii=False, indent=2)
+
+                  # 【修正】ジャンルマップ(tags_map)のループは品番(number)の有無に関わらず、
+                  # 全体のループ(for item in data)の直下に配置します
+                  for t in current_tags:
+                      clean_t = clean_line_to_id(t)
+                      if clean_t:
+                          if clean_t not in tags_map:
+                              tags_map[clean_t] = []
+                          if not any(x['affiliateUrl'] == video_entry['affiliateUrl'] for x in tags_map[clean_t]):
+                              tags_map[clean_t].append(video_entry)
 
                           single_video_payload = video_entry.copy()
                           single_video_payload['actresses'] = actresses_list
