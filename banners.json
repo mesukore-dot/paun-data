@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "imageUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/banner_1.webp",
+      "linkUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Flist%2F%3Fcampaign%3D6565%26sort%3Dsuggest&af_id=mesucolle-003&ch=toolbar&ch_id=text",
+      "altText": "期間限定セール",
+      "startDate": "2026-10-01T00:00:00+09:00",
+      "endDate": "2026-11-03T23:59:59+09:00"
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/banner_2.webp",
+      "linkUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Flist%2F%3Fcampaign%3Dhatarakuoneesan%26sort%3Dsuggest&af_id=mesucolle-003&ch=toolbar&ch_id=text",
+      "altText": "働くお姉さん50%OFF",
+      "startDate": "2026-10-01T10:00:00+09:00",
+      "endDate": "2026-11-25T09:59:00+09:00"
+    },
+    {
+        "id": 3,
+        "imageUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/10/banner_3.webp",
+        "linkUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Flist%2F%3Fcampaign%3Ddaily&af_id=mesucolle-003&ch=toolbar&ch_id=text",
+        "altText": "毎日セール30%OFF",
+        "startDate": "2026-10-01T10:00:00+09:00",
+        "endDate": "2099-11-25T09:59:00+09:00"
+      }
+  ]
+  
