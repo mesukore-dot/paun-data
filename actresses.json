@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "kuramoto_sumire",
+    "name": "倉本すみれ",
+    "kana": "くらもとすみれ",
+    "cup": "C",
+    "debutDate": "2021年10月19日",
+    "birthday": "2001年9月14日",
+    "birthplace": "東京都",
+    "bloodType": "A型",
+    "threeSize": "T153 / B85 / W57 / H85",
+    "height": 153,
+    "bust": 85,
+    "hip": 85,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/kuramoto_sumire-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/kuramoto_sumire/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "seino_saki",
     "name": "清野咲",
     "kana": "せいのさき",
