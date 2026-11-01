@@ -48,8 +48,8 @@
       "actressId": "mizuhara_misono",
       "name": "水原みその",
       "pageUrl": "https://wpmesucolle.wpx.jp/mizuhara_misono/",
-      "badge": "月間99位",
-      "badgeColor": "gray"
+      "badge": "",
+      "badgeColor": ""
     },
     {
       "actressId": "yuumi_shion",
@@ -69,8 +69,8 @@
       "actressId": "otsu_arisu",
       "name": "乙アリス",
       "pageUrl": "https://wpmesucolle.wpx.jp/otsu_arisu/",
-      "badge": "月間12位",
-      "badgeColor": "silver"
+      "badge": "月間10位",
+      "badgeColor": "gold"
     }
   ]
 }

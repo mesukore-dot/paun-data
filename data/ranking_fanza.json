@@ -1,18 +1,13 @@
 [
   {
-    "actressId": "mizuhara_misono",
-    "badge": "月間99位",
-    "badgeColor": "gray"
-  },
-  {
     "actressId": "kohinata_miyuu",
-    "badge": "月間57位",
-    "badgeColor": "gray"
+    "badge": "月間26位",
+    "badgeColor": "silver"
   },
   {
     "actressId": "suehiro_jun",
-    "badge": "月間44位",
-    "badgeColor": "bronze"
+    "badge": "月間51位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "tsujii_honoka",
@@ -21,97 +16,102 @@
   },
   {
     "actressId": "tsubaki_rika",
-    "badge": "月間19位",
-    "badgeColor": "silver"
-  },
-  {
-    "actressId": "mitani_akane",
-    "badge": "月間65位",
-    "badgeColor": "gray"
-  },
-  {
-    "actressId": "yoshine_yuria",
-    "badge": "月間46位",
+    "badge": "月間45位",
     "badgeColor": "bronze"
   },
   {
-    "actressId": "koyoi_konan",
-    "badge": "月間58位",
-    "badgeColor": "gray"
-  },
-  {
-    "actressId": "yamagishi_ayaka",
+    "actressId": "kaede_karen",
     "badge": "月間87位",
     "badgeColor": "gray"
   },
   {
-    "actressId": "tsukino_kasumi",
-    "badge": "月間20位",
-    "badgeColor": "silver"
-  },
-  {
-    "actressId": "ohana_non",
-    "badge": "月間85位",
-    "badgeColor": "gray"
-  },
-  {
-    "actressId": "tanaka_nene",
-    "badge": "月間63位",
-    "badgeColor": "gray"
-  },
-  {
-    "actressId": "haruna_noa",
-    "badge": "月間35位",
-    "badgeColor": "bronze"
-  },
-  {
-    "actressId": "onami_aya",
-    "badge": "月間75位",
-    "badgeColor": "gray"
-  },
-  {
-    "actressId": "kinoshita_himari",
-    "badge": "月間9位",
-    "badgeColor": "gold"
-  },
-  {
-    "actressId": "himesaki_hana",
+    "actressId": "aoi_suzu",
     "badge": "月間60位",
     "badgeColor": "gray"
   },
   {
-    "actressId": "kashiwagi_konatsu",
-    "badge": "月間13位",
-    "badgeColor": "silver"
-  },
-  {
-    "actressId": "kitano_mina",
-    "badge": "月間17位",
-    "badgeColor": "silver"
-  },
-  {
-    "actressId": "shishido_riho",
-    "badge": "月間18位",
-    "badgeColor": "silver"
-  },
-  {
-    "actressId": "washio_mei",
-    "badge": "月間51位",
+    "actressId": "mitani_akane",
+    "badge": "月間57位",
     "badgeColor": "gray"
   },
   {
-    "actressId": "tenma_yui",
-    "badge": "月間8位",
-    "badgeColor": "gold"
+    "actressId": "yoshine_yuria",
+    "badge": "月間34位",
+    "badgeColor": "bronze"
   },
   {
-    "actressId": "yumeno_aika",
+    "actressId": "koyoi_konan",
     "badge": "月間25位",
     "badgeColor": "silver"
   },
   {
+    "actressId": "tsukino_kasumi",
+    "badge": "月間59位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "ohana_non",
+    "badge": "月間50位",
+    "badgeColor": "bronze"
+  },
+  {
+    "actressId": "tanaka_nene",
+    "badge": "月間73位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "haruna_noa",
+    "badge": "月間49位",
+    "badgeColor": "bronze"
+  },
+  {
+    "actressId": "kinoshita_himari",
+    "badge": "月間13位",
+    "badgeColor": "silver"
+  },
+  {
+    "actressId": "himesaki_hana",
+    "badge": "月間58位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "itou_mayuki",
+    "badge": "月間42位",
+    "badgeColor": "bronze"
+  },
+  {
+    "actressId": "kashiwagi_konatsu",
+    "badge": "月間23位",
+    "badgeColor": "silver"
+  },
+  {
+    "actressId": "kitano_mina",
+    "badge": "月間28位",
+    "badgeColor": "silver"
+  },
+  {
+    "actressId": "shishido_riho",
+    "badge": "月間39位",
+    "badgeColor": "bronze"
+  },
+  {
+    "actressId": "washio_mei",
+    "badge": "月間15位",
+    "badgeColor": "silver"
+  },
+  {
+    "actressId": "tenma_yui",
+    "badge": "月間9位",
+    "badgeColor": "gold"
+  },
+  {
+    "actressId": "yumeno_aika",
+    "badge": "月間19位",
+    "badgeColor": "silver"
+  },
+  {
     "actressId": "mikami_yua",
-    "badge": "月間30位",
+    "badge": "月間20位",
     "badgeColor": "silver"
   },
   {
@@ -121,12 +121,12 @@
   },
   {
     "actressId": "haruhi_moka",
-    "badge": "月間47位",
-    "badgeColor": "bronze"
+    "badge": "月間71位",
+    "badgeColor": "gray"
   },
   {
     "actressId": "toujou_natsu",
-    "badge": "月間41位",
+    "badge": "月間33位",
     "badgeColor": "bronze"
   },
   {
@@ -136,18 +136,18 @@
   },
   {
     "actressId": "satsuki_ena",
+    "badge": "月間17位",
+    "badgeColor": "silver"
+  },
+  {
+    "actressId": "otsu_arisu",
     "badge": "月間10位",
     "badgeColor": "gold"
   },
   {
-    "actressId": "otsu_arisu",
-    "badge": "月間12位",
-    "badgeColor": "silver"
-  },
-  {
     "actressId": "yukimura_itsuki",
-    "badge": "月間73位",
-    "badgeColor": "gray"
+    "badge": "月間46位",
+    "badgeColor": "bronze"
   },
   {
     "actressId": "kitaoka_karin",
@@ -156,27 +156,27 @@
   },
   {
     "actressId": "aizawa_miyu",
-    "badge": "月間1位",
-    "badgeColor": "gold"
-  },
-  {
-    "actressId": "unpai",
-    "badge": "月間21位",
-    "badgeColor": "silver"
-  },
-  {
-    "actressId": "matsumoto_ichika",
     "badge": "月間3位",
     "badgeColor": "gold"
   },
   {
+    "actressId": "unpai",
+    "badge": "月間65位",
+    "badgeColor": "gray"
+  },
+  {
+    "actressId": "matsumoto_ichika",
+    "badge": "月間2位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "tano_yuu",
-    "badge": "月間61位",
+    "badge": "月間55位",
     "badgeColor": "gray"
   },
   {
     "actressId": "kanematsu_kiho",
-    "badge": "月間53位",
+    "badge": "月間68位",
     "badgeColor": "gray"
   },
   {
@@ -186,32 +186,32 @@
   },
   {
     "actressId": "ishikawa_mio",
-    "badge": "月間26位",
+    "badge": "月間24位",
     "badgeColor": "silver"
   },
   {
     "actressId": "adachi_yuuri",
-    "badge": "月間78位",
-    "badgeColor": "gray"
+    "badge": "月間40位",
+    "badgeColor": "bronze"
   },
   {
     "actressId": "shirakami_emika",
-    "badge": "月間74位",
+    "badge": "月間83位",
     "badgeColor": "gray"
   },
   {
     "actressId": "kawakita_saika",
-    "badge": "月間2位",
-    "badgeColor": "gold"
-  },
-  {
-    "actressId": "seto_kanna",
     "badge": "月間4位",
     "badgeColor": "gold"
   },
   {
+    "actressId": "seto_kanna",
+    "badge": "月間1位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "satsuki_nao",
-    "badge": "月間14位",
+    "badge": "月間12位",
     "badgeColor": "silver"
   }
 ]
