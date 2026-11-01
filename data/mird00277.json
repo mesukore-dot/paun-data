@@ -77,8 +77,8 @@
       "actressId": "yagi_nana",
       "name": "yagi_nana",
       "pageUrl": "./yagi_nana/",
-      "badge": "月間40位",
-      "badgeColor": "bronze"
+      "badge": "月間78位",
+      "badgeColor": "gray"
     },
     {
       "actressId": "sasaki_aki",
@@ -91,8 +91,8 @@
       "actressId": "asano_kokoro",
       "name": "asano_kokoro",
       "pageUrl": "./asano_kokoro/",
-      "badge": "月間24位",
-      "badgeColor": "silver"
+      "badge": "月間41位",
+      "badgeColor": "bronze"
     },
     {
       "actressId": "yamada_suzuna",
@@ -105,14 +105,14 @@
       "actressId": "kashiwagi_konatsu",
       "name": "柏木こなつ",
       "pageUrl": "https://wpmesucolle.wpx.jp/kashiwagi_konatsu/",
-      "badge": "月間13位",
+      "badge": "月間23位",
       "badgeColor": "silver"
     },
     {
       "actressId": "satsuki_nao",
       "name": "彩月七緒",
       "pageUrl": "https://wpmesucolle.wpx.jp/satsuki_nao/",
-      "badge": "月間14位",
+      "badge": "月間12位",
       "badgeColor": "silver"
     },
     {
@@ -126,42 +126,42 @@
       "actressId": "haruhi_moka",
       "name": "春陽モカ",
       "pageUrl": "https://wpmesucolle.wpx.jp/haruhi_moka/",
-      "badge": "月間47位",
-      "badgeColor": "bronze"
+      "badge": "月間71位",
+      "badgeColor": "gray"
     },
     {
       "actressId": "nanase_arisu",
       "name": "nanase_arisu",
       "pageUrl": "./nanase_arisu/",
-      "badge": "月間68位",
-      "badgeColor": "gray"
+      "badge": "月間44位",
+      "badgeColor": "bronze"
     },
     {
       "actressId": "onosaka_yuika",
       "name": "onosaka_yuika",
       "pageUrl": "./onosaka_yuika/",
-      "badge": "月間37位",
-      "badgeColor": "bronze"
+      "badge": "月間56位",
+      "badgeColor": "gray"
     },
     {
       "actressId": "oshikawa_yuuri",
       "name": "oshikawa_yuuri",
       "pageUrl": "./oshikawa_yuuri/",
-      "badge": "月間70位",
-      "badgeColor": "gray"
+      "badge": "",
+      "badgeColor": ""
     },
     {
       "actressId": "kitano_mina",
       "name": "北野未奈",
       "pageUrl": "https://wpmesucolle.wpx.jp/kitano_mina/",
-      "badge": "月間17位",
+      "badge": "月間28位",
       "badgeColor": "silver"
     },
     {
       "actressId": "aizawa_miyu",
       "name": "逢沢みゆ",
       "pageUrl": "https://wpmesucolle.wpx.jp/aizawa_miyu/",
-      "badge": "月間1位",
+      "badge": "月間3位",
       "badgeColor": "gold"
     },
     {
@@ -175,8 +175,8 @@
       "actressId": "tsukinoe_sui",
       "name": "tsukinoe_sui",
       "pageUrl": "./tsukinoe_sui/",
-      "badge": "",
-      "badgeColor": ""
+      "badge": "月間93位",
+      "badgeColor": "gray"
     },
     {
       "actressId": "shinohara_iyo",
@@ -210,7 +210,7 @@
       "actressId": "matsumoto_ichika",
       "name": "松本いちか",
       "pageUrl": "https://wpmesucolle.wpx.jp/matsumoto_ichika/",
-      "badge": "月間3位",
+      "badge": "月間2位",
       "badgeColor": "gold"
     }
   ]
