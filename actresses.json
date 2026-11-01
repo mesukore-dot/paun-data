@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "seino_saki",
+    "name": "清野咲",
+    "kana": "せいのさき",
+    "cup": "C",
+    "debutDate": "2025年10月3日",
+    "birthday": "2005年1月25日",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T158 / B75 / W56 / H88",
+    "height": 158,
+    "bust": 75,
+    "hip": 88,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/seino_saki-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/seino_saki/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "yukino_hina",
     "name": "雪野緋七",
     "kana": "ゆきのひな",
