@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "kuramoto_sumire",
+    "badge": "月間8位",
+    "badgeColor": "gold"
+  },
+  {
     "actressId": "kohinata_miyuu",
     "badge": "月間26位",
     "badgeColor": "silver"
