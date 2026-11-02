@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "yuumi_shion",
+    "name": "夕美しおん",
+    "kana": "ゆうみしおん",
+    "cup": "J",
+    "debutDate": "2018年10月7日",
+    "birthday": "1999年4月7日",
+    "birthplace": "岐阜県",
+    "bloodType": "-",
+    "threeSize": "T149 / B102 / W63 / H95",
+    "height": 149,
+    "bust": 102,
+    "hip": 95,
+    "status": "新作停止中",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/yuumi_shion-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/yuumi_shion/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "kuramoto_sumire",
     "name": "倉本すみれ",
     "kana": "くらもとすみれ",
