@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "misaki_yuzuha",
+    "name": "美咲柚葉",
+    "kana": "みさきゆずは",
+    "cup": "H",
+    "debutDate": "2026年11月27日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T165 / B92 / W56 / H90",
+    "height": 165,
+    "bust": 92,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/misaki_yuzuha-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/misaki_yuzuha/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "yuumi_shion",
     "name": "夕美しおん",
     "kana": "ゆうみしおん",
