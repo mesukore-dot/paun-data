@@ -25,6 +25,7 @@
     "hinata_yuna",
     "seino_saki",
     "hanamori_kaho",
+    "yukimura_itsuki",
     "shishido_riho",
     "shiratori_rei",
     "aosaka_aoi",
@@ -136,6 +137,13 @@
       "name": "hanamori_kaho",
       "pageUrl": "./hanamori_kaho/",
       "badge": "月間38位",
+      "badgeColor": "bronze"
+    },
+    {
+      "actressId": "yukimura_itsuki",
+      "name": "幸村泉希",
+      "pageUrl": "https://wpmesucolle.wpx.jp/yukimura_itsuki/",
+      "badge": "月間46位",
       "badgeColor": "bronze"
     },
     {
