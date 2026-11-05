@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "amamiya_miyu",
+    "name": "甘宮みゆ",
+    "kana": "あまみやみゆ",
+    "cup": "E",
+    "debutDate": "2026年11月27日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T163 / B- / W54 / H-",
+    "height": 163,
+    "bust": null,
+    "hip": null,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/amamiya_miyu-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/amamiya_miyu/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "nanano_nano",
     "name": "菜々野なの",
     "kana": "ななのなの",
