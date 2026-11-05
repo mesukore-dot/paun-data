@@ -4,14 +4,13 @@
     "catchphrase": "水泳部の無口な生徒は変態教師の餌食に…",
     "badge": "",
     "badgeColor": "",
-    "type": "reserve",
-    "isReserve": true,
+    "type": "single",
+    "isReserve": false,
     "tags": [
       "kyonyu",
       "splash",
       "sukumizu",
-      "oil",
-      "reserve"
+      "oil"
     ],
     "releaseDate": "2026年11月6日",
     "affiliateUrl": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00423&af_id=mesucolle-003&ch=toolbar&ch_id=text",
