@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "morisawa_kana",
+    "name": "森沢かな",
+    "kana": "もりさわかな",
+    "cup": "F",
+    "debutDate": "2012年7月13日",
+    "birthday": "1992年5月9日",
+    "birthplace": "東京都",
+    "bloodType": "O型",
+    "threeSize": "T160 / B86 / W59 / H86",
+    "height": 160,
+    "bust": 86,
+    "hip": 86,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/morisawa_kana-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/morisawa_kana/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "amamiya_miyu",
     "name": "甘宮みゆ",
     "kana": "あまみやみゆ",
