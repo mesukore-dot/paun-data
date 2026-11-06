@@ -1,5 +1,10 @@
 [
   {
+    "actressId": "morisawa_kana",
+    "badge": "月間14位",
+    "badgeColor": "silver"
+  },
+  {
     "actressId": "kuramoto_sumire",
     "badge": "月間8位",
     "badgeColor": "gold"
