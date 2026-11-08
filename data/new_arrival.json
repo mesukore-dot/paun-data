@@ -2595,7 +2595,7 @@
     "type": "single",
     "isReserve": false,
     "tags": [
-      "black",
+      "black_chikan",
       "kyonyu"
     ],
     "releaseDate": "2026年9月18日",
@@ -3600,7 +3600,7 @@
     "isReserve": false,
     "tags": [
       "splash",
-      "black",
+      "black_chikan",
       "kyonyu",
       "bakunyu",
       "SP"
@@ -4846,6 +4846,7 @@
     "tags": [
       "seifuku",
       "nama",
+      "black_chikan",
       "SP"
     ],
     "releaseDate": "2026年7月24日",
