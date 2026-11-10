@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "takanashi_nagi",
+    "name": "小鳥遊なぎ",
+    "kana": "たかなしなぎ",
+    "cup": "-",
+    "debutDate": "2026年12月4日",
+    "birthday": "-",
+    "birthplace": "-",
+    "bloodType": "-",
+    "threeSize": "T- / B- / W- / H-",
+    "height": null,
+    "bust": null,
+    "hip": null,
+    "status": "現役",
+    "hobby": "-",
+    "isNew": true,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/snos00540-package.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/takanashi_nagi/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "morisawa_kana",
     "name": "森沢かな",
     "kana": "もりさわかな",
