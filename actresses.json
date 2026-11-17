@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "minaduki_hikaru",
+    "name": "皆月ひかる",
+    "kana": "みなづきひかる",
+    "cup": "B",
+    "debutDate": "2018年7月1日",
+    "birthday": "1998年1月11日",
+    "birthplace": "秋田県",
+    "bloodType": "O型",
+    "threeSize": "T148 / B83 / W55 / H85",
+    "height": 148,
+    "bust": 83,
+    "hip": 85,
+    "status": "現役",
+    "hobby": "ピアノ・トランペット・水泳・絵画",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/minaduki_hikaru-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/minaduki_hikaru/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "takanashi_nagi",
     "name": "小鳥遊なぎ",
     "kana": "たかなしなぎ",
