@@ -1,5 +1,26 @@
 [
   {
+    "actressId": "ishihara_nozomi",
+    "name": "石原希望",
+    "kana": "いしはらのぞみ",
+    "cup": "F",
+    "debutDate": "2020年6月1日",
+    "birthday": "2000年7月25日",
+    "birthplace": "香川県",
+    "bloodType": "A型",
+    "threeSize": "T158 / B90 / W58 / H90",
+    "height": 158,
+    "bust": 90,
+    "hip": 90,
+    "status": "現役",
+    "hobby": "漫画・アニメ鑑賞",
+    "isNew": false,
+    "imgUrl": "https://wpmesucolle.wpx.jp/wp-content/uploads/2026/11/ishihara_nozomi-profile.webp",
+    "pageUrl": "https://wpmesucolle.wpx.jp/ishihara_nozomi/",
+    "badge": "",
+    "badgeColor": ""
+  },
+  {
     "actressId": "aizawa_ai",
     "name": "愛沢愛",
     "kana": "あいざわあい",
